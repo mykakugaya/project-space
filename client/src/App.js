@@ -33,7 +33,7 @@ function App() {
             <Login />
           </Route>
           <Route>
-            <NoMatch />
+            <Home />
           </Route>
         </Switch>
       </div>
