@@ -37,7 +37,7 @@ function Gallery() {
   
     return (
       <div>
-        <Paper style={{ minHeight: "100vh" }}>
+        <Paper>
             <h1>Image/Video Gallery</h1>
             <SearchForm
             handleInputChange={handleInputChange}

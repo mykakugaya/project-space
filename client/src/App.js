@@ -5,7 +5,7 @@ import Forum from "./pages/Forum";
 import Calendar from "./pages/Calendar";
 import Gallery from "./pages/Gallery";
 import Login from "./pages/Login";
-import Jobs from "./pages/Jobs";
+import JobSearch from "./pages/JobSearch";
 import "./App.css";
 
 function App() {
@@ -27,7 +27,7 @@ function App() {
             <Gallery />
           </Route>
           <Route exact path="/jobs">
-            <Jobs />
+            <JobSearch />
           </Route>
           <Route exact path="/login">
             <Login />
