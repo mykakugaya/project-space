@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/NavBar"
 import Home from "./pages/Home";
 import Forum from "./pages/Forum";
-import Calendar from "./pages/Calendar";
+// import Calendar from "./pages/Calendar";
 import Gallery from "./pages/Gallery";
 import Login from "./pages/Login";
 import Jobs from "./pages/Jobs";
@@ -14,7 +14,7 @@ function App() {
     <Router>
       <div>
         <Navbar />
-        <Switch>
+        {/* <Switch>
           <Route exact path="/">
             <Home />
           </Route>
@@ -36,7 +36,7 @@ function App() {
           <Route>
             <NoMatch />
           </Route>
-        </Switch>
+        </Switch> */}
       </div>
     </Router>
   );
