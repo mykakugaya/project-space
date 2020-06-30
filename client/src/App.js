@@ -12,12 +12,7 @@ import "./App.css";
 function App() {
   return (
     <Router>
-<<<<<<< HEAD
-      <div>
-        <Nav /> 
-=======
         <Navbar />
->>>>>>> 0bdc8adc56f41c6834c90af20970d6f902a4c729
         <Switch>
           <Route exact path="/">
             {/* <Home /> */}
