@@ -17,7 +17,7 @@ function AsteroidSearchForm(props){
                     id="asteroid"
                 />
                 <datalist id="asteroids">
-                    {props.breeds.map(asteroid => (
+                    {props.asteroids.map(asteroid => (
                         <option value={asteroid} key={asteroid}/>
                     ))}
                 </datalist>
