@@ -1,19 +1,19 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Home from "./pages/Home";
-import Forum from "./pages/Forum";
-import Calendar from "./pages/Calendar";
-import Gallery from "./pages/Gallery";
-import Login from "./pages/Login";
-import JobSearch from "./pages/JobSearch";
+import Navbar from "./components/Navbar";
+// import Home from "./pages/Home";
+// import Forum from "./pages/Forum";
+// import Calendar from "./pages/Calendar";
+// import Gallery from "./pages/Gallery";
+// import Login from "./pages/Login";
+// import JobSearch from "./pages/JobSearch";
 import "./App.css";
 
 function App() {
   return (
     <Router>
-      <div>
-        <Nav />
-        <Switch>
+        <Navbar />
+        {/* <Switch>
           <Route exact path="/">
             <Home />
           </Route>
@@ -35,8 +35,7 @@ function App() {
           <Route>
             <Home />
           </Route>
-        </Switch>
-      </div>
+        </Switch> */}
     </Router>
   );
 }
