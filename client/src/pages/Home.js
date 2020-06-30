@@ -83,14 +83,14 @@ class Home extends Component {
             <div>
                 <Hero backgroundImage={this.state.heroImage}>
                     <h1>The Space Hub App</h1>
-                    <h3>Built for the Space Enthusiast!</h3>
+                    <h2>Built for the Space Enthusiast!</h2>
                 </Hero>
                 <br/>
                 <h2>Weather forecast from Mars</h2>
                 <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='1000' height='622'  scrolling='no' frameborder='10'></iframe>
                 <MarsRoverImages backgroundImage={this.state.MarsRoverImage}>
-                <h1>The Space Hub App</h1>
-                    <h3>Built for the Space Enthusiast!</h3>
+                <h2>Browse today's photos taken by NASA's Curiosity Mars Rover</h2>
+                    {/* <h3>Built for the Space Enthusiast!</h3> */}
                 <button onClick={this.handleNext}>Next</button>
                 <button onClick={this.handlePrev}>Previous</button>
                 </MarsRoverImages>
