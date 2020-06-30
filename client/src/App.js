@@ -21,7 +21,7 @@ function App() {
             {/* <Forum /> */}
           </Route>
           <Route exact path="/calendar">
-            <MyCalendar />
+            {/* <MyCalendar /> */}
           </Route>
           <Route exact path="/gallery">
             {/* <Gallery /> */}
