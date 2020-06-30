@@ -15,7 +15,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
   },
   appbar: {
-      backgroundColor: "black"
+      backgroundColor: "black",
+      alignItems: "center"
   }
 }));
 
@@ -31,7 +32,7 @@ export default function ButtonAppBar() {
           {/* <Typography variant="h6" className={classes.title}>
             Project Space
           </Typography> */}
-          <Tabs>
+          <Tabs className={classes.appbar}>
             <Tab label="Home">
               <Link className="navbar-brand" to="/" />
             </Tab>
