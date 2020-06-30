@@ -1,48 +1,24 @@
-import React from "react";
-// import { render } from "react-dom";
-import { Calendar, momentLocalizer } from "react-big-calendar";
-import moment from "moment";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import axios from "axios";
+import React, { useState } from 'react';
+import Calendar from 'react-calendar';
 
-moment.locale("en-GB");
+const MyCalendar = () => {
+    // new Date() picks current date as default
+    const [date, setDate] = useState(new Date());
 
-const localizer = momentLocalizer(moment);
+    const onChange = date => {
+        setDate(date);
+    };
 
-const myEventsList = {} //empty object for now
-
-export default class MyCalendar extends React.Component{
-    constructor() {
-        super()
-   // will populate this function later
-    }
-    componentDidMount(){
-
-        let self = this;
-
-        axios.get('http://localhost:3001/events')
-        .then(function (response) {
-        console.log(response.data);
-        let appointments = response.data;
-        
-        for (let i = 0; i < appointments.length; i++) {
-            console.log(appointments[i])
-        }    
-
-        })
-        .catch(function (error) {
-        console.log(error);
-        });
-    }
-    render() {
-
-        return(
+    return (
+        <div>
         <Calendar
-            localizer={localizer}
-            events={myEventsList}
-            startAccessor="start"
-            endAccessor="end"
+          onChange={onChange}
+          value={date}
         />
-        )
-    }
-}
+        {console.log(date)}
+        {date.toString()}
+        </div>
+    );
+};
+
+export default MyCalendar;

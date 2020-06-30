@@ -5,7 +5,6 @@ import Home from "./pages/Home";
 // import Forum from "./pages/Forum";
 import MyCalendar from "./pages/Calendar";
 // import Gallery from "./pages/Gallery";
-// import Calendar from "./pages/Calendar";
 import Gallery from "./pages/Gallery";
 // import Login from "./pages/Login";
 // import JobSearch from "./pages/JobSearch";
@@ -23,7 +22,7 @@ function App() {
             {/* <Forum /> */}
           </Route>
           <Route exact path="/calendar">
-            {/* <MyCalendar /> */}
+            <MyCalendar />
           </Route>
           <Route exact path="/gallery">
             <Gallery />
