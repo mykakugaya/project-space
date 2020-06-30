@@ -10,4 +10,3 @@ export default {
 };
 
 
-// photos > img_src
