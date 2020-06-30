@@ -25,6 +25,8 @@ class Home extends Component {
                     <h1>The Space Hub App</h1>
                     <h3>Built for the Space Enthusiast!</h3>
                 </Hero>
+                <br/>
+                <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='800' height='530'  scrolling='no' frameborder='0'></iframe>
             </div>
         )
     }
