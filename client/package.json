@@ -11,9 +11,10 @@
     "axios": "^0.19.2",
     "moment": "^2.27.0",
     "react": "^16.13.1",
+    "react-big-calendar": "^0.26.0",
+    "react-calendar": "^3.1.0",
     "react-dom": "^16.13.1",
-    "react-modal-image": "^2.5.0",
-    "react-photo-gallery": "^8.0.0",
+    "react-moment": "^0.9.7",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
