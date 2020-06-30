@@ -9,12 +9,9 @@
     position: relative;
     /* margin: 0 auto; */
     margin-top: 30px;
+    margin-left: 20;
   }
-/*   
-  .card .fa-spinner {
-    font-size: 180px;
-    position: absolute;
-    left: 25%;
-    top: 25%;
+
+  .MarsRoverImages h2 {
+      color: white;
   }
-   */
