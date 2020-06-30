@@ -4,7 +4,6 @@ import Navbar from "./components/Navbar/navbar";
 import Home from "./pages/Home";
 // import Forum from "./pages/Forum";
 import MyCalendar from "./pages/Calendar";
-// import Gallery from "./pages/Gallery";
 import Gallery from "./pages/Gallery";
 import Login from "./pages/Login";
 // import JobSearch from "./pages/JobSearch";
