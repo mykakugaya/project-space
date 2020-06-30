@@ -38,7 +38,7 @@ export default function SearchForm(props) {
         inputProps={{ 'aria-label': 'search NASA images' }}
         onChange={props.handleInputChange}
       />
-      <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={()=>props.handleFormSubmit}>
+      <IconButton type="button" className={classes.iconButton} aria-label="search" onClick={()=>props.handleFormSubmit}>
         <SearchIcon />
       </IconButton>
     </Paper>
