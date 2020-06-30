@@ -1,22 +1,22 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import Tab from "@material-ui/core/Tab";
+import Tabs from "@material-ui/core/Tabs";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
-  },
   title: {
     flexGrow: 1,
   },
+  appbar: {
+      backgroundColor: "black"
+  }
 }));
 
 export default function ButtonAppBar() {
@@ -24,15 +24,33 @@ export default function ButtonAppBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.appbar}>
         <Toolbar>
-          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
-            <MenuIcon />
-          </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            News
-          </Typography>
-          <Button color="inherit">Login</Button>
+          {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+          </IconButton> */}
+          {/* <Typography variant="h6" className={classes.title}>
+            Project Space
+          </Typography> */}
+          <Tabs>
+            <Tab label="Home">
+              <Link className="navbar-brand" to="/" />
+            </Tab>
+            <Tab label="Forum">
+              <Link className="navbar-brand" to="/forum" />
+            </Tab>
+            <Tab label="Calendar">
+              <Link className="navbar-brand" to="/calendar" />
+            </Tab>
+            <Tab label="Gallery">
+              <Link className="navbar-brand" to="/gallery" />
+            </Tab>
+            <Tab label="Jobs">
+              <Link className="navbar-brand" to="/jobs" />
+            </Tab>
+            <Tab label="Login">
+              <Link className="navbar-brand" to="/login" />
+            </Tab>
+          </Tabs>
         </Toolbar>
       </AppBar>
     </div>
