@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/navbar";
-// import Home from "./pages/Home";
+import Home from "./pages/Home";
 // import Forum from "./pages/Forum";
 // import Calendar from "./pages/Calendar";
 // import Gallery from "./pages/Gallery";
@@ -15,7 +15,7 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path="/">
-            {/* <Home /> */}
+            <Home />
           </Route>
           <Route exact path="/forum">
             {/* <Forum /> */}

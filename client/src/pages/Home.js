@@ -26,13 +26,21 @@ class Home extends Component {
 
     searchAPOD() {
         API.APODapisearch()
-        .then(res => this.setState({heroImage: res.data.hdurl}))
+        .then(res =>
+            {
+                console.log(res)
+                this.setState({heroImage: res.data.hdurl})
+            } )
         .catch(err => console.log(err));
     };
 
     searchMarsRover(){
         MarsRoverAPI.MARSROVERapiSearch()
-        .then(res => this.setState({MarsRoverImage: res.data.photos.img_src}))
+        .then(res => 
+            {
+                console.log(res)
+                this.setState({MarsRoverImage: res.data.photos.img_src})
+            })
         .catch(err => console.log(err));
     };
 
