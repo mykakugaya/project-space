@@ -21,7 +21,10 @@ class Home extends Component {
         asteroidIsDangerous: false,
         asteroidVelocity: 0,
         asteroidOrbitingBody: "",
-        asteroidMissDistance: 0
+        asteroidMissDistance: 0,
+        results: [],
+        asteroids: [],
+        search: ""
     }
 
     // handleInputChange = event => {
@@ -43,7 +46,7 @@ class Home extends Component {
             if(res.data.status === "error"){
                 throw new Error(res.data.message);
             }
-            this.setState({ results: res.data.message, error: ""});
+            this.setState({ results: res.data.near_earth_objects[currentday], error: ""});
         })
         .catch(err => this.setState({ error: err.message}))
     };
@@ -72,6 +75,14 @@ class Home extends Component {
         this.searchAPOD();
         this.searchMarsRover();
         this.searchAsteroidAPI();
+        AsteroidAPI.ASTEROIDapisearch(this.state.search)
+        .then(res => {
+            if(res.data.status === "error"){
+                throw new Error(res.data.message);
+            }
+            this.setState({ asteroids: res.data.near_earth_objects[currentday], error: ""});
+        })
+        .catch(err => this.setState({ error: err.message}));
     };
 
     searchAPOD = () => {
@@ -132,8 +143,12 @@ class Home extends Component {
                 handleFormSubmit = {this.handleFormSubmit}
                 handleInputChange = {this.handleInputChange}
                 asteroids = {this.state.asteroids}
+                search = {this.state.search}
                 />
-                <AsteroidSearchResults results={this.state.results}/>
+                <AsteroidSearchResults 
+                results={this.state.results}
+                search={this.state.search}
+                />
             </div>
         )
     }
