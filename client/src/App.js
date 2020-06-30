@@ -3,15 +3,16 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/navbar";
 import Home from "./pages/Home";
 // import Forum from "./pages/Forum";
-// import Calendar from "./pages/Calendar";
+import MyCalendar from "./pages/Calendar";
 import Gallery from "./pages/Gallery";
-// import Login from "./pages/Login";
+import Login from "./pages/Login";
 // import JobSearch from "./pages/JobSearch";
 import "./App.css";
 
 function App() {
   return (
     <Router>
+      {/* <style>{'body { background-color: #313131; }'}</style> */}
         <Navbar />
         <Switch>
           <Route exact path="/">
@@ -21,7 +22,7 @@ function App() {
             {/* <Forum /> */}
           </Route>
           <Route exact path="/calendar">
-            {/* <Calendar /> */}
+            <MyCalendar />
           </Route>
           <Route exact path="/gallery">
             <Gallery />
@@ -30,7 +31,7 @@ function App() {
             {/* <JobSearch /> */}
           </Route>
           <Route exact path="/login">
-            {/* <Login /> */}
+            <Login />
           </Route>
         </Switch>
     </Router>
