@@ -1,5 +1,5 @@
 import axios from "axios";
-const BASEURL = "https://images-api.nasa.gov/search?q=";
+const BASEURL = "https://images-api.nasa.gov/search?media_type=image&q=";
 
 export default {
   search: function(query) {

@@ -11,9 +11,11 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     alignItems: 'center',
     width: 400,
+    margin: '0 auto',
+    marginBottom: '40px'
   },
   input: {
-    marginLeft: theme.spacing(1),
+    margin: `${theme.spacing(1)}px auto`,
     flex: 1,
   },
   iconButton: {
@@ -32,10 +34,9 @@ export default function SearchForm(props) {
     <Paper component="form" className={classes.root}>
       <InputBase
         className={classes.input}
-        placeholder="Search NASA images/videos"
-        inputProps={{ 'aria-label': 'search NASA images/videos' }}
+        placeholder="Search NASA images"
+        inputProps={{ 'aria-label': 'search NASA images' }}
         onChange={props.handleInputChange}
-        value={props.results}
       />
       <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={()=>props.handleFormSubmit}>
         <SearchIcon />
