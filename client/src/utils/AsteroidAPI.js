@@ -10,4 +10,3 @@ export default {
         return axios.get(baseURL + asteroidApiQuery + currentday + apikey);
     }
 };
-// How can I get this api call to query results from today?
