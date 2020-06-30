@@ -6,13 +6,14 @@ import Home from "./pages/Home";
 import MyCalendar from "./pages/Calendar";
 // import Gallery from "./pages/Gallery";
 import Gallery from "./pages/Gallery";
-// import Login from "./pages/Login";
+import Login from "./pages/Login";
 // import JobSearch from "./pages/JobSearch";
 import "./App.css";
 
 function App() {
   return (
     <Router>
+      {/* <style>{'body { background-color: #313131; }'}</style> */}
         <Navbar />
         <Switch>
           <Route exact path="/">
@@ -31,7 +32,7 @@ function App() {
             {/* <JobSearch /> */}
           </Route>
           <Route exact path="/login">
-            {/* <Login /> */}
+            <Login />
           </Route>
         </Switch>
     </Router>
