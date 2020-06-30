@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar/navbar";
 // import Home from "./pages/Home";
 // import Forum from "./pages/Forum";
 // import Calendar from "./pages/Calendar";
-// import Gallery from "./pages/Gallery";
+import Gallery from "./pages/Gallery";
 // import Login from "./pages/Login";
 // import JobSearch from "./pages/JobSearch";
 import "./App.css";
@@ -24,7 +24,7 @@ function App() {
             {/* <Calendar /> */}
           </Route>
           <Route exact path="/gallery">
-            {/* <Gallery /> */}
+            <Gallery />
           </Route>
           <Route exact path="/jobs">
             {/* <JobSearch /> */}

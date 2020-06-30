@@ -1,12 +1,13 @@
-import React from "react";
-import Grid from "../components/Grid";
+import React,{useState, useEffect} from "react";
+import ImageGrid from "../components/ImageGrid";
 import ImageAPI from "../utils/ImageAPI";
-import Paper from '@material-ui/core/Paper';
+import Grid from '@material-ui/core/Grid';
+import SearchForm from "../components/SearchForm";
 
 function Gallery() {
-    const [search, setSearch] = useState("");
+    const [search, setSearch] = useState("Milky Way");
     const [images, setImages] = useState([]);
-    const [modal, setModal] = useState(false);
+    // const [modal, setModal] = useState(false);
     const [error, setError] = useState("");
   
     useEffect(() => {
@@ -16,10 +17,12 @@ function Gallery() {
     const searchImages = search => {
         ImageAPI.search(search)
         .then(res => {
-            if (res.collection.items.length === 0) {
-                throw new Error("No results found.");
-            }
-            setImages(res.collection.items);
+          const results = res.data.collection.items;
+          console.log(results);
+          if (results.length === 0) {
+              throw new Error("No results found.");
+          }
+          setImages(results);
         })
         .catch(err => setError(err));
     }
@@ -37,15 +40,21 @@ function Gallery() {
   
     return (
       <div>
-        <Paper>
+        <Grid container direction="row" justify="center" alignItems="center">
+          <Grid item xs={12} >
             <h1>Image/Video Gallery</h1>
+          </Grid>
+          <Grid item xs={12}>
             <SearchForm
             handleInputChange={handleInputChange}
             handleFormSubmit={handleFormSubmit}
             results={search}
             />
-          <Grid images={images} />
-        </Paper>
+          </Grid>
+          <Grid item xs={12}>
+            <ImageGrid images={images} />
+          </Grid>
+        </Grid>
       </div>
     );
   }
