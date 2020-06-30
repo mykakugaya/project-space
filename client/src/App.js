@@ -13,29 +13,26 @@ function App() {
   return (
     <Router>
         <Navbar />
-        {/* <Switch>
+        <Switch>
           <Route exact path="/">
-            <Home />
+            {/* <Home /> */}
           </Route>
           <Route exact path="/forum">
-            <Forum />
+            {/* <Forum /> */}
           </Route>
           <Route exact path="/calendar">
-            <Calendar />
+            {/* <Calendar /> */}
           </Route>
           <Route exact path="/gallery">
-            <Gallery />
+            {/* <Gallery /> */}
           </Route>
           <Route exact path="/jobs">
-            <JobSearch />
+            {/* <JobSearch /> */}
           </Route>
           <Route exact path="/login">
-            <Login />
+            {/* <Login /> */}
           </Route>
-          <Route>
-            <Home />
-          </Route>
-        </Switch> */}
+        </Switch>
     </Router>
   );
 }

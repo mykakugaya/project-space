@@ -17,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
   appbar: {
       backgroundColor: "black",
       alignItems: "center"
+  },
+  tabs: {
+      color: "white",
+      textDecoration: "none"
   }
 }));
 
@@ -31,29 +35,29 @@ export default function ButtonAppBar() {
           </IconButton> */}
           {/* <Typography variant="h6" className={classes.title}>
             Project Space
-          </Typography> */}
+          </Typography> */} 
           <Tabs className={classes.appbar}>
-            <Tab label="Home">
-              <Link className="navbar-brand" to="/" />
-            </Tab>
-            <Tab label="Forum">
-              <Link className="navbar-brand" to="/forum" />
-            </Tab>
-            <Tab label="Calendar">
-              <Link className="navbar-brand" to="/calendar" />
-            </Tab>
-            <Tab label="Gallery">
-              <Link className="navbar-brand" to="/gallery" />
-            </Tab>
-            <Tab label="Jobs">
-              <Link className="navbar-brand" to="/jobs" />
-            </Tab>
-            <Tab label="Login">
-              <Link className="navbar-brand" to="/login" />
-            </Tab>
+          <Link className="navbar-brand" to="/">
+            <Tab className={classes.tabs} label="Home"/>
+          </Link>
+          <Link className="navbar-brand" to="/forum">
+            <Tab className={classes.tabs} label="Forum"/>
+          </Link>
+          <Link className="navbar-brand" to="/calendar">
+            <Tab className={classes.tabs} label="Calendar"/>
+          </Link>
+          <Link className="navbar-brand" to="/gallery">
+            <Tab className={classes.tabs} label="Gallery"/>
+          </Link>
+          <Link className="navbar-brand" to="/jobs">
+            <Tab className={classes.tabs} label="Jobs"/>
+          </Link>
+          <Link className="navbar-brand" to="/login">
+            <Tab className={classes.tabs} label="Login"/>
+          </Link>
           </Tabs>
         </Toolbar>
       </AppBar>
     </div>
   );
-}
+};
