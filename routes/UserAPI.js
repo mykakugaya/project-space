@@ -25,6 +25,7 @@ const passport = require("../config/passport");
   // otherwise send back an error
   router.post("/signup", (req, res) => {
     db.User.create({
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password
     })
