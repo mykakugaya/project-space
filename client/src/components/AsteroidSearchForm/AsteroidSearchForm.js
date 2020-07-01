@@ -18,7 +18,7 @@ function AsteroidSearchForm(props){
                 />
                 <datalist id="asteroids">
                     {props.asteroids.map(asteroid => (
-                        <option value={asteroid} key={asteroid}/>
+                        <option value={asteroid.name} key={asteroid.name}/>
                     ))}
                 </datalist>
                 <button type="submit" onClick={props.handleFormSubmit}>

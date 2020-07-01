@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react";
 import ImageGrid from "../components/ImageGrid";
-import ImageAPI from "../../../routes/ImageAPI";
+import {searchImage} from "../utils/API"
 import Grid from '@material-ui/core/Grid';
 import ImageSearch from "../components/ImageSearch";
 import GalleryTabs from "../components/GalleryTabs";
@@ -31,7 +31,7 @@ function Gallery() {
     }, [search]);
 
     const searchImages = search => {
-        ImageAPI.search(search)
+        searchImage(search)
         .then(res => {
           const results = res.data.collection.items;
           if (results.length === 0) {
