@@ -75,7 +75,6 @@ export default function CenteredGrid() {
       .catch ( err => setError(err));
   };
 
-
   return (
     <div className={classes.root}>
       <Container>
