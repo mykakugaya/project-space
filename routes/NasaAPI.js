@@ -10,28 +10,29 @@ const asteroidApiQuery = "neo/rest/v1/feed?start_date=";
 const moment = require("moment")
 const currentday = moment().format("YYYY-MM-DD");
 
-router.get("/nasa/apod", async (req,res)=>{
-   const apod = await axios.get(baseURL + APODapiquery + apikey);
-   res.json(apod)
+router.get("/apod", async (req,res)=>{
+   const {data} = await axios.get(baseURL + APODapiquery + apikey);
+   res.json(data)
 })
 
-router.get("/nasa/rover", async (req,res)=>{
-    const rover = await axios.get(baseURL + marsRoverApiQuery + apikey);
-    res.json(rover)
+router.get("/rover", async (req,res)=>{
+    const {data} = await axios.get(baseURL + marsRoverApiQuery + apikey);
+    res.json(data)
 });
 
-router.get("/nasa/jobs", async (req,res)=>{
-    const jobs = await axios.get(jobsUrl)
-})
+// router.get("/jobs", async (req,res)=>{
+//     const {data} = await axios.get(jobsUrl);
+//     res.json(data)
+// })
 
-router.get("/nasa/image", async (req,res)=>{
-    const images = await axios.get(imageURL+req.query.q);
-    res.json(images)
+router.get("/image", async (req,res)=>{
+    const {data} = await axios.get(imageURL+req.query.q);
+    res.json(data)
 });
 
-router.get("/nasa/asteroid", async (req,res)=>{
-    const asteroid = await axios.get(baseURL + asteroidApiQuery + currentday + apikey);
-    res.json(asteroid)
+router.get("/asteroid", async (req,res)=>{
+    const {data} = await axios.get(baseURL + asteroidApiQuery + currentday + apikey);
+    res.json(data)
 })
 
 module.exports = router;
