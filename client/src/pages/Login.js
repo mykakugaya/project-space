@@ -1,6 +1,6 @@
 import React, { useState, setState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { postLogin, getUsers, postSignup } from "../utils/API";
+import { postLogin, postSignup } from "../utils/API";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -48,12 +48,31 @@ export default function CenteredGrid() {
 
   const handleLogin = event => {
       event.preventDefault();
-      console.log(email, password);
-  }
+      postLogin( {
+          email: email,
+          password: password
+      })
+      .then( () => {
+          console.log(email, password)
+      })
+      .catch ( err => setError(err));
+  };
 
   const handleCreateUser = event => {
       event.preventDefault();
-  }
+    //   console.log(name);
+    //   console.log(newEmail);
+    //   console.log(newPassword);
+      postSignup( {
+          name: name,
+          email: newEmail,
+          password: newPassword
+      })
+      .then ( () => {
+          console.log(`New User signed up: ${name}`)
+      })
+      .catch ( err => setError(err));
+  };
 
 
   return (
