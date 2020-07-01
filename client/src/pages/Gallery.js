@@ -10,11 +10,12 @@ const useStyles = makeStyles({
   header: {
     textAlign: 'center',
     fontFamily: 'Playfair Display SC',
-    fontSize: '70px'
+    fontSize: '70px',
+    color: 'white'
   },
-  // root: {
-  //   backgroundColor: 'grey'
-  // }
+  root: {
+    backgroundColor: '#424242'
+  }
 });
 
 function Gallery() {

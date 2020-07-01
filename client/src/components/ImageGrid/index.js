@@ -10,11 +10,11 @@ const useStyles = makeStyles((theme) => ({
     flexWrap: 'wrap',
     justifyContent: 'center',
     overflow: 'hidden',
-    backgroundColor: theme.palette.background.paper,
+    backgroundColor: '#424242',
   },
   gridList: {
     width: "80em",
-    height: 'auto',
+    height: 'auto'
   },
   imageSrc: {
     position: 'absolute',
