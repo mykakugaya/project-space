@@ -1,17 +1,18 @@
 const express = require("express");
-
-
+const compression = require("compression");
+const passport = require("./config/passport")
 // const mongoose = require("mongoose");
-const routes = require("./client/controllers");
+const routes = require("./routes");
 const app = express();
-
+const session = require("express-session");
 // set up ports and requiring models for syncing
 const PORT = process.env.PORT || 3001;
-const db = require("./client/src/models");
+const db = require("./models");
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(session({ secret: "sharlenes web", resave: true, saveUninitialized: true}))
 // authenticating middleware for authentication
 app.use(compression({ threshold:0, filter: shouldCompress }))
 app.use(express.static("public"));
@@ -19,6 +20,9 @@ app.use(express.static("public"));
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+app.use(passport.initialize());
+app.use(passport.session())
 
 function shouldCompress (req, res) {
   if (req.headers['x-no-compression']) {
@@ -28,15 +32,8 @@ function shouldCompress (req, res) {
   // fallback to standard filter function
   return compression.filter(req, res)
 }
-
 // Add routes, both API and view
-app.use(routes);
-
-// Connect to the Mongo DB
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/projectspace");
-
-
-// Start the API server
+app.use("/api", routes);
 
 db.sequelize.sync().then(() => {
   app.listen(PORT, () => {

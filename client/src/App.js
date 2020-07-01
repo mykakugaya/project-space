@@ -12,7 +12,7 @@ import "./App.css";
 function App() {
   return (
     <Router>
-      {/* <style>{'body { background-color: #313131; }'}</style> */}
+      <style>{'body { background-color: #313131; }'}</style>
         <Navbar />
         <Switch>
           <Route exact path="/">

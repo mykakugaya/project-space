@@ -1,6 +1,6 @@
 import React,{useState, useEffect} from "react";
 import ImageGrid from "../components/ImageGrid";
-import ImageAPI from "../utils/ImageAPI";
+import ImageAPI from "../../../routes/ImageAPI";
 import Grid from '@material-ui/core/Grid';
 import ImageSearch from "../components/ImageSearch";
 import GalleryTabs from "../components/GalleryTabs";
