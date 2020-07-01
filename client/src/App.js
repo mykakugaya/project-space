@@ -12,7 +12,8 @@ import "./App.css";
 function App() {
   return (
     <Router>
-      <style>{'body { background-color: #313131; }'}</style>
+      {/* <style>{'body { background-color: #313131; }'}</style> */}
+      <style>{'body { background-image: url("https://images.unsplash.com/photo-1501862700950-18382cd41497?ixlib=rb-1.2.1&auto=format&fit=crop&w=1947&q=80"); }'}</style>
         <Navbar />
         <Switch>
           <Route exact path="/">
