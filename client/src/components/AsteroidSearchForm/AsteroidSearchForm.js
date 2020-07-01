@@ -1,11 +1,11 @@
 import React from "react";
-// import Ast"./AsteroidSearchForm.css";
+// import "./AsteroidSearchForm.css";
 
 function AsteroidSearchForm(props){
     return(
         <form className="search">
             <div className="form-group">
-                <label htmlFor="asteroid">Select an Asteroid:</label>
+                <label htmlFor="asteroid" style={{color: "white"}}>Select an Asteroid:</label>
                 <input
                     value={props.search}
                     onChange={props.handleInputChange}
