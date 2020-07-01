@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
     padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
-    width: 400,
+    width: 600,
     margin: '0 auto',
     marginBottom: '40px'
   },
@@ -38,7 +38,7 @@ export default function SearchForm(props) {
         inputProps={{ 'aria-label': 'search NASA images' }}
         onChange={props.handleInputChange}
       />
-      <IconButton type="submit" className={classes.iconButton} aria-label="search" onClick={()=>props.handleFormSubmit}>
+      <IconButton type="button" className={classes.iconButton} aria-label="search" onClick={()=>props.handleFormSubmit}>
         <SearchIcon />
       </IconButton>
     </Paper>

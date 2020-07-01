@@ -21,6 +21,10 @@ const useStyles = makeStyles((theme) => ({
   tabs: {
       color: "white",
       textDecoration: "none"
+  },
+  activeTab: {
+    textDecorationColor: '#ede7f6',
+    textDecorationLine: 'underline'
   }
 }));
 
@@ -38,22 +42,22 @@ export default function Navbar() {
           </Typography> */} 
           <Tabs className={classes.appbar}>
           <Link className="navbar-brand" to="/">
-            <Tab className={classes.tabs} label="Home"/>
+            <Tab className={window.location.pathname === "/" ? classes.activeTab : classes.tabs} label="Home"/>
           </Link>
           <Link className="navbar-brand" to="/forum">
-            <Tab className={classes.tabs} label="Forum"/>
+            <Tab className={window.location.pathname === "/forum" ? classes.activeTab : classes.tabs} label="Forum"/>
           </Link>
           <Link className="navbar-brand" to="/calendar">
-            <Tab className={classes.tabs} label="Calendar"/>
+            <Tab className={window.location.pathname === "/calendar" ? classes.activeTab : classes.tabs} label="Calendar"/>
           </Link>
           <Link className="navbar-brand" to="/gallery">
-            <Tab className={classes.tabs} label="Gallery"/>
+            <Tab className={window.location.pathname === "/gallery" ? classes.activeTab : classes.tabs} label="Gallery"/>
           </Link>
           <Link className="navbar-brand" to="/jobs">
-            <Tab className={classes.tabs} label="Jobs"/>
+            <Tab className={window.location.pathname === "/jobs" ? classes.activeTab : classes.tabs} label="Jobs"/>
           </Link>
           <Link className="navbar-brand" to="/login">
-            <Tab className={classes.tabs} label="Login"/>
+            <Tab className={window.location.pathname === "/login" ? classes.activeTab : classes.tabs} label="Login"/>
           </Link>
           </Tabs>
         </Toolbar>

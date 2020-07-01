@@ -3,12 +3,28 @@ import ImageGrid from "../components/ImageGrid";
 import ImageAPI from "../utils/ImageAPI";
 import Grid from '@material-ui/core/Grid';
 import SearchForm from "../components/SearchForm";
+import GalleryTabs from "../components/GalleryTabs";
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  header: {
+    textAlign: 'center',
+    fontFamily: 'Playfair Display SC',
+    fontSize: '70px',
+    color: 'white'
+  },
+  root: {
+    backgroundColor: '#424242'
+  }
+});
 
 function Gallery() {
+    const classes = useStyles();
     const [search, setSearch] = useState("Milky Way");
     const [images, setImages] = useState([]);
-    // const [modal, setModal] = useState(false);
     const [error, setError] = useState("");
+    const [currentTab, setCurrentTab] = useState(0);
+    const [favorites, setFavorites] = useState([]);
   
     useEffect(() => {
       searchImages(search);
@@ -18,7 +34,6 @@ function Gallery() {
         ImageAPI.search(search)
         .then(res => {
           const results = res.data.collection.items;
-          console.log(results);
           if (results.length === 0) {
               throw new Error("No results found.");
           }
@@ -37,13 +52,31 @@ function Gallery() {
         event.preventDefault();
         searchImages(search);
     };
+
+    const handleTabChange = value => {
+      setCurrentTab(value);
+    }
+
+    const updateFavorites = newFavorite => {
+      setFavorites([
+        ...favorites,
+        {...newFavorite}
+      ])
+      console.log(favorites);
+      //API call to update user's images in db
+    }
   
     return (
       <div>
-        <Grid container direction="row" justify="center" alignItems="center">
+        <Grid container direction="row" justify="center" alignItems="center" className={classes.root}>
           <Grid item xs={12} >
-            <h1>Image/Video Gallery</h1>
+            <h1 className={classes.header} >Image Gallery</h1>
           </Grid>
+          <Grid item xs={12} >
+            <GalleryTabs handleTabChange={handleTabChange}/>
+          </Grid>
+          {currentTab === 0 ? 
+          <>
           <Grid item xs={12}>
             <SearchForm
             handleInputChange={handleInputChange}
@@ -54,6 +87,8 @@ function Gallery() {
           <Grid item xs={12}>
             <ImageGrid images={images} />
           </Grid>
+          </>
+          : <ImageGrid images={favorites} updateFavorites={updateFavorites}/>}
         </Grid>
       </div>
     );
