@@ -2,7 +2,7 @@ import React,{useState, useEffect} from "react";
 import ImageGrid from "../components/ImageGrid";
 import ImageAPI from "../../../routes/ImageAPI";
 import Grid from '@material-ui/core/Grid';
-import SearchForm from "../components/SearchForm";
+import ImageSearch from "../components/ImageSearch";
 import GalleryTabs from "../components/GalleryTabs";
 import { makeStyles } from '@material-ui/core/styles';
 
@@ -78,7 +78,7 @@ function Gallery() {
           {currentTab === 0 ? 
           <>
           <Grid item xs={12}>
-            <SearchForm
+            <ImageSearch
             handleInputChange={handleInputChange}
             handleFormSubmit={handleFormSubmit}
             results={search}
