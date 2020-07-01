@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, setState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { postLogin, postSignup } from "../utils/API";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -30,6 +31,49 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CenteredGrid() {
   const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [newEmail, setNewEmail] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const validateLogin = () => {
+    return email.length > 0 && password.length > 0;
+  }
+
+  const validateSignup = () => {
+      return newEmail.length > 0 && newPassword.length > 0;
+  }
+
+  const handleLogin = event => {
+      event.preventDefault();
+      postLogin( {
+          email: email,
+          password: password
+      })
+      .then( () => {
+          console.log(email, password)
+      })
+      .catch ( err => setError(err));
+  };
+
+  const handleCreateUser = event => {
+      event.preventDefault();
+    //   console.log(name);
+    //   console.log(newEmail);
+    //   console.log(newPassword);
+      postSignup( {
+          name: name,
+          email: newEmail,
+          password: newPassword
+      })
+      .then ( () => {
+          console.log(`New User signed up: ${name}`)
+      })
+      .catch ( err => setError(err));
+  };
+
 
   return (
     <div className={classes.root}>
@@ -44,6 +88,8 @@ export default function CenteredGrid() {
                   id="outlined-basic"
                   label="E-mail"
                   variant="outlined"
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
                 />
                 <br />
                 <TextField
@@ -51,10 +97,16 @@ export default function CenteredGrid() {
                   id="outlined-basic"
                   label="Password"
                   variant="outlined"
+                  value={password}
+                  onChange={e => setPassword(e.target.value)}
                 />
                 <br />
-                <Button variant="contained" color="primary" disableElevation>
-                  Log In
+                <Button 
+                  variant="contained" 
+                  color="primary" 
+                  disableElevation disabled={!validateLogin()}
+                  onClick={handleLogin}
+                >Log In
                 </Button>
               </form>
             </Grid>
@@ -66,6 +118,8 @@ export default function CenteredGrid() {
                   id="outlined-basic"
                   label="Name"
                   variant="outlined"
+                  value={name}
+                  onChange={e => setName(e.target.value)}
                 />
                 <br />
                 <TextField
@@ -73,6 +127,8 @@ export default function CenteredGrid() {
                   id="outlined-basic"
                   label="E-mail"
                   variant="outlined"
+                  value={newEmail}
+                  onChange={e => setNewEmail(e.target.value)}
                 />
                 <br />
                 <TextField
@@ -80,10 +136,16 @@ export default function CenteredGrid() {
                   id="outlined-basic"
                   label="Password"
                   variant="outlined"
+                  value={newPassword}
+                  onChange={e => setNewPassword(e.target.value)}
                 />
                 <br />
-                <Button variant="contained" color="primary" disableElevation>
-                  Create User
+                <Button 
+                  variant="contained" 
+                  color="primary" 
+                  disableElevation disabled={!validateSignup()}
+                  onClick={handleCreateUser}
+                >Create User
                 </Button>
               </form>
             </Grid>

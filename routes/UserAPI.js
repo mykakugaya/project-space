@@ -25,6 +25,7 @@ const passport = require("../config/passport");
   // otherwise send back an error
   router.post("/signup", (req, res) => {
     db.User.create({
+      name: req.body.name,
       email: req.body.email,
       password: req.body.password
     })
@@ -39,7 +40,7 @@ const passport = require("../config/passport");
   // Route for logging user out
   router.get("/logout", (req, res) => {
     req.logout();
-    res.redirect("/");
+    res.redirect("/login");
   });
 
   // Route for getting some data about our user to be used client side
@@ -56,6 +57,23 @@ const passport = require("../config/passport");
       });
     }
   });
+
+  router.post("/user_data", (req, res) => {
+    if (!req.user) {
+      // If the user is not logged in, send back an empty object
+      res.redirect("/login");
+    } else {
+      db.User.update({
+        images: req.body.favorites
+      })
+      .then(() => {
+        res.json({});
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+    }
+  })
 
 
   module.exports = router
