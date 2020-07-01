@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
+import { postLogin, getUsers, postSignup } from "../utils/API";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -33,9 +34,9 @@ export default function CenteredGrid() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-//   const loginUser = (email,password) => {
+  const loginUser = (email,password) => {
     
-//   }
+  }
 
   return (
     <div className={classes.root}>
