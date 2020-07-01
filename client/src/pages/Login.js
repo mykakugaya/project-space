@@ -53,7 +53,8 @@ export default function CenteredGrid() {
           password: password
       })
       .then( () => {
-          console.log(email, password)
+          console.log("Logged in!");
+          window.location.replace("/");
       })
       .catch ( err => setError(err));
   };
