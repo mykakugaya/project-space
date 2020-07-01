@@ -63,7 +63,7 @@ const passport = require("../config/passport");
       res.redirect("/login");
     } else {
       db.User.update({
-        images: req.body
+        images: req.body.favorites
       })
       .then(() => {
         res.json({});

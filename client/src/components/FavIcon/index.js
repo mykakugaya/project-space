@@ -29,7 +29,7 @@ function FavIcon(props) {
     //setFavorite if true
     getUserData()
     .then((response) => {
-      const favimages = response.images.split();
+      const favimages = response.images ? response.images.split() : [];
       for (let i=0; i<favimages.length; i++) {
         if (id === favimages[i].data[0].nasa_id) {
           setFavorite(true);
@@ -44,7 +44,9 @@ function FavIcon(props) {
   }
 
   return (
-    <IconButton color="primary" aria-label="favorite" onClick={updateFavorite}>
+    <IconButton color="primary" aria-label="favorite" onClick={() => {
+      props.updateFavorites(props.id);
+      updateFavorite()}}>
       {favorite ? <FavoriteIcon className={classes.favBtn}/> : <FavoriteBorderIcon className={classes.favBtn}/>}
     </IconButton>
   )
