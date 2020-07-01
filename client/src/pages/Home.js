@@ -24,28 +24,12 @@ class Home extends Component {
         search: ""
     }
 
-    // handleInputChange = event => {
-    //     const value = event.target.value;
-    //     const name = event.target.name;
-    //     this.setState({
-    //         [name]: value
-    //     });
-    // };
-
     handleInputChange = event => {
         this.setState({ search: event.target.value})
     };
 
     handleFormSubmit = event => {
         event.preventDefault();
-        // getAsteroid(this.state.search)
-        // .then(res => {
-        //     if(res.data.status === "error"){
-        //         throw new Error(res.data.message);
-        //     }
-        //     this.setState({ results: res.data.near_earth_objects[currentday], error: ""});
-        // })
-        // .catch(err => this.setState({ error: err.message}))
         const myAsteroid = this.state.asteroids.filter(item => {
             return (
                 item.name === this.state.search
@@ -132,10 +116,6 @@ class Home extends Component {
             })
     }
 
-    // getAsteroid = () => {
-
-    // }
-
     render(){
         return (
             <div>
@@ -145,7 +125,7 @@ class Home extends Component {
                     <h2>Built for the Space Enthusiast!</h2>
                 </Hero>
                 <br/>
-                <h2>Weather report from Mars</h2>
+                <h2 style={{color:"white"}}>Weather report from Mars</h2>
                 <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='1000' height='622'  scrolling='no' frameborder='10'></iframe>
                 <MarsRoverImages backgroundImage={this.state.marsRoverImage}>
                 <h2>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
