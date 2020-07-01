@@ -5,7 +5,7 @@ import Home from "./pages/Home";
 // import Forum from "./pages/Forum";
 import MyCalendar from "./pages/Calendar";
 import Gallery from "./pages/Gallery";
-import Login from "./pages/Login";
+// import Login from "./pages/Login";
 // import JobSearch from "./pages/JobSearch";
 import "./App.css";
 
@@ -31,7 +31,7 @@ function App() {
             {/* <JobSearch /> */}
           </Route>
           <Route exact path="/login">
-            <Login />
+            {/* <Login /> */}
           </Route>
         </Switch>
     </Router>
