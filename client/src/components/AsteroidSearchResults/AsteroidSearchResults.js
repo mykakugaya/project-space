@@ -4,17 +4,13 @@ import React from "react";
 function AsteroidSearchResults(props){
     return(
         <div>
-        <ul>
-            {props.results.filter(result => (
-                <li key = {result.name} className="list-group-item">
-                    <h3>{result.name}</h3>
+     
+                    <h3>{props.results.name}</h3>
                     <h3></h3>
                     <h3></h3>
                     <h3></h3>
                     <h3></h3>
-                </li>
-            ))}
-        </ul>
+     
         </div>
     )
 }

@@ -7,7 +7,6 @@ import AsteroidSearchForm from "../components/AsteroidSearchForm/AsteroidSearchF
 import AsteroidSearchResults from "../components/AsteroidSearchResults/AsteroidSearchResults";
 const currentday = moment().format("YYYY-MM-DD");
 
-
 class Home extends Component {
     state={
         heroImage: "",
@@ -39,14 +38,22 @@ class Home extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-       getAsteroid(this.state.search)
-        .then(res => {
-            if(res.data.status === "error"){
-                throw new Error(res.data.message);
-            }
-            this.setState({ results: res.data.near_earth_objects[currentday], error: ""});
+        // getAsteroid(this.state.search)
+        // .then(res => {
+        //     if(res.data.status === "error"){
+        //         throw new Error(res.data.message);
+        //     }
+        //     this.setState({ results: res.data.near_earth_objects[currentday], error: ""});
+        // })
+        // .catch(err => this.setState({ error: err.message}))
+        const myAsteroid = this.state.asteroids.filter(item => {
+            return (
+                item.name === this.state.search
+            )
         })
-        .catch(err => this.setState({ error: err.message}))
+        console.log(myAsteroid)
+       this.setState({results:myAsteroid})
+        
     };
 
     handleNext = () => {
@@ -73,7 +80,7 @@ class Home extends Component {
         this.searchAPOD();
         this.searchMarsRover();
         this.searchAsteroidAPI();
-        getAsteroid(this.state.search)
+        getAsteroid()
         .then(res => {
             if(res.data.status === "error"){
                 throw new Error(res.data.message);
@@ -88,7 +95,10 @@ class Home extends Component {
         .then(res =>
             {
                 console.log(res)
-                this.setState({heroImage: (res.data.hdurl || res.data.url)})
+                if(res.data.media_type === "video"){
+                    this.setState({heroImage: "https://miro.medium.com/max/1400/1*9IIoxOcIbhMFFKMCI2ncuQ.jpeg"})
+                } else {
+                this.setState({heroImage: (res.data.hdurl || res.data.url)})}
             } )
         .catch(err => console.log(err));
     };
@@ -122,9 +132,14 @@ class Home extends Component {
             })
     }
 
+    // getAsteroid = () => {
+
+    // }
+
     render(){
         return (
             <div>
+                {this.state.heroImage}
                 <Hero backgroundImage={this.state.heroImage}>
                     <h1>The Space Hub App</h1>
                     <h2>Built for the Space Enthusiast!</h2>
@@ -143,10 +158,13 @@ class Home extends Component {
                 asteroids = {this.state.asteroids}
                 search = {this.state.search}
                 />
-                <AsteroidSearchResults 
-                results={this.state.results}
-                search={this.state.search}
-                />
+                {this.state.results.length>0?(
+                    <AsteroidSearchResults 
+                    results={this.state.results[0]}
+                    search={this.state.search}
+                    />
+                ):(<div></div>)}
+                
             </div>
         )
     }

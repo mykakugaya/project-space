@@ -9,7 +9,7 @@ function AsteroidSearchForm(props){
                 <input
                     value={props.search}
                     onChange={props.handleInputChange}
-                    name="asteroid"
+                    name="search"
                     list="asteroids"
                     type="text"
                     className="form-control"
