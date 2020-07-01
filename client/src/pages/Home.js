@@ -5,7 +5,9 @@ import Hero from "../components/Hero/Hero";
 import MarsRoverImages from "../components/MarsRoverImages/MarsRoverImages";
 import AsteroidSearchForm from "../components/AsteroidSearchForm/AsteroidSearchForm";
 import AsteroidSearchResults from "../components/AsteroidSearchResults/AsteroidSearchResults";
+import Button from '@material-ui/core/Button';
 const currentday = moment().format("YYYY-MM-DD");
+
 
 class Home extends Component {
     state={
@@ -133,8 +135,8 @@ class Home extends Component {
                     <div style={{float: "left"}}>
                     <h2 style={{color: "white"}}>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
                         <MarsRoverImages backgroundImage={this.state.marsRoverImage} style={{textAlign: "center"}}>
-                        <button onClick={this.handleNext} variant="contained" color="primary">Next</button>
-                        <button onClick={this.handlePrev}>Previous</button>
+                        <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
+                        <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
                         </MarsRoverImages>
                     </div>
                 </div>
