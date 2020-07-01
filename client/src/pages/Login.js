@@ -33,10 +33,10 @@ export default function CenteredGrid() {
 
   return (
     <div className={classes.root}>
-    <Container>
-      <Grid container spacing={3}>
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>
+      <Container>
+        <Paper className={classes.paper}>
+          <Grid container spacing={3}>
+            <Grid item xs={6}>
               Login:
               <form className={classes.login} noValidate autoComplete="off">
                 <TextField
@@ -44,55 +44,52 @@ export default function CenteredGrid() {
                   id="outlined-basic"
                   label="E-mail"
                   variant="outlined"
-                /><br/>
+                />
+                <br />
                 <TextField
                   type="password"
                   id="outlined-basic"
                   label="Password"
                   variant="outlined"
-                /><br/>
-              <Button 
-                  variant="contained"
-                  color="primary" 
-                  disableElevation
-              >Log In
-              </Button>
-              </form> 
-            </Paper>
-          </Grid>
-          <Grid item xs={6}>
-              <Paper className={classes.paper}>
-                   or Create an Account:
+                />
+                <br />
+                <Button variant="contained" color="primary" disableElevation>
+                  Log In
+                </Button>
+              </form>
+            </Grid>
+            <Grid item xs={6}>
+              or Create an Account:
               <form className={classes.login} noValidate autoComplete="off">
                 <TextField
                   type="text"
                   id="outlined-basic"
                   label="Name"
                   variant="outlined"
-                /><br/>
+                />
+                <br />
                 <TextField
                   type="email"
                   id="outlined-basic"
                   label="E-mail"
                   variant="outlined"
-                /><br/>
+                />
+                <br />
                 <TextField
                   type="password"
                   id="outlined-basic"
                   label="Password"
                   variant="outlined"
-                /><br/>
-              <Button 
-                  variant="contained" 
-                  color="primary" 
-                  disableElevation
-              >Create User
-              </Button>
+                />
+                <br />
+                <Button variant="contained" color="primary" disableElevation>
+                  Create User
+                </Button>
               </form>
-              </Paper>
+            </Grid>
           </Grid>
-      </Grid>
-    </Container>
+        </Paper>
+      </Container>
     </div>
   );
 }

@@ -2,10 +2,10 @@ import React, {Component} from "react";
 import moment from "moment";
 import API from "../utils/API";
 import Hero from "../components/Hero/Hero";
-import MarsRoverAPI from "../utils/MarsRoverAPI";
+import MarsRoverAPI from "../../../routes/MarsRoverAPI";
 import MarsRoverImages from "../components/MarsRoverImages/MarsRoverImages";
 import AsteroidSearchForm from "../components/AsteroidSearchForm/AsteroidSearchForm";
-import AsteroidAPI from "../utils/AsteroidAPI";
+import AsteroidAPI from "../../../routes/AsteroidAPI";
 import AsteroidSearchResults from "../components/AsteroidSearchResults/AsteroidSearchResults";
 const currentday = moment().format("YYYY-MM-DD");
 
