@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import ImageSearch from "../components/ImageSearch";
 import GalleryTabs from "../components/GalleryTabs";
 import { makeStyles } from '@material-ui/core/styles';
+import {getUserData, updateUserData} from "../utils/API";
 
 const useStyles = makeStyles({
   header: {
@@ -38,6 +39,11 @@ function Gallery() {
               throw new Error("No results found.");
           }
           setImages(results);
+          getUserData()
+          .then((response) => {
+            const data = response.images.split();
+            setFavorites(data);
+          })
         })
         .catch(err => setError(err));
     }
@@ -63,7 +69,8 @@ function Gallery() {
         {...newFavorite}
       ])
       console.log(favorites);
-      //API call to update user's images in db
+      //Update user's images in db
+      updateUserData(favorites.join());
     }
   
     return (
