@@ -57,5 +57,22 @@ const passport = require("../config/passport");
     }
   });
 
+  router.post("/user_data", (req, res) => {
+    if (!req.user) {
+      // If the user is not logged in, send back an empty object
+      res.redirect("/login");
+    } else {
+      db.User.update({
+        images: req.body
+      })
+      .then(() => {
+        res.json({});
+      })
+      .catch(err => {
+        res.status(401).json(err);
+      });
+    }
+  })
+
 
   module.exports = router

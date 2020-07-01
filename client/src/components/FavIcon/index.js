@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
+import {getUserData} from "../../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   favBtn: {
@@ -24,8 +25,18 @@ function FavIcon(props) {
 
   const determineFavorite = () => {
     const id = props.id;
-    //API call to determine if an image is already favorited by user
+    //Determine if an image is already favorited by user
     //setFavorite if true
+    getUserData()
+    .then((response) => {
+      const favimages = response.images.split();
+      for (let i=0; i<favimages.length; i++) {
+        if (id === favimages[i].data[0].nasa_id) {
+          setFavorite(true);
+        }
+      }
+    })
+
   }
 
   const updateFavorite = () => {
