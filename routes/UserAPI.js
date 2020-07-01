@@ -45,34 +45,44 @@ const passport = require("../config/passport");
 
   // Route for getting some data about our user to be used client side
   router.get("/user_data", (req, res) => {
-    if (!req.user) {
-      // If the user is not logged in, send back an empty object
-      res.json({});
-    } else {
+    db.User.findOne({where: {id: 1}})
+    .then(function(response) {
+      res.json({
+        email: response.email,
+        id: response.id,
+        images: response.images
+      })
+    })
+    // if (!req.user) {
+    //   // If the user is not logged in, send back an empty object
+    //   res.json({});
+    // } else {
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        email: req.user.email,
-        id: req.user.id
-      });
-    }
+      // res.json({
+      //   email: req.user.email,
+      //   id: req.user.id
+      // });
+    // }
   });
 
   router.post("/user_data", (req, res) => {
-    if (!req.user) {
-      // If the user is not logged in, send back an empty object
-      res.redirect("/login");
-    } else {
+    console.log("here")
+    console.log(req.body.favorites)
+    // if (!req.user) {
+    //   // If the user is not logged in, send back an empty object
+    //   res.redirect("/login");
+    // } else {
       db.User.update({
         images: req.body.favorites
-      })
+      }, {where: {id: 1}})
       .then(() => {
         res.json({});
       })
       .catch(err => {
         res.status(401).json(err);
       });
-    }
+    // }
   })
 
 
