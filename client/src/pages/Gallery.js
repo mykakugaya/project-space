@@ -4,8 +4,21 @@ import ImageAPI from "../utils/ImageAPI";
 import Grid from '@material-ui/core/Grid';
 import SearchForm from "../components/SearchForm";
 import GalleryTabs from "../components/GalleryTabs";
+import { makeStyles } from '@material-ui/core/styles';
+
+const useStyles = makeStyles({
+  header: {
+    textAlign: 'center',
+    fontFamily: 'Playfair Display SC',
+    fontSize: '70px'
+  },
+  // root: {
+  //   backgroundColor: 'grey'
+  // }
+});
 
 function Gallery() {
+    const classes = useStyles();
     const [search, setSearch] = useState("Milky Way");
     const [images, setImages] = useState([]);
     const [error, setError] = useState("");
@@ -48,14 +61,15 @@ function Gallery() {
         ...favorites,
         {...newFavorite}
       ])
-      console.log(favorites)
+      console.log(favorites);
+      //API call to update user's images in db
     }
   
     return (
       <div>
-        <Grid container direction="row" justify="center" alignItems="center">
+        <Grid container direction="row" justify="center" alignItems="center" className={classes.root}>
           <Grid item xs={12} >
-            <h1>Image/Video Gallery</h1>
+            <h1 className={classes.header} >Image Gallery</h1>
           </Grid>
           <Grid item xs={12} >
             <GalleryTabs handleTabChange={handleTabChange}/>

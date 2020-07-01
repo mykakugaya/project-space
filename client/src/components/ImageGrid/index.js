@@ -29,16 +29,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ImageGridList(props) {
   const classes = useStyles();
-
-  // const [favorites, setFavorites] = useState([]);
-
-  // const updateFavorites = newFavorite => {
-  //   setFavorites([
-  //     ...favorites,
-  //     {...newFavorite}
-  //   ])
-  // }
-
   return (
     <div className={classes.root}>
       <GridList cellHeight={300} className={classes.gridList} cols={3}>
@@ -48,7 +38,7 @@ export default function ImageGridList(props) {
                 <span className={classes.imageSrc} style={{
                   backgroundImage: `url(${tile.links[0].href})`
                 }}/>
-                <FavIcon onClick={() => props.updateFavorites({tile})}/>
+                <FavIcon id={tile.data[0].nasa_id} onClick={() => props.updateFavorites({tile})}/>
               </GridListTile>
         )})}
       </GridList>

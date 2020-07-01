@@ -5,12 +5,14 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import ImageSearchIcon from '@material-ui/icons/ImageSearch';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import "./style.css";
 
 const useStyles = makeStyles({
   root: {
     flexGrow: 1,
     width: '100%',
-    marginBottom: '20px'
+    marginBottom: '20px',
+    marginTop: '20px'
   },
 });
 
