@@ -38,7 +38,7 @@ export default function ImageGridList(props) {
                 <span className={classes.imageSrc} style={{
                   backgroundImage: `url(${tile.links[0].href})`
                 }}/>
-                <FavIcon id={tile.data[0].nasa_id} onClick={() => props.updateFavorites({tile})}/>
+                <FavIcon id={tile.data[0].nasa_id} updateFavorites={props.updateFavorites}/>
               </GridListTile>
         )})}
       </GridList>

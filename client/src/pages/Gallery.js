@@ -41,7 +41,7 @@ function Gallery() {
           setImages(results);
           getUserData()
           .then((response) => {
-            const data = response.images.split();
+            const data = response.images ? response.images.split() : [];
             setFavorites(data);
           })
         })
@@ -66,7 +66,7 @@ function Gallery() {
     const updateFavorites = newFavorite => {
       setFavorites([
         ...favorites,
-        {...newFavorite}
+        newFavorite
       ])
       console.log(favorites);
       //Update user's images in db
@@ -92,7 +92,7 @@ function Gallery() {
             />
           </Grid>
           <Grid item xs={12}>
-            <ImageGrid images={images} />
+            <ImageGrid images={images} updateFavorites={updateFavorites}/>
           </Grid>
           </>
           : <ImageGrid images={favorites} updateFavorites={updateFavorites}/>}
