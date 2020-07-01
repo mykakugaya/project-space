@@ -119,7 +119,7 @@ class Home extends Component {
     render(){
         return (
             <div>
-                {this.state.heroImage}
+                {/* {this.state.heroImage} */}
                 <Hero backgroundImage={this.state.heroImage}>
                     <h1>The Space Hub App</h1>
                     <h2>Built for the Space Enthusiast!</h2>
