@@ -29,9 +29,11 @@ function FavIcon(props) {
     //setFavorite if true
     getUserData()
     .then((response) => {
+      console.log(response);
       const favimages = response.images ? response.images.split() : [];
       for (let i=0; i<favimages.length; i++) {
-        if (id === favimages[i].data[0].nasa_id) {
+        console.log(favimages[i]);
+        if (id === favimages[i]) {
           setFavorite(true);
         }
       }
