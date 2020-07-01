@@ -1,11 +1,9 @@
 import React, {Component} from "react";
 import moment from "moment";
-import API from "../utils/API";
+import {getAsteroid,getRover,getAPOD} from "../utils/API";
 import Hero from "../components/Hero/Hero";
-import MarsRoverAPI from "../../../routes/MarsRoverAPI";
 import MarsRoverImages from "../components/MarsRoverImages/MarsRoverImages";
 import AsteroidSearchForm from "../components/AsteroidSearchForm/AsteroidSearchForm";
-import AsteroidAPI from "../../../routes/AsteroidAPI";
 import AsteroidSearchResults from "../components/AsteroidSearchResults/AsteroidSearchResults";
 const currentday = moment().format("YYYY-MM-DD");
 
@@ -41,7 +39,7 @@ class Home extends Component {
 
     handleFormSubmit = event => {
         event.preventDefault();
-        AsteroidAPI.ASTEROIDapisearch(this.state.search)
+       getAsteroid(this.state.search)
         .then(res => {
             if(res.data.status === "error"){
                 throw new Error(res.data.message);
@@ -75,7 +73,7 @@ class Home extends Component {
         this.searchAPOD();
         this.searchMarsRover();
         this.searchAsteroidAPI();
-        AsteroidAPI.ASTEROIDapisearch(this.state.search)
+        getAsteroid(this.state.search)
         .then(res => {
             if(res.data.status === "error"){
                 throw new Error(res.data.message);
@@ -86,17 +84,17 @@ class Home extends Component {
     };
 
     searchAPOD = () => {
-        API.APODapisearch()
+       getAPOD()
         .then(res =>
             {
                 console.log(res)
-                this.setState({heroImage: res.data.hdurl})
+                this.setState({heroImage: (res.data.hdurl || res.data.url)})
             } )
         .catch(err => console.log(err));
     };
 
     searchMarsRover = () => {
-        MarsRoverAPI.MARSROVERapiSearch()
+        getRover()
         .then(res => 
             {
                 console.log(res)
@@ -106,7 +104,7 @@ class Home extends Component {
     };
 
     searchAsteroidAPI = () => {
-        AsteroidAPI.ASTEROIDapisearch()
+       getAsteroid()
         .then(res => 
             {
                 console.log(res)
