@@ -5,9 +5,9 @@ function AsteroidSearchResults(props){
     return(
         <div>
         <ul>
-            {props.results.map(result => (
-                <li key = {result} className="list-group-item">
-                    <h3>{result}</h3>
+            {props.results.filter(result => (
+                <li key = {result.name} className="list-group-item">
+                    <h3>{result.name}</h3>
                     <h3></h3>
                     <h3></h3>
                     <h3></h3>
