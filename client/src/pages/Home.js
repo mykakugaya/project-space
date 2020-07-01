@@ -125,26 +125,33 @@ class Home extends Component {
                     <h2>Built for the Space Enthusiast!</h2>
                 </Hero>
                 <br/>
-                <h2 style={{color:"white"}}>Weather report from Mars</h2>
-                <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='1000' height='622'  scrolling='no' frameborder='10'></iframe>
-                <MarsRoverImages backgroundImage={this.state.marsRoverImage}>
-                <h2>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
-                <button onClick={this.handleNext} variant="contained" color="primary">Next</button>
-                <button onClick={this.handlePrev}>Previous</button>
-                </MarsRoverImages>
-                <AsteroidSearchForm
-                handleFormSubmit = {this.handleFormSubmit}
-                handleInputChange = {this.handleInputChange}
-                asteroids = {this.state.asteroids}
-                search = {this.state.search}
-                />
-                {this.state.results.length>0?(
+                <div>
+                    <div style={{float: "left"}}>
+                        <h2 style={{color:"white"}}>Weather report from Mars</h2>
+                        <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='1000' height='622'  scrolling='no' frameborder='10'></iframe>
+                    </div>
+                    <div style={{float: "left"}}>
+                    <h2 style={{color: "white"}}>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
+                        <MarsRoverImages backgroundImage={this.state.marsRoverImage} style={{textAlign: "center"}}>
+                        <button onClick={this.handleNext} variant="contained" color="primary">Next</button>
+                        <button onClick={this.handlePrev}>Previous</button>
+                        </MarsRoverImages>
+                    </div>
+                </div>
+                <div style={{float:"right"}}>
+                    <AsteroidSearchForm
+                    handleFormSubmit = {this.handleFormSubmit}
+                    handleInputChange = {this.handleInputChange}
+                    asteroids = {this.state.asteroids}
+                    search = {this.state.search}
+                    />
+                    {this.state.results.length>0?(
                     <AsteroidSearchResults 
                     results={this.state.results[0]}
                     search={this.state.search}
                     />
                 ):(<div></div>)}
-                
+                </div>
             </div>
         )
     }
