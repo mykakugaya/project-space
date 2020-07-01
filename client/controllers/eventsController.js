@@ -1,4 +1,4 @@
-const db = require("../src/models");
+const db = require("../models");
 
 module.exports = function(app) {
     app.get("/api/events", function(req, res) {

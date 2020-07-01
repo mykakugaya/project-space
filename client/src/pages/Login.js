@@ -33,63 +33,63 @@ export default function CenteredGrid() {
 
   return (
     <div className={classes.root}>
-    <Container>
-      <Grid container spacing={3}>
-        <Grid item xs={12}>
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>
+      <Container>
+        <Paper className={classes.paper}>
+          <Grid container spacing={3}>
+            <Grid item xs={6}>
               Login:
               <form className={classes.login} noValidate autoComplete="off">
                 <TextField
+                  type="email"
                   id="outlined-basic"
                   label="E-mail"
                   variant="outlined"
                 />
-              </form>
-              <form className={classes.login} noValidate autoComplete="off">
+                <br />
                 <TextField
+                  type="password"
                   id="outlined-basic"
                   label="Password"
                   variant="outlined"
                 />
+                <br />
+                <Button variant="contained" color="primary" disableElevation>
+                  Log In
+                </Button>
               </form>
-              <Button variant="contained" color="primary" disableElevation>
-                Log In
-              </Button>
-            </Paper>
-          </Grid>
-          <Grid item xs={6}>
-            <Paper className={classes.paper}>
+            </Grid>
+            <Grid item xs={6}>
               or Create an Account:
               <form className={classes.login} noValidate autoComplete="off">
                 <TextField
+                  type="text"
                   id="outlined-basic"
                   label="Name"
                   variant="outlined"
                 />
-              </form>
-              <form className={classes.login} noValidate autoComplete="off">
+                <br />
                 <TextField
+                  type="email"
                   id="outlined-basic"
                   label="E-mail"
                   variant="outlined"
                 />
-              </form>
-              <form className={classes.login} noValidate autoComplete="off">
+                <br />
                 <TextField
+                  type="password"
                   id="outlined-basic"
                   label="Password"
                   variant="outlined"
                 />
+                <br />
+                <Button variant="contained" color="primary" disableElevation>
+                  Create User
+                </Button>
               </form>
-              <Button variant="contained" color="primary" disableElevation>
-                Create User
-              </Button>
-            </Paper>
+            </Grid>
           </Grid>
-        </Grid>
-      </Grid>
-    </Container>
+        </Paper>
+      </Container>
     </div>
   );
 }
