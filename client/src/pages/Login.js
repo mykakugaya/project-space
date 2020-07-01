@@ -30,6 +30,12 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CenteredGrid() {
   const classes = useStyles();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+//   const loginUser = (email,password) => {
+    
+//   }
 
   return (
     <div className={classes.root}>
