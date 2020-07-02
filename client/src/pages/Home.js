@@ -1,11 +1,12 @@
 import React, {Component} from "react";
 import moment from "moment";
-import {getAsteroid,getRover,getAPOD} from "../utils/API";
+import {getAsteroid,getRover,getAPOD, getSpaceXLaunch} from "../utils/API";
 import Hero from "../components/Hero/Hero";
 import MarsRoverImages from "../components/MarsRoverImages/MarsRoverImages";
 import AsteroidSearchForm from "../components/AsteroidSearchForm/AsteroidSearchForm";
 import AsteroidSearchResults from "../components/AsteroidSearchResults/AsteroidSearchResults";
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 const currentday = moment().format("YYYY-MM-DD");
 
 
@@ -23,7 +24,8 @@ class Home extends Component {
         asteroidMissDistance: 0,
         results: [],
         asteroids: [],
-        search: ""
+        search: "",
+        launches: []
     }
 
     handleInputChange = event => {
@@ -65,7 +67,6 @@ class Home extends Component {
     componentDidMount =() => {
         this.searchAPOD();
         this.searchMarsRover();
-        this.searchAsteroidAPI();
         getAsteroid()
         .then(res => {
             if(res.data.status === "error"){
@@ -74,6 +75,15 @@ class Home extends Component {
             this.setState({ asteroids: res.data.near_earth_objects[currentday], error: ""});
         })
         .catch(err => this.setState({ error: err.message}));
+
+        getSpaceXLaunch()
+        .then(res => {
+            if(res.data.status === "error"){
+                throw new Error(res.data.message);
+            }
+            console.log(res);
+            this.setState({launches: res.data, error: ""});
+        });
     };
 
     searchAPOD = () => {
@@ -99,61 +109,41 @@ class Home extends Component {
         .catch(err => console.log(err));
     };
 
-    searchAsteroidAPI = () => {
-       getAsteroid()
-        .then(res => 
-            {
-                console.log(res)
-                console.log(currentday)
-                console.log(res.data.near_earth_objects[currentday][0].name)
-                // this.setState({
-                //     asteroidName: res.data,
-                //     asteroidDiameterMin: 0,
-                //     asteroidDiameterMax: 0,
-                //     asteroidIsDangerous: false,
-                //     asteroidVelocity: 0,
-                //     asteroidOrbitingBody: "",
-                //     asteroidMissDistance: 0
-                // })
-            })
-    }
-
     render(){
         return (
             <div>
-                {/* {this.state.heroImage} */}
                 <Hero backgroundImage={this.state.heroImage}>
                     <h1>The Space Hub App</h1>
                     <h2>Built for the Space Enthusiast!</h2>
                 </Hero>
-                <br/>
-                <div>
-                    <div style={{float: "left"}}>
-                        <h2 style={{color:"white"}}>Weather report from Mars</h2>
-                        <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='1000' height='622'  scrolling='no' frameborder='10'></iframe>
-                    </div>
-                    <div style={{float: "left"}}>
-                    <h2 style={{color: "white"}}>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
+                <Grid container direction="row" justify="center" alignItems="center">
+                    <Grid item xs={8}>
+                        <h2 style={{color:"white", textAlign: "center"}}>Weather report from Mars</h2>
+                        <iframe style={{align:"center"}} src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='1000' height='622'  scrolling='no' frameborder='10'></iframe>
+                    </Grid>
+                    <Grid item xs={4}>
+                        <h2 style={{color: "white"}}>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
                         <MarsRoverImages backgroundImage={this.state.marsRoverImage} style={{textAlign: "center"}}>
-                        <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
-                        <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
+                            <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
+                            <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
                         </MarsRoverImages>
-                    </div>
-                </div>
-                <div style={{float:"right"}}>
+                    </Grid>
+                    <br></br>
+                    <Grid item xs={4} justify="flex-start" alignItems="center">
                     <AsteroidSearchForm
-                    handleFormSubmit = {this.handleFormSubmit}
-                    handleInputChange = {this.handleInputChange}
-                    asteroids = {this.state.asteroids}
-                    search = {this.state.search}
+                        handleFormSubmit = {this.handleFormSubmit}
+                        handleInputChange = {this.handleInputChange}
+                        asteroids = {this.state.asteroids}
+                        search = {this.state.search}
                     />
                     {this.state.results.length>0?(
-                    <AsteroidSearchResults 
-                    results={this.state.results[0]}
-                    search={this.state.search}
+                        <AsteroidSearchResults 
+                        results={this.state.results[0]}
+                        search={this.state.search}
                     />
-                ):(<div></div>)}
-                </div>
+                    ):(<div></div>)}
+                    </Grid>
+                </Grid>
             </div>
         )
     }
