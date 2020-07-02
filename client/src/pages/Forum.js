@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 import Post from "../components/Post";
 import ForumSearch from "../components/ForumSearch";
+import { makeStyles } from "@material-ui/core/styles"
+import Grid from "@material-ui/core/Grid"
 
 const useStyles = makeStyles({
     header: {

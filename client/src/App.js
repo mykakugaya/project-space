@@ -2,11 +2,12 @@ import React,{useState, useEffect, useContext} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/navbar";
 import Home from "./pages/Home";
-// import Forum from "./pages/Forum";
+import Forum from "./pages/Forum";
 import MyCalendar from "./pages/Calendar";
 import Gallery from "./pages/Gallery";
 import Login from "./pages/Login";
 // import JobSearch from "./pages/JobSearch";
+// import Footer from "./components/Footer/footer";
 import {getUserData} from './utils/API'
 import "./App.css";
 import {userContext} from "./utils/userContext"
@@ -32,7 +33,7 @@ function App() {
             <Home />
           </Route>
           <Route exact path="/forum">
-            {/* <Forum /> */}
+            <Forum />
           </Route>
           <Route exact path="/calendar">
             <MyCalendar />
@@ -47,6 +48,7 @@ function App() {
             <Login />
           </Route>
         </Switch>
+        {/* <Footer /> */}
       </userContext.Provider>
 
     </Router>
