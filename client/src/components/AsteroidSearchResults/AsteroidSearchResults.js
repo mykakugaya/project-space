@@ -27,7 +27,7 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-export default function CustomizedTables(props) {
+export default function AsteroidSearchResults(props) {
 
   return (
     <TableContainer component={Paper}>
@@ -35,7 +35,7 @@ export default function CustomizedTables(props) {
         <TableHead>
           <TableRow>
             <StyledTableCell>Asteroid Properties</StyledTableCell>
-            <StyledTableCell align="left">Result</StyledTableCell>
+            <StyledTableCell align="left">Results</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>

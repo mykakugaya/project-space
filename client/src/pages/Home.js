@@ -28,14 +28,17 @@ class Home extends Component {
         asteroids: [],
         search: "",
         launches: [],
-        searchlaunch: ""
+        searchlaunch: "",
+        launchResults: []
     }
 
     handleInputChange = event => {
+        console.log(event.target)
         this.setState({ search: event.target.value})
     };
 
     handleInputChangeLaunch = event => {
+        console.log(event.target.value)
         this.setState({ searchlaunch: event.target.value})
     };
 
@@ -52,13 +55,14 @@ class Home extends Component {
 
     handleFormSubmitLaunch = event => {
         event.preventDefault();
+       console.log(this.state.searchlaunch)
         const myLaunch = this.state.launches.filter(item => {
             return (
-                item.name === this.state.search
+                item.mission_name === this.state.searchlaunch
             )
         })
         console.log(myLaunch)
-        this.setState({results: myLaunch})
+        this.setState({launchResults: myLaunch})
     };
 
     handleNext = () => {
@@ -160,16 +164,16 @@ class Home extends Component {
                         />
                         ):(<div></div>)}
                     </Grid>
-                    <Grid item xs={8}  >
+                    <Grid item xs={8} margin="5px">
                         <SpaceXSearchForm
                             handleFormSubmitLaunch = {this.handleFormSubmitLaunch}
                             handleInputChangeLaunch = {this.handleInputChangeLaunch}
                             launches = {this.state.launches}
                             search = {this.state.searchlaunch}
                         />
-                        {this.state.results.length>0?(
+                        {this.state.launchResults.length>0?(
                             <SpaceXSearchResults 
-                            results={this.state.results}
+                            results={this.state.launchResults[0]}
                             searchlaunch={this.state.searchlaunch}
                         />
                         ):(<div></div>)}
