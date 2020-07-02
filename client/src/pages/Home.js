@@ -5,6 +5,8 @@ import Hero from "../components/Hero/Hero";
 import MarsRoverImages from "../components/MarsRoverImages/MarsRoverImages";
 import AsteroidSearchForm from "../components/AsteroidSearchForm/AsteroidSearchForm";
 import AsteroidSearchResults from "../components/AsteroidSearchResults/AsteroidSearchResults";
+import SpaceXSearchResults from "../components/SpaceXSearchResults/SpaceXSearchResults";
+import SpaceXSearchForm from "../components/SpaceXSearchForm/SpaceXSearchForm";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 const currentday = moment().format("YYYY-MM-DD");
@@ -25,11 +27,19 @@ class Home extends Component {
         results: [],
         asteroids: [],
         search: "",
-        launches: []
+        launches: [],
+        searchlaunch: "",
+        launchResults: []
     }
 
     handleInputChange = event => {
+        console.log(event.target)
         this.setState({ search: event.target.value})
+    };
+
+    handleInputChangeLaunch = event => {
+        console.log(event.target.value)
+        this.setState({ searchlaunch: event.target.value})
     };
 
     handleFormSubmit = event => {
@@ -41,7 +51,18 @@ class Home extends Component {
         })
         console.log(myAsteroid)
        this.setState({results:myAsteroid})
-        
+    };
+
+    handleFormSubmitLaunch = event => {
+        event.preventDefault();
+       console.log(this.state.searchlaunch)
+        const myLaunch = this.state.launches.filter(item => {
+            return (
+                item.mission_name === this.state.searchlaunch
+            )
+        })
+        console.log(myLaunch)
+        this.setState({launchResults: myLaunch})
     };
 
     handleNext = () => {
@@ -119,29 +140,43 @@ class Home extends Component {
                 <Grid container direction="row" justify="center" alignItems="center">
                     <Grid item xs={8}>
                         <h2 style={{color:"white", textAlign: "center"}}>Weather report from Mars</h2>
-                        <iframe style={{align:"center"}} src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='1000' height='622'  scrolling='no' frameborder='10'></iframe>
+                        <iframe style={{justify:"center"}} src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='1000' height='622'  scrolling='no' frameborder='10'></iframe>
                     </Grid>
                     <Grid item xs={4}>
-                        <h2 style={{color: "white"}}>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
+                        <h2 style={{color: "white", textAlign: "center"}}>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
                         <MarsRoverImages backgroundImage={this.state.marsRoverImage} style={{textAlign: "center"}}>
                             <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
                             <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
                         </MarsRoverImages>
                     </Grid>
                     <br></br>
-                    <Grid item xs={4} justify="flex-start" alignItems="center">
-                    <AsteroidSearchForm
-                        handleFormSubmit = {this.handleFormSubmit}
-                        handleInputChange = {this.handleInputChange}
-                        asteroids = {this.state.asteroids}
-                        search = {this.state.search}
-                    />
-                    {this.state.results.length>0?(
-                        <AsteroidSearchResults 
-                        results={this.state.results[0]}
-                        search={this.state.search}
-                    />
-                    ):(<div></div>)}
+                    <Grid item xs={4} justify="flex-start" alignItems="center" align="left">
+                        <AsteroidSearchForm
+                            handleFormSubmit = {this.handleFormSubmit}
+                            handleInputChange = {this.handleInputChange}
+                            asteroids = {this.state.asteroids}
+                            search = {this.state.search}
+                        />
+                        {this.state.results.length>0?(
+                            <AsteroidSearchResults 
+                            results={this.state.results[0]}
+                            search={this.state.search}
+                        />
+                        ):(<div></div>)}
+                    </Grid>
+                    <Grid item xs={8} margin="5px">
+                        <SpaceXSearchForm
+                            handleFormSubmitLaunch = {this.handleFormSubmitLaunch}
+                            handleInputChangeLaunch = {this.handleInputChangeLaunch}
+                            launches = {this.state.launches}
+                            search = {this.state.searchlaunch}
+                        />
+                        {this.state.launchResults.length>0?(
+                            <SpaceXSearchResults 
+                            results={this.state.launchResults[0]}
+                            searchlaunch={this.state.searchlaunch}
+                        />
+                        ):(<div></div>)}
                     </Grid>
                 </Grid>
             </div>
