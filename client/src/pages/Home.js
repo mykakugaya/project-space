@@ -157,26 +157,26 @@ class Home extends Component {
                             asteroids = {this.state.asteroids}
                             search = {this.state.search}
                         />
-                        {this.state.results.length>0?(
+                        {this.state.results.length> 0 ? (
                             <AsteroidSearchResults 
                             results={this.state.results[0]}
                             search={this.state.search}
                         />
-                        ):(<div></div>)}
+                        ) : (<div></div>)}
                     </Grid>
-                    <Grid item xs={8} margin="5px">
+                    <Grid item xs={8} margin="5%">
                         <SpaceXSearchForm
                             handleFormSubmitLaunch = {this.handleFormSubmitLaunch}
                             handleInputChangeLaunch = {this.handleInputChangeLaunch}
                             launches = {this.state.launches}
                             search = {this.state.searchlaunch}
                         />
-                        {this.state.launchResults.length>0?(
+                        {this.state.launchResults.length> 0 ? (
                             <SpaceXSearchResults 
                             results={this.state.launchResults[0]}
                             searchlaunch={this.state.searchlaunch}
                         />
-                        ):(<div></div>)}
+                        ) : (<div></div>)}
                     </Grid>
                 </Grid>
             </div>
