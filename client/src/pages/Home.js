@@ -6,6 +6,7 @@ import MarsRoverImages from "../components/MarsRoverImages/MarsRoverImages";
 import AsteroidSearchForm from "../components/AsteroidSearchForm/AsteroidSearchForm";
 import AsteroidSearchResults from "../components/AsteroidSearchResults/AsteroidSearchResults";
 import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
 const currentday = moment().format("YYYY-MM-DD");
 
 
@@ -121,26 +122,29 @@ class Home extends Component {
     render(){
         return (
             <div>
-                {/* {this.state.heroImage} */}
-                <Hero backgroundImage={this.state.heroImage}>
-                    <h1>The Space Hub App</h1>
-                    <h2>Built for the Space Enthusiast!</h2>
-                </Hero>
-                <br/>
-                <div>
-                    <div style={{float: "left"}}>
+                <Grid container direction="row" justify="center" alignItems="center">
+                    <Grid>
+                        <Hero backgroundImage={this.state.heroImage}>
+                            <h1>The Space Hub App</h1>
+                            <h2>Built for the Space Enthusiast!</h2>
+                        </Hero>
+                    </Grid>
+                    <br/>
+                {/* <div> */}
+                    {/* <div style={{float: "left"}}> */}
+                    
                         <h2 style={{color:"white"}}>Weather report from Mars</h2>
                         <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='1000' height='622'  scrolling='no' frameborder='10'></iframe>
-                    </div>
-                    <div style={{float: "left"}}>
+                    {/* </div>
+                    <div style={{float: "left"}}> */}
                     <h2 style={{color: "white"}}>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
                         <MarsRoverImages backgroundImage={this.state.marsRoverImage} style={{textAlign: "center"}}>
                         <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
                         <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
                         </MarsRoverImages>
-                    </div>
-                </div>
-                <div style={{float:"right"}}>
+                    {/* </div>
+                </div> */}
+                {/* <div style={{float:"right"}}> */}
                     <AsteroidSearchForm
                     handleFormSubmit = {this.handleFormSubmit}
                     handleInputChange = {this.handleInputChange}
@@ -153,7 +157,8 @@ class Home extends Component {
                     search={this.state.search}
                     />
                 ):(<div></div>)}
-                </div>
+                {/* </div> */}
+                </Grid>
             </div>
         )
     }

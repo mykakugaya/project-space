@@ -16,5 +16,5 @@ export const getUserData = () => axios.get("api/user_data");
 export const updateUserData = (favorites) => axios.post("api/user_data", favorites);
 
 
-//import {getAPOD, getJob} from "/path to API.js"
+//import {getAPOD, getJob} from "/path to api.js"
 //getAPOD().then(data=> do something with data;)
