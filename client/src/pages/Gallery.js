@@ -1,10 +1,11 @@
-import React,{useState, useEffect} from "react";
+import React,{useState, useEffect, useContext} from "react";
 import ImageGrid from "../components/ImageGrid";
 import {searchImage, getUserData, updateFavoritesData, getFavoritesData} from "../utils/API"
 import Grid from '@material-ui/core/Grid';
 import ImageSearch from "../components/ImageSearch";
 import GalleryTabs from "../components/GalleryTabs";
 import { makeStyles } from '@material-ui/core/styles';
+import {userContext} from "../utils/userContext"
 
 const useStyles = makeStyles({
   header: {
@@ -30,34 +31,23 @@ function Gallery() {
       searchImages(search);
     }, [search]);
 
-    // useEffect(() => {
-    //   if (!favorites) {
-    //     return;
-    //   }
-    //   getImageData()
-    //   .then(res => {
-    //     setFavorites(favorites)
-    //   })
-    // }, [favorites]);
-
+    const {user} = useContext(userContext)
     const searchImages = search => {
+        const favs = user?.Images.map(a=> a.nasa_id);
         searchImage(search)
         .then(res => {
-          const results = res.data.collection.items;
+          const results = res.data.collection.items.map(a=>{
+            if(favs.includes(a.data[0].nasa_id)){
+              return {nasa_id: a.data[0].nasa_id, title: a.data[0].title, src: a.links[0].href, isFav: true}
+            }else{
+              return {nasa_id: a.data[0].nasa_id, title: a.data[0].title, src: a.links[0].href}
+            }
+          })
           if (results.length === 0) {
               throw new Error("No results found.");
           }
+          
           setImages(results);
-          getUserData()
-          .then(resp => {
-            console.log(resp)
-            const userId = resp.data.id;
-            getFavoritesData(userId)
-            .then((response) => {
-              console.log(response)
-              setFavorites(response)
-            })
-          })
         })
         .catch(err => setError(err));
     }
@@ -77,18 +67,6 @@ function Gallery() {
       setCurrentTab(value);
     }
 
-    const updateFavorites = newFavorite => {
-      getUserData()
-      .then(resp => {
-        console.log(resp)
-        const userId = resp.data.id;
-          setFavorites([
-            ...favorites,
-            {...newFavorite, userId: userId}
-          ]);
-          updateFavoritesData(userId, newFavorite);
-        })
-    }
   
     return (
       <div>
@@ -109,10 +87,10 @@ function Gallery() {
             />
           </Grid>
           <Grid item xs={12}>
-            <ImageGrid images={images} updateFavorites={updateFavorites}/>
+            <ImageGrid images={images}/>
           </Grid>
           </>
-          : <ImageGrid images={favorites} updateFavorites={updateFavorites}/>}
+          : <ImageGrid images={user.Images} userFav={true}/>}
         </Grid>
       </div>
     );

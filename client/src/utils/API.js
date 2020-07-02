@@ -15,7 +15,7 @@ export const postSignup = (user) => axios.post("api/signup", user);
 export const getLogout = () => axios.get("api/logout")
 export const getUserData = () => axios.get("api/user_data");
 export const getFavoritesData = (user) => axios.get("api/images", user);
-export const updateFavoritesData = (user, image) => axios.post("api/images", (user, image));
+export const updateFavoritesData = (data) => axios.post("api/images", data);
 
 //import {getAPOD, getJob} from "/path to api.js"
 //getAPOD().then(data=> do something with data;)

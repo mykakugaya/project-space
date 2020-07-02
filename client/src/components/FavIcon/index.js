@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import {getFavoritesData, getUserData} from "../../utils/API";
-
+import {userContext} from "../../utils/userContext"
 const useStyles = makeStyles((theme) => ({
   favBtn: {
     position: "relative",
@@ -17,42 +17,21 @@ const useStyles = makeStyles((theme) => ({
 function FavIcon(props) {
   const classes = useStyles();
 
-  const [favorite, setFavorite] = useState(false);
+  const [favorite, setFavorite] = useState(props.image.isFav);
 
-  useEffect(() => {
-    determineFavorite();
-  }, [favorite]);
+  const {fav} = useContext(userContext)
 
-  const determineFavorite = () => {
-    //Determine if an image is already favorited by user
-    //setFavorite if true
-    getUserData()
-    .then(resp => {
-      console.log(resp)
-      const userId = resp.data.id;
-      getFavoritesData(userId)
-      .then((response) => {
-        console.log(response);
-        for (let i=0; i<response.length; i++) {
-          if (props.image.data[0].nasa_id === response[i].id) {
-            setFavorite(true);
-          }
-        }
-      })
-    })
-  }
-
-  const updateFavorite = () => {
+  const updateFavorite = (e) => {
     {favorite===false ? setFavorite(true) : setFavorite(false)}
   }
 
   return (
     <IconButton color="primary" aria-label="favorite" onClick={() => {
-      props.updateFavorites({
-        nasa_id: props.image.data[0].nasa_id,
-        title: props.image.data[0].title,
-        src: props.image.links[0].href
-      });
+      fav({
+        nasa_id: props.image.nasa_id,
+        title: props.image.title,
+        src: props.image.src
+      })
       updateFavorite()}}>
       {favorite ? <FavoriteIcon className={classes.favBtn}/> : <FavoriteBorderIcon className={classes.favBtn}/>}
     </IconButton>

@@ -49,13 +49,9 @@ const passport = require("../config/passport");
       // If the user is not logged in, send back an empty object
       res.json({});
     } else {
-      db.User.findOne({where: {id: 1}})
+      db.User.findOne({where: {id: req.user.id}, include:[db.Image]})
       .then(function(response) {
-        res.json({
-          email: response.email,
-          id: response.id,
-          images: response.images
-        })
+        res.json(response)
       })
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
