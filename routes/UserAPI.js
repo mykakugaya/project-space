@@ -75,7 +75,7 @@ const passport = require("../config/passport");
     } else {
       db.User.update({
         images: req.body.favorites
-      }, {where: {id: 1}})
+      })
       .then(() => {
         res.json({});
       })

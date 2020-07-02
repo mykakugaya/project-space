@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
+import { getUserData } from "../../utils/API";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-// import Typography from "@material-ui/core/Typography";
+import Typography from "@material-ui/core/Typography";
 import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import { Link } from "react-router-dom";
+import {userContext} from "../../utils/userContext"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -13,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    float: "left"
   },
   appbar: {
       backgroundColor: "black",
@@ -30,16 +33,17 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar() {
   const classes = useStyles();
+  const {user} = useContext(userContext);
 
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appbar}>
+          <Typography variant="h6" className={classes.title}>
+           Welcome, {user?.name || "Stranger"}.
+         </Typography>
         <Toolbar>
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
           </IconButton> */}
-          {/* <Typography variant="h6" className={classes.title}>
-            Project Space
-          </Typography> */} 
           <Tabs className={classes.appbar}>
           <Link className="navbar-brand" to="/">
             <Tab className={window.location.pathname === "/" ? classes.activeTab : classes.tabs} label="Home"/>
