@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
-import {getUserData} from "../../utils/API";
+import {getFavoritesData, getUserData} from "../../utils/API";
 
 const useStyles = makeStyles((theme) => ({
   favBtn: {
@@ -24,21 +24,22 @@ function FavIcon(props) {
   }, [favorite]);
 
   const determineFavorite = () => {
-    const id = props.id;
     //Determine if an image is already favorited by user
     //setFavorite if true
     getUserData()
-    .then((response) => {
-      console.log(response);
-      const favimages = response.images ? response.images.split() : [];
-      for (let i=0; i<favimages.length; i++) {
-        console.log(favimages[i]);
-        if (id === favimages[i]) {
-          setFavorite(true);
+    .then(resp => {
+      console.log(resp)
+      const userId = resp.data.id;
+      getFavoritesData(userId)
+      .then((response) => {
+        console.log(response);
+        for (let i=0; i<response.length; i++) {
+          if (props.image.data[0].nasa_id === response[i].id) {
+            setFavorite(true);
+          }
         }
-      }
+      })
     })
-
   }
 
   const updateFavorite = () => {
@@ -47,7 +48,11 @@ function FavIcon(props) {
 
   return (
     <IconButton color="primary" aria-label="favorite" onClick={() => {
-      props.updateFavorites(props.id);
+      props.updateFavorites({
+        nasa_id: props.image.data[0].nasa_id,
+        title: props.image.data[0].title,
+        src: props.image.links[0].href
+      });
       updateFavorite()}}>
       {favorite ? <FavoriteIcon className={classes.favBtn}/> : <FavoriteBorderIcon className={classes.favBtn}/>}
     </IconButton>

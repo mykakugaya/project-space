@@ -1,11 +1,10 @@
 import React,{useState, useEffect} from "react";
 import ImageGrid from "../components/ImageGrid";
-import {searchImage} from "../utils/API"
+import {searchImage, getUserData, updateFavoritesData, getFavoritesData} from "../utils/API"
 import Grid from '@material-ui/core/Grid';
 import ImageSearch from "../components/ImageSearch";
 import GalleryTabs from "../components/GalleryTabs";
 import { makeStyles } from '@material-ui/core/styles';
-import {getUserData, updateUserData} from "../utils/API";
 
 const useStyles = makeStyles({
   header: {
@@ -31,13 +30,15 @@ function Gallery() {
       searchImages(search);
     }, [search]);
 
-    useEffect(() => {
-      //Update user's images in db
-      if (!favorites) {
-        return;
-      }
-      updateUserData({favorites: favorites.join()});
-    }, [favorites]);
+    // useEffect(() => {
+    //   if (!favorites) {
+    //     return;
+    //   }
+    //   getImageData()
+    //   .then(res => {
+    //     setFavorites(favorites)
+    //   })
+    // }, [favorites]);
 
     const searchImages = search => {
         searchImage(search)
@@ -48,9 +49,14 @@ function Gallery() {
           }
           setImages(results);
           getUserData()
-          .then((response) => {
-            const data = response.images ? response.images.split() : [];
-            setFavorites(data);
+          .then(resp => {
+            console.log(resp)
+            const userId = resp.data.id;
+            getFavoritesData(userId)
+            .then((response) => {
+              console.log(response)
+              setFavorites(response)
+            })
           })
         })
         .catch(err => setError(err));
@@ -72,10 +78,16 @@ function Gallery() {
     }
 
     const updateFavorites = newFavorite => {
-      setFavorites([
-        ...favorites,
-        newFavorite
-      ])
+      getUserData()
+      .then(resp => {
+        console.log(resp)
+        const userId = resp.data.id;
+          setFavorites([
+            ...favorites,
+            {...newFavorite, userId: userId}
+          ]);
+          updateFavoritesData(userId, newFavorite);
+        })
     }
   
     return (
