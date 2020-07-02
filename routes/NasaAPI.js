@@ -1,6 +1,7 @@
 const axios = require("axios");
 const router = require("express").Router();
 const baseURL = "https://api.nasa.gov/";
+const spacexURL = "https://api.spacexdata.com/v2/launches";
 const apikey = "&api_key=OsxKBADdC2NEduQmMsJU9kxQTfLlc2vQYdtC4XFE";
 const marsRoverApiQuery = "mars-photos/api/v1/rovers/curiosity/photos?sol=1000&page=2"
 const jobsUrl = "https://api.linkedin.com/v1/job-search?";
@@ -29,6 +30,11 @@ router.get("/asteroid", async (req,res)=>{
     const {data} = await axios.get(baseURL + asteroidApiQuery + currentday + apikey);
     res.json(data)
 })
+
+router.get("/spacex", async (req,res)=>{
+    const {data} = await axios.get(spacexURL);
+    res.json(data)
+});
 
 module.exports = router;
 

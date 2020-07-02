@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import moment from "moment";
-import {getAsteroid,getRover,getAPOD} from "../utils/API";
+import {getAsteroid,getRover,getAPOD, getSpaceXLaunch} from "../utils/API";
 import Hero from "../components/Hero/Hero";
 import MarsRoverImages from "../components/MarsRoverImages/MarsRoverImages";
 import AsteroidSearchForm from "../components/AsteroidSearchForm/AsteroidSearchForm";
@@ -24,7 +24,8 @@ class Home extends Component {
         asteroidMissDistance: 0,
         results: [],
         asteroids: [],
-        search: ""
+        search: "",
+        launches: []
     }
 
     handleInputChange = event => {
@@ -66,7 +67,6 @@ class Home extends Component {
     componentDidMount =() => {
         this.searchAPOD();
         this.searchMarsRover();
-        this.searchAsteroidAPI();
         getAsteroid()
         .then(res => {
             if(res.data.status === "error"){
@@ -75,6 +75,15 @@ class Home extends Component {
             this.setState({ asteroids: res.data.near_earth_objects[currentday], error: ""});
         })
         .catch(err => this.setState({ error: err.message}));
+
+        getSpaceXLaunch()
+        .then(res => {
+            if(res.data.status === "error"){
+                throw new Error(res.data.message);
+            }
+            console.log(res);
+            this.setState({launches: res.data, error: ""});
+        });
     };
 
     searchAPOD = () => {
@@ -99,25 +108,6 @@ class Home extends Component {
             })
         .catch(err => console.log(err));
     };
-
-    searchAsteroidAPI = () => {
-       getAsteroid()
-        .then(res => 
-            {
-                console.log(res)
-                console.log(currentday)
-                console.log(res.data.near_earth_objects[currentday][0].name)
-                // this.setState({
-                //     asteroidName: res.data,
-                //     asteroidDiameterMin: 0,
-                //     asteroidDiameterMax: 0,
-                //     asteroidIsDangerous: false,
-                //     asteroidVelocity: 0,
-                //     asteroidOrbitingBody: "",
-                //     asteroidMissDistance: 0
-                // })
-            })
-    }
 
     render(){
         return (
