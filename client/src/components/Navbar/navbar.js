@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import { getUserData } from "../../utils/API";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -15,7 +14,9 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
-    float: "left"
+    float: "left",
+    marginRight: "50px",
+    marginLeft: 0
   },
   appbar: {
       backgroundColor: "black",
@@ -26,8 +27,12 @@ const useStyles = makeStyles((theme) => ({
       textDecoration: "none"
   },
   activeTab: {
-    textDecorationColor: '#ede7f6',
-    textDecorationLine: 'underline'
+      color: "white",
+      textDecoration: "none"
+  },
+  padding: {
+    paddingLeft: 0,
+    left: 0
   }
 }));
 
@@ -35,13 +40,21 @@ export default function Navbar() {
   const classes = useStyles();
   const {user} = useContext(userContext);
 
+  // function loggedIn() {
+  //   if (user == null){
+  //     return <Tab className={window.location.pathname === "/login" ? classes.activeTab : classes.tabs} label="Login"/>
+  //   } else {
+  //     return <Tab className={window.location.pathname === "/logout" ? classes.activeTab : classes.tabs} label="Logout"/>
+  //   }
+  // }
+
   return (
     <div className={classes.root}>
       <AppBar position="static" className={classes.appbar}>
+        <Toolbar className={classes.padding}>
           <Typography variant="h6" className={classes.title}>
            Welcome, {user?.name || "Stranger"}.
          </Typography>
-        <Toolbar>
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
           </IconButton> */}
           <Tabs className={classes.appbar}>
@@ -61,7 +74,8 @@ export default function Navbar() {
             <Tab className={window.location.pathname === "/jobs" ? classes.activeTab : classes.tabs} label="Jobs"/>
           </Link>
           <Link className="navbar-brand" to="/login">
-            <Tab className={window.location.pathname === "/login" ? classes.activeTab : classes.tabs} label="Login"/>
+          <Tab className={window.location.pathname === "/login" ? classes.activeTab : classes.tabs} label="Login"/>
+          {/* {loggedIn} */}
           </Link>
           </Tabs>
         </Toolbar>

@@ -2,7 +2,7 @@ import React,{useState, useEffect, useContext} from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navbar from "./components/Navbar/navbar";
 import Home from "./pages/Home";
-// import Forum from "./pages/Forum";
+import Forum from "./pages/Forum";
 import MyCalendar from "./pages/Calendar";
 import Gallery from "./pages/Gallery";
 import Login from "./pages/Login";
@@ -34,7 +34,7 @@ const setFav = val => {
             <Home />
           </Route>
           <Route exact path="/forum">
-            {/* <Forum /> */}
+            <Forum />
           </Route>
           <Route exact path="/calendar">
             <MyCalendar />
@@ -49,6 +49,7 @@ const setFav = val => {
             <Login />
           </Route>
         </Switch>
+        {/* <Footer /> */}
       </userContext.Provider>
 
     </Router>
