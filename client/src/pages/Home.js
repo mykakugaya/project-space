@@ -122,42 +122,37 @@ class Home extends Component {
     render(){
         return (
             <div>
+                <Hero backgroundImage={this.state.heroImage}>
+                    <h1>The Space Hub App</h1>
+                    <h2>Built for the Space Enthusiast!</h2>
+                </Hero>
                 <Grid container direction="row" justify="center" alignItems="center">
-                    <Grid>
-                        <Hero backgroundImage={this.state.heroImage}>
-                            <h1>The Space Hub App</h1>
-                            <h2>Built for the Space Enthusiast!</h2>
-                        </Hero>
+                    <Grid item xs={8}>
+                        <h2 style={{color:"white", textAlign: "center"}}>Weather report from Mars</h2>
+                        <iframe style={{align:"center"}} src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='1000' height='622'  scrolling='no' frameborder='10'></iframe>
                     </Grid>
-                    <br/>
-                {/* <div> */}
-                    {/* <div style={{float: "left"}}> */}
-                    
-                        <h2 style={{color:"white"}}>Weather report from Mars</h2>
-                        <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='1000' height='622'  scrolling='no' frameborder='10'></iframe>
-                    {/* </div>
-                    <div style={{float: "left"}}> */}
-                    <h2 style={{color: "white"}}>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
+                    <Grid item xs={4}>
+                        <h2 style={{color: "white"}}>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
                         <MarsRoverImages backgroundImage={this.state.marsRoverImage} style={{textAlign: "center"}}>
-                        <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
-                        <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
+                            <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
+                            <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
                         </MarsRoverImages>
-                    {/* </div>
-                </div> */}
-                {/* <div style={{float:"right"}}> */}
+                    </Grid>
+                    <br></br>
+                    <Grid item xs={4} justify="flex-start" alignItems="center">
                     <AsteroidSearchForm
-                    handleFormSubmit = {this.handleFormSubmit}
-                    handleInputChange = {this.handleInputChange}
-                    asteroids = {this.state.asteroids}
-                    search = {this.state.search}
+                        handleFormSubmit = {this.handleFormSubmit}
+                        handleInputChange = {this.handleInputChange}
+                        asteroids = {this.state.asteroids}
+                        search = {this.state.search}
                     />
                     {this.state.results.length>0?(
-                    <AsteroidSearchResults 
-                    results={this.state.results[0]}
-                    search={this.state.search}
+                        <AsteroidSearchResults 
+                        results={this.state.results[0]}
+                        search={this.state.search}
                     />
-                ):(<div></div>)}
-                {/* </div> */}
+                    ):(<div></div>)}
+                    </Grid>
                 </Grid>
             </div>
         )
