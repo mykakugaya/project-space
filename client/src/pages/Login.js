@@ -1,4 +1,4 @@
-import React, { useState, setState } from "react";
+import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { postLogin, postSignup } from "../utils/API";
 import Paper from "@material-ui/core/Paper";
@@ -37,6 +37,7 @@ export default function CenteredGrid() {
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [error, setError] = useState("");
+  const [users, setUsers] = useState("");
 
   const validateLogin = () => {
     return email.length > 0 && password.length > 0;
@@ -61,16 +62,18 @@ export default function CenteredGrid() {
 
   const handleCreateUser = event => {
       event.preventDefault();
-    //   console.log(name);
-    //   console.log(newEmail);
-    //   console.log(newPassword);
       postSignup( {
           name: name,
           email: newEmail,
           password: newPassword
       })
       .then ( () => {
-          console.log(`New User signed up: ${name}`)
+          console.log(`New User signed up: ${name}`);
+          postLogin( {
+              email: newEmail,
+              password: newPassword
+          });
+          window.location.replace("/");
       })
       .catch ( err => setError(err));
   };
