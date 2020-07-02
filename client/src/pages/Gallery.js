@@ -13,9 +13,6 @@ const useStyles = makeStyles({
     fontFamily: 'Playfair Display SC',
     fontSize: '70px',
     color: 'white'
-  },
-  root: {
-    backgroundColor: '#424242'
   }
 });
 
