@@ -31,6 +31,14 @@ function Gallery() {
       searchImages(search);
     }, [search]);
 
+    useEffect(() => {
+      //Update user's images in db
+      if (!favorites) {
+        return;
+      }
+      updateUserData({favorites: favorites.join()});
+    }, [favorites]);
+
     const searchImages = search => {
         searchImage(search)
         .then(res => {
@@ -68,9 +76,6 @@ function Gallery() {
         ...favorites,
         newFavorite
       ])
-      console.log(favorites);
-      //Update user's images in db
-      updateUserData(favorites.join());
     }
   
     return (

@@ -5,7 +5,9 @@ import Hero from "../components/Hero/Hero";
 import MarsRoverImages from "../components/MarsRoverImages/MarsRoverImages";
 import AsteroidSearchForm from "../components/AsteroidSearchForm/AsteroidSearchForm";
 import AsteroidSearchResults from "../components/AsteroidSearchResults/AsteroidSearchResults";
+import Button from '@material-ui/core/Button';
 const currentday = moment().format("YYYY-MM-DD");
+
 
 class Home extends Component {
     state={
@@ -119,32 +121,39 @@ class Home extends Component {
     render(){
         return (
             <div>
-                {this.state.heroImage}
+                {/* {this.state.heroImage} */}
                 <Hero backgroundImage={this.state.heroImage}>
                     <h1>The Space Hub App</h1>
                     <h2>Built for the Space Enthusiast!</h2>
                 </Hero>
                 <br/>
-                <h2 style={{color:"white"}}>Weather report from Mars</h2>
-                <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='1000' height='622'  scrolling='no' frameborder='10'></iframe>
-                <MarsRoverImages backgroundImage={this.state.marsRoverImage}>
-                <h2>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
-                <button onClick={this.handleNext} variant="contained" color="primary">Next</button>
-                <button onClick={this.handlePrev}>Previous</button>
-                </MarsRoverImages>
-                <AsteroidSearchForm
-                handleFormSubmit = {this.handleFormSubmit}
-                handleInputChange = {this.handleInputChange}
-                asteroids = {this.state.asteroids}
-                search = {this.state.search}
-                />
-                {this.state.results.length>0?(
+                <div>
+                    <div style={{float: "left"}}>
+                        <h2 style={{color:"white"}}>Weather report from Mars</h2>
+                        <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='1000' height='622'  scrolling='no' frameborder='10'></iframe>
+                    </div>
+                    <div style={{float: "left"}}>
+                    <h2 style={{color: "white"}}>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
+                        <MarsRoverImages backgroundImage={this.state.marsRoverImage} style={{textAlign: "center"}}>
+                        <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
+                        <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
+                        </MarsRoverImages>
+                    </div>
+                </div>
+                <div style={{float:"right"}}>
+                    <AsteroidSearchForm
+                    handleFormSubmit = {this.handleFormSubmit}
+                    handleInputChange = {this.handleInputChange}
+                    asteroids = {this.state.asteroids}
+                    search = {this.state.search}
+                    />
+                    {this.state.results.length>0?(
                     <AsteroidSearchResults 
                     results={this.state.results[0]}
                     search={this.state.search}
                     />
                 ):(<div></div>)}
-                
+                </div>
             </div>
         )
     }
