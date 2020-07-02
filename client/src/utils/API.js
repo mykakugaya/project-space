@@ -8,6 +8,7 @@ export const searchImage = q => axios.get(`api/nasa/image?q=${q}`);
 export const getAPOD = () => axios.get("api/nasa/apod");
 export const getJobs = () => axios.get("api/nasa/jobs");
 export const getRover = () => axios.get("api/nasa/rover");
+export const getSpaceXLaunch = () => axios.get("api/nasa/spacex");
 
 // User APIs
 export const postLogin = (user) => axios.post("api/login", user);
