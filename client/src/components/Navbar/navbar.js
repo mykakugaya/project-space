@@ -7,6 +7,7 @@ import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import { Link } from "react-router-dom";
 import {userContext} from "../../utils/userContext"
+import {getLogout} from "../../utils/API"
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -40,13 +41,11 @@ export default function Navbar() {
   const classes = useStyles();
   const {user} = useContext(userContext);
 
-  // function loggedIn() {
-  //   if (user == null){
-  //     return <Tab className={window.location.pathname === "/login" ? classes.activeTab : classes.tabs} label="Login"/>
-  //   } else {
-  //     return <Tab className={window.location.pathname === "/logout" ? classes.activeTab : classes.tabs} label="Logout"/>
-  //   }
-  // }
+  const handleLogout = () =>{
+    console.log("logging out");
+    getLogout();
+    window.location.reload();
+  }
 
   return (
     <div className={classes.root}>
@@ -73,10 +72,10 @@ export default function Navbar() {
           <Link className="navbar-brand" to="/jobs">
             <Tab className={window.location.pathname === "/jobs" ? classes.activeTab : classes.tabs} label="Jobs"/>
           </Link>
-          <Link className="navbar-brand" to="/login">
-          <Tab className={window.location.pathname === "/login" ? classes.activeTab : classes.tabs} label="Login"/>
-          {/* {loggedIn} */}
-          </Link>
+          {user?.name ? 
+          <Tab onClick={handleLogout} className={window.location.pathname === "/logout" ? classes.activeTab : classes.tabs} label="Logout"/>
+          :<Link className="navbar-brand" to="/login"><Tab className={window.location.pathname === "/login" ? classes.activeTab : classes.tabs} label="Login"/>
+          </Link>}
           </Tabs>
         </Toolbar>
       </AppBar>
