@@ -49,17 +49,22 @@ const passport = require("../config/passport");
       // If the user is not logged in, send back an empty object
       res.json({});
     } else {
+      db.User.findOne({where: {id: req.user.id}, include:[db.Image]})
+      .then(function(response) {
+        res.json(response)
+      })
       // Otherwise send back the user's email and id
       // Sending back a password, even a hashed password, isn't a good idea
-      res.json({
-        name: req.user.name,
-        email: req.user.email,
-        id: req.user.id
-      });
+      // res.json({
+      //   email: req.user.email,
+      //   id: req.user.id
+      // });
     }
-  });
-
+  })
+  
   router.post("/user_data", (req, res) => {
+    console.log("here")
+    console.log(req.body.favorites)
     if (!req.user) {
       // If the user is not logged in, send back an empty object
       res.redirect("/login");
@@ -75,6 +80,7 @@ const passport = require("../config/passport");
       });
     }
   })
+  
 
 
   module.exports = router

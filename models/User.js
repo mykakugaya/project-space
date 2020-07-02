@@ -22,13 +22,12 @@ module.exports = function(sequelize, DataTypes) {
     password: {
       type: DataTypes.STRING,
       allowNull: false
-    },
-    images: {
-      type: DataTypes.STRING,
-      default: ""
     }
   });
 
+  User.associate = function(models) {
+    User.hasMany(models.Image);
+  };
   // User.associate = function(models) {User.hasMany(models.post, {onDelete: "cascade"})};
 
   // Creating a custom method for our User model. This will check if an unhashed password entered by the user can be compared to the hashed password stored in our database

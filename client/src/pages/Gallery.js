@@ -1,11 +1,11 @@
-import React,{useState, useEffect} from "react";
+import React,{useState, useEffect, useContext} from "react";
 import ImageGrid from "../components/ImageGrid";
-import {searchImage} from "../utils/API"
+import {searchImage, getUserData, updateFavoritesData, getFavoritesData} from "../utils/API"
 import Grid from '@material-ui/core/Grid';
 import ImageSearch from "../components/ImageSearch";
 import GalleryTabs from "../components/GalleryTabs";
 import { makeStyles } from '@material-ui/core/styles';
-import {getUserData, updateUserData} from "../utils/API";
+import {userContext} from "../utils/userContext"
 
 const useStyles = makeStyles({
   header: {
@@ -31,27 +31,23 @@ function Gallery() {
       searchImages(search);
     }, [search]);
 
-    useEffect(() => {
-      //Update user's images in db
-      if (!favorites) {
-        return;
-      }
-      updateUserData({favorites: favorites.join()});
-    }, [favorites]);
-
+    const {user} = useContext(userContext)
     const searchImages = search => {
+        const favs = user?.Images.map(a=> a.nasa_id);
         searchImage(search)
         .then(res => {
-          const results = res.data.collection.items;
+          const results = res.data.collection.items.map(a=>{
+            if(favs.includes(a.data[0].nasa_id)){
+              return {nasa_id: a.data[0].nasa_id, title: a.data[0].title, src: a.links[0].href, isFav: true}
+            }else{
+              return {nasa_id: a.data[0].nasa_id, title: a.data[0].title, src: a.links[0].href}
+            }
+          })
           if (results.length === 0) {
               throw new Error("No results found.");
           }
+          
           setImages(results);
-          getUserData()
-          .then((response) => {
-            const data = response.images ? response.images.split() : [];
-            setFavorites(data);
-          })
         })
         .catch(err => setError(err));
     }
@@ -71,12 +67,6 @@ function Gallery() {
       setCurrentTab(value);
     }
 
-    const updateFavorites = newFavorite => {
-      setFavorites([
-        ...favorites,
-        newFavorite
-      ])
-    }
   
     return (
       <div>
@@ -97,10 +87,10 @@ function Gallery() {
             />
           </Grid>
           <Grid item xs={12}>
-            <ImageGrid images={images} updateFavorites={updateFavorites}/>
+            <ImageGrid images={images}/>
           </Grid>
           </>
-          : <ImageGrid images={favorites} updateFavorites={updateFavorites}/>}
+          : <ImageGrid images={user.Images} userFav={true}/>}
         </Grid>
       </div>
     );
