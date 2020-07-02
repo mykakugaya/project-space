@@ -57,7 +57,7 @@ export default function CenteredGrid() {
           console.log("Logged in!");
           window.location.replace("/");
       })
-      .catch ( err => setError(err));
+      .catch ( err => console.log(err));
   };
 
   const handleCreateUser = event => {
