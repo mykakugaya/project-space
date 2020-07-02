@@ -16,7 +16,8 @@ export const getUsers = () => axios.get("api/users");
 export const postSignup = (user) => axios.post("api/signup", user);
 export const getLogout = () => axios.get("api/logout")
 export const getUserData = () => axios.get("api/user_data");
-export const updateUserData = (favorites) => axios.post("api/user_data", favorites);
+export const getFavoritesData = (user) => axios.get("api/images", user);
+export const updateFavoritesData = (data) => axios.post("api/images", data);
 
 // Posts APIs
 export const getAllPosts = () => axios.get("/api/posts");

@@ -34,11 +34,11 @@ export default function ImageGridList(props) {
       <GridList cellHeight={300} className={classes.gridList} cols={3}>
         {props.images.map((tile) => {
           return (
-              <GridListTile key={tile.data[0].nasa_id} cols={1}>
+              <GridListTile key={tile.nasa_id} cols={1}>
                 <span className={classes.imageSrc} style={{
-                  backgroundImage: `url(${tile.links[0].href})`
+                  backgroundImage: `url(${tile.src})`
                 }}/>
-                <FavIcon id={tile.data[0].nasa_id} updateFavorites={props.updateFavorites}/>
+                <FavIcon image={props.userFav? {...tile,isFav:true} : tile}/>
               </GridListTile>
         )})}
       </GridList>
