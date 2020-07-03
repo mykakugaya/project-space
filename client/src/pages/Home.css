@@ -1,6 +1,5 @@
 .asteroidTable {
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 2%;
     max-width: 70%;
     justify-content: center;
     border:1px solid white;
@@ -9,27 +8,36 @@
 }
 
 .weatherReport {
-    padding-left: 15%;
-    padding-right: 15%;
     justify-content: center;
     border:1px solid white;
 }
 
 .roverPhotos {
-    padding: 5%;
-    padding-left: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
     border:1px solid white;
     border-radius: 16px;
-    min-height: 718px;
+    min-height: 620px;
 }
 
 .spaceXTable {
-    padding-left: 5%;
-    padding-right: 5%;
+    padding-left: 2%;
+    padding-right: 2%;
     padding-top: 0;
     max-width: 50%;
-    min-height: 718px;
+    min-height: 620px;
     border:1px solid white;
     border-radius: 16px;
     justify-content: center;
+}
+
+.about {
+    color: white;
+    border:1px solid white;
+    border-radius: 16px;
+    padding-left: 2%;
+}
+
+.profilePic {
+    width: 60%;
 }

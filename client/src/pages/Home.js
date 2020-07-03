@@ -165,9 +165,38 @@ class Home extends Component {
                     <h2>Built for the Space Enthusiast!</h2>
                 </Hero>
                 <Grid container direction="row" justify="center" alignItems="center">
+                    <Grid item xs={6} className="about">
+                        <h2>Welcome to Space Hub!</h2>
+                        <p>This application was developed for all Space Enthusiasts! Built with the passion of true space nerds, this site features several API's from NASA and SpaceX. We are pleased to provide a unique and immersive environment where users can re-ignite their love for all things outer-space!</p>
+                        <ul><strong>Widgets featured on this page include...</strong>
+                            <li>NASA's Astronomy Picture of the Day</li>
+                            <li>A Mars weather report updated weekly</li>
+                            <li>Asteroid tracker, lists various properties of the asteroids nearest to Earth</li>
+                            <li>Gallery of photos taken on Mars by NASA's Curiosity rover, updated daily </li>
+                            <li>SpaceX launch data; view detailed info on each of SpaceX's rocket launches!</li>
+                        </ul>
+                   
+                    </Grid>
+                    <Grid item xs={6} className="about">
+                    <h2>Meet the Developers - Links to Portfolio's included!</h2>
+                        <Grid item xs={3}>
+                            <a href="https://abazrafshan.github.io/Responsive-Portfolio/">
+                                <img className="profilePic" src={require("../Pics/arashprofile.jpg")} href={"https://abazrafshan.github.io/Responsive-Portfolio/"}/>
+                                <p style={{color: "white"}}>Arash Bazrafshan</p>
+                            </a>
+                            <br></br>
+                        </Grid>
+                        <Grid item xs={3}>
+                            
+                        </Grid>
+                        <Grid item xs={3}>
+                            
+                        </Grid>
+                        <Grid item xs={3}></Grid>
+                    </Grid>
                     <Grid item xs={6} className="asteroidTable">
-                        <h2 style={{color:"white"}}>NASA's weather report from Mars</h2>
-                        <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='800' height='530'  scrolling='no' frameborder='0'></iframe>
+                        <h2 style={{color:"white"}}>Mars weather report</h2>
+                        <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='800' height='530'  scrolling='no' frameborder='1'></iframe>
                     </Grid>
                     <Grid item xs={6} justify="flex-start" alignItems="center" align="left" className="asteroidTable">
                         <h2 style={{color:"white"}}>View properties of nearby Asteroids</h2>
@@ -184,20 +213,14 @@ class Home extends Component {
                         />
                         ) : (<div></div>)}
                     </Grid>
-                    {/* <br></br> */}
                     <Grid item xs={5} className="roverPhotos">
-                        <h2 style={{color: "white", textAlign: "center"}}>Browse today's photos captured by NASA'sMars Rover  Curiosity</h2>
+                        <h2 style={{color: "white", textAlign: "center"}}>Browse today's Mars photos captured by NASA's Curiosity rover</h2>
                         <MarsRoverImages backgroundImage={this.state.marsRoverImage} >
                             <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
                             <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
                         </MarsRoverImages>
                     </Grid>
                     <Grid item xs={7} className="spaceXTable" justify="flex-start" alignItems="center" align="left">
-                        {/* <br></br>
-                        <br></br>
-                        <br></br>
-                        <br></br>
-                        <br></br> */}
                         <h2 style={{color:"white"}}>View details of past SpaceX rocket launches</h2>
                         <SpaceXSearchForm
                             handleFormSubmitLaunch = {this.handleFormSubmitLaunch}
