@@ -41,15 +41,27 @@ console.log(props)
         <TableBody>
             <StyledTableRow>
               <StyledTableCell component="th" scope="row">Mission Name and Date</StyledTableCell>
-              <StyledTableCell align="left">{props.results.mission_name} (flight number {props.results.flight_number}) launched in {props.results.launch_year}</StyledTableCell>
+              <StyledTableCell align="left">{props.results.mission_name} (SpaceX launch number {props.results.flight_number}) launched in {props.results.launch_year}</StyledTableCell>
+            </StyledTableRow>
+            <StyledTableRow>
+              <StyledTableCell component="th" scope="row">Mission Patch</StyledTableCell>
+              <StyledTableCell align="left"><img style={{width: "20%"}}src={props.results.links.mission_patch_small}/></StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component="th" scope="row">Launch Details</StyledTableCell>
               <StyledTableCell align="left">{props.results.details}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
-              <StyledTableCell component="th" scope="row">Successful?</StyledTableCell>
-              <StyledTableCell align="left">{props.results.launch_success}</StyledTableCell>
+              <StyledTableCell component="th" scope="row">Mission Success?</StyledTableCell>
+              <StyledTableCell align="left">{props.results.launch_success.toString().toUpperCase()}</StyledTableCell>
+            </StyledTableRow>
+            <StyledTableRow>
+              <StyledTableCell component="th" scope="row">Rocket Name</StyledTableCell>
+              <StyledTableCell align="left">{props.results.rocket.rocket_name}</StyledTableCell>
+            </StyledTableRow>
+            <StyledTableRow>
+              <StyledTableCell component="th" scope="row">Launch Site</StyledTableCell>
+              <StyledTableCell align="left">{props.results.launch_site.site_name_long}</StyledTableCell>
             </StyledTableRow>
         </TableBody>
       </Table>

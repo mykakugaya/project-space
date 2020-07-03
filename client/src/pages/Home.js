@@ -9,7 +9,32 @@ import SpaceXSearchResults from "../components/SpaceXSearchResults/SpaceXSearchR
 import SpaceXSearchForm from "../components/SpaceXSearchForm/SpaceXSearchForm";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+// import { withStyles } from "@material-ui/core";
+import "./Home.css"
 const currentday = moment().format("YYYY-MM-DD");
+// const classes = withStyles((theme) => ({
+//     padding: {
+//       padding: "5%"
+//     },
+//     paper: {
+//       padding: theme.spacing(2),
+//       textAlign: "left",
+//       color: theme.palette.text.secondary,
+//     },
+//     root: {
+//       backgroundColor: "#424242",
+//     },
+//     text: {
+//       width: "100ch",
+//       padding: "5px"
+//     },
+//     form: {
+//         alignContent: "center"
+//     },
+//     button: {
+//         padding: "5px"
+//     }
+//   }));
 
 
 class Home extends Component {
@@ -31,6 +56,8 @@ class Home extends Component {
         searchlaunch: "",
         launchResults: []
     }
+
+    
 
     handleInputChange = event => {
         console.log(event.target)
@@ -134,54 +161,62 @@ class Home extends Component {
         return (
             <div>
                 <Hero backgroundImage={this.state.heroImage}>
-                    <h1>The Space Hub App</h1>
+                    <h1>The Space Hub</h1>
                     <h2>Built for the Space Enthusiast!</h2>
                 </Hero>
                 <Grid container direction="row" justify="center" alignItems="center">
-                    <Grid item xs={8}>
-                        <h2 style={{color:"white", textAlign: "center"}}>Weather report from Mars</h2>
-                        <iframe style={{justify:"center"}} src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='1000' height='622'  scrolling='no' frameborder='10'></iframe>
+                    <Grid item xs={6} className="asteroidTable">
+                        <h2 style={{color:"white"}}>NASA's weather report from Mars</h2>
+                        <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='800' height='530'  scrolling='no' frameborder='0'></iframe>
                     </Grid>
-                    <Grid item xs={4}>
-                        <h2 style={{color: "white", textAlign: "center"}}>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
-                        <MarsRoverImages backgroundImage={this.state.marsRoverImage} style={{textAlign: "center"}}>
-                            <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
-                            <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
-                        </MarsRoverImages>
-                    </Grid>
-                    <br></br>
-                    <Grid item xs={4} justify="flex-start" alignItems="center" align="left">
+                    <Grid item xs={6} justify="flex-start" alignItems="center" align="left" className="asteroidTable">
+                        <h2 style={{color:"white"}}>View properties of nearby Asteroids</h2>
                         <AsteroidSearchForm
                             handleFormSubmit = {this.handleFormSubmit}
                             handleInputChange = {this.handleInputChange}
                             asteroids = {this.state.asteroids}
                             search = {this.state.search}
                         />
-                        {this.state.results.length>0?(
+                        {this.state.results.length> 0 ? (
                             <AsteroidSearchResults 
                             results={this.state.results[0]}
                             search={this.state.search}
                         />
-                        ):(<div></div>)}
+                        ) : (<div></div>)}
                     </Grid>
-                    <Grid item xs={8} margin="5px">
+                    {/* <br></br> */}
+                    <Grid item xs={5} className="roverPhotos">
+                        <h2 style={{color: "white", textAlign: "center"}}>Browse today's photos captured by NASA'sMars Rover  Curiosity</h2>
+                        <MarsRoverImages backgroundImage={this.state.marsRoverImage} >
+                            <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
+                            <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
+                        </MarsRoverImages>
+                    </Grid>
+                    <Grid item xs={7} className="spaceXTable" justify="flex-start" alignItems="center" align="left">
+                        {/* <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br>
+                        <br></br> */}
+                        <h2 style={{color:"white"}}>View details of past SpaceX rocket launches</h2>
                         <SpaceXSearchForm
                             handleFormSubmitLaunch = {this.handleFormSubmitLaunch}
                             handleInputChangeLaunch = {this.handleInputChangeLaunch}
                             launches = {this.state.launches}
                             search = {this.state.searchlaunch}
                         />
-                        {this.state.launchResults.length>0?(
+                   
+                        {this.state.launchResults.length> 0 ? (
                             <SpaceXSearchResults 
                             results={this.state.launchResults[0]}
                             searchlaunch={this.state.searchlaunch}
                         />
-                        ):(<div></div>)}
+                        ) : (<div></div>)}
                     </Grid>
                 </Grid>
             </div>
         )
     }
 }
-
+//export default withStyles(classes)(Home);
 export default Home;
