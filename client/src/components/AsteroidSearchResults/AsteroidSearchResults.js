@@ -49,7 +49,7 @@ export default function AsteroidSearchResults(props) {
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component="th" scope="row">Dangerous to Life on Earth?</StyledTableCell>
-              <StyledTableCell align="left">{props.results.is_potentially_hazardous_asteroid.toString()}</StyledTableCell>
+              <StyledTableCell align="left">{props.results.is_potentially_hazardous_asteroid.toString().toUpperCase()}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component="th" scope="row">Should Miss Earth by...</StyledTableCell>
