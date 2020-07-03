@@ -25,10 +25,9 @@ module.exports = function(sequelize, DataTypes) {
         freezeTableName: true
     });
 
-
-
     Post.associate = function(models) {
         Post.belongsTo(models.User, {
+            through: "UserId",
             foreignKey: {
                 allowNull: false
             }
