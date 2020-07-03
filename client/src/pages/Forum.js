@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Post from "../components/Post";
 import ForumSearch from "../components/ForumSearch";
 import { makeStyles } from "@material-ui/core/styles";
@@ -7,7 +7,8 @@ import TextField from "@material-ui/core/TextField";
 import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import Button from "@material-ui/core/Button";
-import { createNewPost } from "../utils/API";
+import { createNewPost, getAllPosts } from "../utils/API";
+import {userContext} from "../utils/userContext";
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -17,12 +18,9 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   paper: {
-    padding: theme.spacing(2),
+    padding: theme.spacing(3),
     textAlign: "left",
     color: theme.palette.text.secondary,
-  },
-  root: {
-    backgroundColor: "#424242",
   },
   text: {
     width: "100ch",
@@ -36,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
+
 function Forum() {
   const classes = useStyles();
   const [search, setSearch] = useState("");
@@ -44,7 +43,8 @@ function Forum() {
   const [newPostBody, setnewPostBody] = useState("");
   const [currentForum, setCurrentForum] = useState("");
   const [error, setError] = useState("");
-  const [favorites, setFavorites] = useState([]);
+
+  const {user} = useContext(userContext);
 
   useEffect(() => {
     getPosts(posts);
@@ -58,7 +58,8 @@ function Forum() {
       event.preventDefault();
       createNewPost( {
           title: newPostTitle,
-          body: newPostBody
+          body: newPostBody,
+          author: user.name
       })
       .then ( () => {
         console.log("New Post Saved");
@@ -67,15 +68,11 @@ function Forum() {
   }
 
   const getPosts = () => {
-    // ImageAPI.search(search)
-    // .then(res => {
-    //     const results = res.data.collection.items;
-    //     if (results.length === 0) {
-    //         throw new Error("No results found.");
-    //     }
-    //     setImages(results);
-    // })
-    // .catch(err => setError(err));
+    getAllPosts()
+    .then(res => {
+      setPosts(res.data);
+    })
+    .catch ( err => setError(err));
   };
 
   const handleInputChange = (event) => {
@@ -86,7 +83,6 @@ function Forum() {
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
-    // searchImages(search);
   };
 
   const handleTabChange = (value) => {
@@ -139,23 +135,10 @@ function Forum() {
               </form>
             </Grid>
           </Paper>
+          {posts.map(post => {
+            return <Post key={post.id} title={post.title} body={post.body} author={post.author}/>
+          })}
         </Container>
-        {/* <GalleryTabs handleTabChange={handleTabChange}/>
-            </Grid>
-            {currentTab === 0 ? 
-            <>
-            <Grid item xs={12}>
-            <ForumSearch
-            handleInputChange={handleInputChange}
-            handleFormSubmit={handleFormSubmit}
-            results={search}
-            />
-            </Grid>
-            <Grid item xs={12}>
-            <ImageGrid images={images} />
-            </Grid>
-            </>
-            : <ImageGrid images={favorites} updateFavorites={updateFavorites}/>} */}
       </Grid>
     </div>
   );
