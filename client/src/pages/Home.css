@@ -1,0 +1,27 @@
+.spaceXTable {
+    padding: 10%;
+    max-width: 50%;
+    justify-content: center;
+    border:1px solid white;
+    border-radius: 16px;
+}
+
+.asteroidTable {
+    padding: 5%;
+    max-width: 70%;
+    justify-content: center;
+    border:1px solid white;
+    border-radius: 16px;
+    min-height: 800px;
+}
+
+.weatherReport {
+    padding: 5%;
+    justify-content: center;
+    border:1px solid white;
+    max-height: ;
+}
+
+.roverPhotos {
+
+}

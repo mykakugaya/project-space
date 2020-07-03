@@ -9,7 +9,32 @@ import SpaceXSearchResults from "../components/SpaceXSearchResults/SpaceXSearchR
 import SpaceXSearchForm from "../components/SpaceXSearchForm/SpaceXSearchForm";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+// import { withStyles } from "@material-ui/core";
+import "./Home.css"
 const currentday = moment().format("YYYY-MM-DD");
+// const classes = withStyles((theme) => ({
+//     padding: {
+//       padding: "5%"
+//     },
+//     paper: {
+//       padding: theme.spacing(2),
+//       textAlign: "left",
+//       color: theme.palette.text.secondary,
+//     },
+//     root: {
+//       backgroundColor: "#424242",
+//     },
+//     text: {
+//       width: "100ch",
+//       padding: "5px"
+//     },
+//     form: {
+//         alignContent: "center"
+//     },
+//     button: {
+//         padding: "5px"
+//     }
+//   }));
 
 
 class Home extends Component {
@@ -31,6 +56,8 @@ class Home extends Component {
         searchlaunch: "",
         launchResults: []
     }
+
+    
 
     handleInputChange = event => {
         console.log(event.target)
@@ -134,23 +161,15 @@ class Home extends Component {
         return (
             <div>
                 <Hero backgroundImage={this.state.heroImage}>
-                    <h1>The Space Hub App</h1>
+                    <h1>The Space Hub</h1>
                     <h2>Built for the Space Enthusiast!</h2>
                 </Hero>
                 <Grid container direction="row" justify="center" alignItems="center">
-                    <Grid item xs={8}>
-                        <h2 style={{color:"white", textAlign: "center"}}>Weather report from Mars</h2>
-                        <iframe style={{justify:"center"}} src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='1000' height='622'  scrolling='no' frameborder='10'></iframe>
+                    <Grid item xs={8} className="asteroidTable">
+                        <h2 style={{color:"white"}}>Weather report from Mars</h2>
+                        <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='800' height='530'  scrolling='no' frameborder='0'></iframe>
                     </Grid>
-                    <Grid item xs={4}>
-                        <h2 style={{color: "white", textAlign: "center"}}>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
-                        <MarsRoverImages backgroundImage={this.state.marsRoverImage} style={{textAlign: "center"}}>
-                            <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
-                            <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
-                        </MarsRoverImages>
-                    </Grid>
-                    <br></br>
-                    <Grid item xs={4} justify="flex-start" alignItems="center" align="left">
+                    <Grid item xs={4} justify="flex-start" alignItems="center" align="left" className="asteroidTable">
                         <AsteroidSearchForm
                             handleFormSubmit = {this.handleFormSubmit}
                             handleInputChange = {this.handleInputChange}
@@ -164,7 +183,16 @@ class Home extends Component {
                         />
                         ) : (<div></div>)}
                     </Grid>
-                    <Grid item xs={8} margin="5%">
+                    
+                    <br></br>
+                    <Grid item xs={4}>
+                        <h2 style={{color: "white", textAlign: "center"}}>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
+                        <MarsRoverImages backgroundImage={this.state.marsRoverImage} style={{textAlign: "center"}}>
+                            <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
+                            <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
+                        </MarsRoverImages>
+                    </Grid>
+                    <Grid item xs={8} className="spaceXTable">
                         <SpaceXSearchForm
                             handleFormSubmitLaunch = {this.handleFormSubmitLaunch}
                             handleInputChangeLaunch = {this.handleInputChangeLaunch}
@@ -183,5 +211,5 @@ class Home extends Component {
         )
     }
 }
-
+//export default withStyles(classes)(Home);
 export default Home;
