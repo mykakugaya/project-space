@@ -184,20 +184,20 @@ class Home extends Component {
                         />
                         ) : (<div></div>)}
                     </Grid>
-                    <br></br>
+                    {/* <br></br> */}
                     <Grid item xs={5} className="roverPhotos">
-                        <h2 style={{color: "white", textAlign: "center"}}>Browse today's photos captured by NASA's Curiosity Mars Rover</h2>
+                        <h2 style={{color: "white", textAlign: "center"}}>Browse today's photos captured by NASA'sMars Rover  Curiosity</h2>
                         <MarsRoverImages backgroundImage={this.state.marsRoverImage} >
                             <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
                             <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
                         </MarsRoverImages>
                     </Grid>
                     <Grid item xs={7} className="spaceXTable" justify="flex-start" alignItems="center" align="left">
+                        {/* <br></br>
                         <br></br>
                         <br></br>
                         <br></br>
-                        <br></br>
-                        <br></br>
+                        <br></br> */}
                         <h2 style={{color:"white"}}>View details of past SpaceX rocket launches</h2>
                         <SpaceXSearchForm
                             handleFormSubmitLaunch = {this.handleFormSubmitLaunch}
