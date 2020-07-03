@@ -1,6 +1,6 @@
 import React,{useState, useEffect, useContext} from "react";
 import ImageGrid from "../components/ImageGrid";
-import {searchImage, getUserData, updateFavoritesData, getFavoritesData} from "../utils/API"
+import {searchImage} from "../utils/API";
 import Grid from '@material-ui/core/Grid';
 import ImageSearch from "../components/ImageSearch";
 import GalleryTabs from "../components/GalleryTabs";
@@ -22,7 +22,6 @@ function Gallery() {
     const [images, setImages] = useState([]);
     const [error, setError] = useState("");
     const [currentTab, setCurrentTab] = useState(0);
-    const [favorites, setFavorites] = useState([]);
   
     useEffect(() => {
       searchImages(search);
@@ -30,14 +29,14 @@ function Gallery() {
 
     const {user} = useContext(userContext)
     const searchImages = search => {
-        const favs = user?.Images.map(a=> a.nasa_id);
+        const favs = user?.Images?.map(a=> a.nasa_id);
         searchImage(search)
         .then(res => {
           const results = res.data.collection.items.map(a=>{
             if(favs.includes(a.data[0].nasa_id)){
               return {nasa_id: a.data[0].nasa_id, title: a.data[0].title, src: a.links[0].href, isFav: true}
             }else{
-              return {nasa_id: a.data[0].nasa_id, title: a.data[0].title, src: a.links[0].href}
+              return {nasa_id: a.data[0].nasa_id, title: a.data[0].title, src: a.links[0].href, isFav: false}
             }
           })
           if (results.length === 0) {
@@ -63,7 +62,6 @@ function Gallery() {
     const handleTabChange = value => {
       setCurrentTab(value);
     }
-
   
     return (
       <div>

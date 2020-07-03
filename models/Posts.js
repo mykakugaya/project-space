@@ -8,10 +8,10 @@ module.exports = function(sequelize, DataTypes) {
                 len: [1]
             }
         },
-        // category: {
-        //     type: DataTypes.STRING,
-        //     allowNull: false
-        // },
+        category: {
+            type: DataTypes.STRING,
+            allowNull: false
+        },
         body: {
             type: DataTypes.STRING,
             allowNull: false,
