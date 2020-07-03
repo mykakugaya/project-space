@@ -9,12 +9,12 @@ const useStyles = makeStyles((theme) => ({
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    overflow: 'hidden',
-    backgroundColor: '#424242',
+    overflow: 'hidden'
   },
   gridList: {
     width: "80em",
-    height: 'auto'
+    height: 'auto',
+    justifyContent: "center"
   },
   imageSrc: {
     position: 'absolute',
@@ -24,6 +24,9 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     backgroundSize: 'cover',
     backgroundPosition: 'center 40%',
+  },
+  message: {
+    color: 'white'
   }
 }));
 
@@ -32,15 +35,15 @@ export default function ImageGridList(props) {
   return (
     <div className={classes.root}>
       <GridList cellHeight={300} className={classes.gridList} cols={3}>
-        {props.images.map((tile) => {
+        {props.images ? props.images.map((tile) => {
           return (
               <GridListTile key={tile.nasa_id} cols={1}>
                 <span className={classes.imageSrc} style={{
                   backgroundImage: `url(${tile.src})`
                 }}/>
-                <FavIcon image={props.userFav? {...tile,isFav:true} : tile}/>
+                <FavIcon image={props.userFav? {...tile,isFav:true} : {...tile, isFav:false}}/>
               </GridListTile>
-        )})}
+        )}) : <h2 className={classes.message}>No favorited images yet.</h2>}
       </GridList>
     </div>
   );

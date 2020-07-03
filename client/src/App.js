@@ -7,7 +7,7 @@ import MyCalendar from "./pages/Calendar";
 import Gallery from "./pages/Gallery";
 import Login from "./pages/Login";
 // import JobSearch from "./pages/JobSearch";
-import {getUserData, updateFavoritesData} from './utils/API'
+import {getUserData, updateFavoritesData, deleteFavorite} from './utils/API'
 import "./App.css";
 import {userContext} from "./utils/userContext"
 
@@ -19,13 +19,26 @@ function App() {
       setUser(data)})
     .catch(err=> console.log(err))
   },[])
-const setFav = val => {
-  updateFavoritesData({...val,UserId:user.id})
-};
+
+  const setFav = val => {
+    const match = user?.Images.filter(image => image.nasa_id==val.nasa_id);
+    if (match.length===0) {
+      updateFavoritesData({...val, UserId:user.id});
+      console.log(user.Images);
+    }
+  };
+
+  const removeFav = val => {
+    const match = user?.Images.filter(image => image.nasa_id===val.nasa_id);
+    if (match.length>0) {
+      deleteFavorite({...val, UserId:user.id});
+      console.log(user.Images);
+    } 
+  }
 
   return (
     <Router>
-      <userContext.Provider value={{user, fav:setFav}}>
+      <userContext.Provider value={{user:user, fav:setFav, unfav:removeFav}}>
       <style>{'body { background-color: #313131; }'}</style>
       <style>{'body { background-image: url("https://images.unsplash.com/photo-1501862700950-18382cd41497?ixlib=rb-1.2.1&auto=format&fit=crop&w=1947&q=80"); }'}</style>
         <Navbar />

@@ -18,6 +18,7 @@ export const getLogout = () => axios.get("api/logout")
 export const getUserData = () => axios.get("api/user_data");
 export const getFavoritesData = (user) => axios.get("api/images", user);
 export const updateFavoritesData = (data) => axios.post("api/images", data);
+export const deleteFavorite = (data) => axios.delete("api/images", data)
 // Posts APIs
 export const getAllPosts = () => axios.get("/api/posts");
 export const createNewPost = (newPost) => axios.post("/api/posts", newPost);

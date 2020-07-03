@@ -22,7 +22,7 @@ module.exports = function(sequelize, DataTypes) {
         Image.belongsToMany(models.User, {
             through: "userId",
             foreignKey: {
-                allowNull: false
+                allowNull: true
             }
         });
     };
