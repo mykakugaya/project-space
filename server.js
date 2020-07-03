@@ -35,7 +35,7 @@ function shouldCompress (req, res) {
 // Add routes, both API and view
 app.use("/api", routes);
 
-db.sequelize.sync({force:true}).then(() => {
+db.sequelize.sync({force:false}).then(() => { 
   app.listen(PORT, () => {
     console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
   });

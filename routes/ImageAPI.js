@@ -9,9 +9,17 @@ router.get("/images", function(req, res) {
 })
 
 router.post("/images", function(req, res) {
-    console.log(req.body)
-    db.Image.create(req.body
-    )
+    db.Image.create(req.body)
+    .then(() => {
+        res.redirect(307, "/api/gallery");
+    })
+    .catch(err => {
+        res.status(401).json(err);
+    });
+})
+
+router.delete("/images", function(req, res) {
+    db.Image.destroy({where: {nasa_id: req.body.nasa_id}})
     .then(() => {
         res.redirect(307, "/api/gallery");
     })
