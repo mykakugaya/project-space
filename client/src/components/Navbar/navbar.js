@@ -6,8 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import Tab from "@material-ui/core/Tab";
 import Tabs from "@material-ui/core/Tabs";
 import { Link } from "react-router-dom";
-import {userContext} from "../../utils/userContext"
-import {getLogout} from "../../utils/API"
+import { userContext } from "../../utils/userContext"
+import { getLogout } from "../../utils/API"
 
 const useStyles = makeStyles((theme) => ({
   root: {

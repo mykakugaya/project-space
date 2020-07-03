@@ -58,6 +58,7 @@ function Forum() {
       event.preventDefault();
       createNewPost( {
           title: newPostTitle,
+          category: "default",
           body: newPostBody
       })
       .then ( () => {

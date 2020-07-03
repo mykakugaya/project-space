@@ -3,7 +3,7 @@ const db = require("../models");
 
 // get all posts
 router.get("/posts", function (req, res) {
-  db.User.findAll({
+  db.Post.findAll({
     include: [db.Post],
   }).then(function (getPostsResult) {
     res.json(getPostsResult);
@@ -12,14 +12,14 @@ router.get("/posts", function (req, res) {
 
 // create new post
 router.post("/posts", function (req, res) {
-  db.Activity.create(req.body).then(function (createPostResult) {
-    res.json(createPostResult);
+  db.Post.create(req.body).then(function (dbPost) {
+    res.json(dbPost);
   });
 });
 
 // delete post
 router.delete("/post/:id", function (req, res) {
-  db.Activity.destroy({
+  db.Post.destroy({
     where: {
       id: req.params.id,
     },
@@ -30,7 +30,7 @@ router.delete("/post/:id", function (req, res) {
 
 // update post
 router.put("/post/:id", function (req, res) {
-  db.Activity.update({
+  db.Post.update({
     where: {
       id: req.params.id,
     },
