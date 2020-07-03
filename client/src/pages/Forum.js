@@ -58,8 +58,8 @@ function Forum() {
       event.preventDefault();
       createNewPost( {
           title: newPostTitle,
-          body: newPostBody,
-          author: user.name
+          category: "default",
+          body: newPostBody
       })
       .then ( () => {
         console.log("New Post Saved");
