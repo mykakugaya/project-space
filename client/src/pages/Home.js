@@ -175,28 +175,30 @@ class Home extends Component {
                             <li>Gallery of photos taken on Mars by NASA's Curiosity rover, updated daily </li>
                             <li>SpaceX launch data; view detailed info on each of SpaceX's rocket launches!</li>
                         </ul>
+                        <p>In addition, this site features login functionality, a forum for enthusiasts to post and respond to topics for discussion, an image gallery, a job posting section that pulls jobs from Indeed's job search API, and a calendar for tracking major space-related events!</p>
                    
                     </Grid>
                     <Grid item xs={6} className="about">
                     <h2>Meet the Developers - Links to Portfolio's included!</h2>
-                        <Grid item xs={3}>
+                        <Grid item xs={4}>
                             <a href="https://abazrafshan.github.io/Responsive-Portfolio/">
                                 <img className="profilePic" src={require("../Pics/arashprofile.jpg")} href={"https://abazrafshan.github.io/Responsive-Portfolio/"}/>
                                 <p style={{color: "white"}}>Arash Bazrafshan</p>
                             </a>
                             <br></br>
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item xs={4}>
                             
                         </Grid>
-                        <Grid item xs={3}>
+                        <Grid item xs={4}>
                             
                         </Grid>
-                        <Grid item xs={3}></Grid>
                     </Grid>
                     <Grid item xs={6} className="asteroidTable">
                         <h2 style={{color:"white"}}>Mars weather report</h2>
-                        <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='800' height='530'  scrolling='no' frameborder='1'></iframe>
+                        <div>
+                            <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='100%' height='540em'  scrolling='yes' frameborder='1'></iframe>
+                        </div>
                     </Grid>
                     <Grid item xs={6} justify="flex-start" alignItems="center" align="left" className="asteroidTable">
                         <h2 style={{color:"white"}}>View properties of nearby Asteroids</h2>

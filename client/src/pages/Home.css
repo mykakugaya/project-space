@@ -1,5 +1,6 @@
 .asteroidTable {
     padding-left: 2%;
+    padding-right: 2%;
     max-width: 70%;
     justify-content: center;
     border:1px solid white;
@@ -10,6 +11,8 @@
 .weatherReport {
     justify-content: center;
     border:1px solid white;
+    overflow: hidden;
+    /* padding-top: -2%; */
 }
 
 .roverPhotos {
@@ -39,5 +42,21 @@
 }
 
 .profilePic {
-    width: 60%;
+    width: 66%;
+    border-radius: 50%;
 }
+
+.iframe-container {
+    overflow: hidden;
+    padding-top: 2%;
+    position: relative;
+  }
+   
+  .iframe-container iframe {
+     border: 0;
+     height: 100%;
+     left: 0;
+     position: absolute;
+     top: 0;
+     width: 100%;
+  }
