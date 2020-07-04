@@ -21,7 +21,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-function Post(props) {
+function PostResponse(props) {
     const classes = useStyles();
 
     return(
@@ -37,12 +37,6 @@ function Post(props) {
             />
             <Divider/>
             <CardContent>
-                <Typography color="textSecondary">
-                    Category: {props.category}
-                </Typography>
-                <Typography variant="h6" component="h3">
-                    {props.title}
-                </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                     {props.body}
                 </Typography>
@@ -73,4 +67,4 @@ function Post(props) {
     )
 }
 
-export default Post;
+export default PostResponse;

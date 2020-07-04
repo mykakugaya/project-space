@@ -16,10 +16,16 @@ import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormHelperText from '@material-ui/core/FormHelperText';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
 import { red } from '@material-ui/core/colors';
 import { createNewPost, getAllPosts } from "../utils/API";
 import {userContext} from "../utils/userContext";
 import moment from "moment";
+import PostResponseForm from "../components/PostResponseForm";
 const currentday = moment().format("YYYY-MM-DD");
 
 const useStyles = makeStyles((theme) => ({
@@ -44,6 +50,10 @@ const useStyles = makeStyles((theme) => ({
   button: {
       padding: "5px"
   },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
   avatar: {
     backgroundColor: red[500],
   }
@@ -56,6 +66,7 @@ function Forum() {
   const [posts, setPosts] = useState([]);
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostBody, setnewPostBody] = useState("");
+  const [newPostCategory, setnewPostCategory] = useState("");
   const [currentForum, setCurrentForum] = useState("");
   const [error, setError] = useState("");
 
@@ -71,9 +82,12 @@ function Forum() {
 
   const handleCreatePost = event => {
       event.preventDefault();
+      if(!user) {
+        console.log("You must log in or create an account.")
+      }
       createNewPost( {
           title: newPostTitle,
-          category: "default",
+          category: newPostCategory,
           body: newPostBody,
           UserId: user.id
       })
@@ -86,7 +100,6 @@ function Forum() {
   const getPosts = () => {
     getAllPosts()
     .then(res => {
-      console.log(res)
       setPosts(res.data);
     })
     .catch ( err => setError(err));
@@ -123,6 +136,11 @@ function Forum() {
             <Grid className={classes.form} item xs={12}>
             <Card>
                 <CardHeader
+                    // avatar={ user ?
+                    // <Avatar aria-label="user" className={classes.avatar}>
+                    //   {user.name[0]}
+                    // </Avatar>
+                    //   :
                     avatar={
                     <Avatar aria-label="user" className={classes.avatar}>
                         S
@@ -137,6 +155,21 @@ function Forum() {
                       New Post
                   </Typography>
                   <form>
+                    <FormControl variant="outlined" className={classes.formControl}>
+                      <InputLabel id="demo-simple-select-outlined-label">Category</InputLabel>
+                      <Select
+                        labelId="demo-simple-select-outlined-label"
+                        id="demo-simple-select-outlined"
+                        value={newPostCategory}
+                        onChange={e => setnewPostCategory(e.target.value)}
+                        label="Category"
+                      >
+                        <MenuItem value={"Earth"}>Earth</MenuItem>
+                        <MenuItem value={"Solar System"}>Solar System</MenuItem>
+                        <MenuItem value={"NASA"}>NASA</MenuItem>
+                        <MenuItem value={"SpaceEx Launches"}>SpaceEx Launches</MenuItem>
+                      </Select>
+                    </FormControl>
                     <TextField className={classes.text}
                         id="outlined-multiline-static"
                         label="Title"
@@ -170,7 +203,13 @@ function Forum() {
             </Grid>
           </Paper>
           {posts.map(post => {
-            return <Post key={post.id} date ={post.createdAt} title={post.title} category={post.category} body={post.body} author={post.User.name}/>
+            const date = post.createdAt.slice(0, 10) + " at " + post.createdAt.slice(11,16)
+            return (
+              <>
+              <Post key={post.id} date ={date} title={post.title} category={post.category} body={post.body} author={post.User.name}/>
+              <PostResponseForm key={post.id} postId={post.id} category={post.category} title={post.title}/>
+              </>
+            )
           })}
         </Container>
       </Grid>
