@@ -47,6 +47,28 @@ function Post(props) {
                     {props.body}
                 </Typography>
             </CardContent>
+            {/* <CardActions disableSpacing>
+                <IconButton
+                className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                })}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+                >
+                    <FavoriteIcon />
+                </IconButton>
+                <IconButton
+                className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                })}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+                >
+                    <DeleteIcon />
+                </IconButton>
+            </CardActions> */}
         </Card>
     )
 }

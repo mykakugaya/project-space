@@ -16,9 +16,19 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
-    avatar: {
-      backgroundColor: red[500],
-    },
+    text: {
+        width: "100ch",
+        padding: "5px"
+      },
+      form: {
+          alignContent: "center"
+      },
+      button: {
+          padding: "5px"
+      },
+      avatar: {
+        backgroundColor: red[500],
+      }
 }));
 
 function PostResponseForm(props) {
@@ -37,11 +47,11 @@ function PostResponseForm(props) {
             />
             <Divider/>
             <CardContent>
-                <Typography className={classes.pos} color="textSecondary">
+                <Typography color="textSecondary">
                     {props.category}
                 </Typography>
                 <Typography variant="h6" component="h3">
-                      Respond to the forum:
+                      Response:
                 </Typography>
                 <form>
                     <TextField className={classes.text}
@@ -73,6 +83,28 @@ function PostResponseForm(props) {
                     </Button>
                 </form>
             </CardContent>
+            {/* <CardActions disableSpacing>
+                <IconButton
+                className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                })}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+                >
+                    <FavoriteIcon />
+                </IconButton>
+                <IconButton
+                className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                })}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+                >
+                    <DeleteIcon />
+                </IconButton>
+            </CardActions> */}
         </Card>
     )
 }
