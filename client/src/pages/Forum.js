@@ -170,7 +170,7 @@ function Forum() {
             </Grid>
           </Paper>
           {posts.map(post => {
-            return <Post key={post.id} date = {post.createdAt} title={post.title} category={post.category} body={post.body} author={post.author}/>
+            return <Post key={post.id} date ={post.createdAt} title={post.title} category={post.category} body={post.body} author={post.User.name}/>
           })}
         </Container>
       </Grid>
