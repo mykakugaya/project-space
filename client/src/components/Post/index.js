@@ -8,9 +8,11 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
 import { red } from '@material-ui/core/colors';
+//some card action like like/delete posts?
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import DeleteIcon from '@material-ui/icons/Delete';
 import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +23,6 @@ const useStyles = makeStyles((theme) => ({
 
 function Post(props) {
     const classes = useStyles();
-    const currentday = moment().format("YYYY-MM-DD");
 
     return(
         <Card>
@@ -32,13 +33,42 @@ function Post(props) {
                 </Avatar>
                 }
                 title={props.author}
-                subheader={currentday}
+                subheader={props.date}
             />
+            <Divider/>
             <CardContent>
+                <Typography className={classes.pos} color="textSecondary">
+                    {props.category}
+                </Typography>
+                <Typography variant="h6" component="h3">
+                    {props.title}
+                </Typography>
                 <Typography variant="body2" color="textSecondary" component="p">
                     {props.body}
                 </Typography>
             </CardContent>
+            {/* <CardActions disableSpacing>
+                <IconButton
+                className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                })}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+                >
+                    <FavoriteIcon />
+                </IconButton>
+                <IconButton
+                className={clsx(classes.expand, {
+                    [classes.expandOpen]: expanded,
+                })}
+                onClick={handleExpandClick}
+                aria-expanded={expanded}
+                aria-label="show more"
+                >
+                    <DeleteIcon />
+                </IconButton>
+            </CardActions> */}
         </Card>
     )
 }
