@@ -23,6 +23,10 @@ export const deleteFavorite = (data) => axios.delete("api/images", data)
 export const getAllPosts = () => axios.get("/api/posts");
 export const createNewPost = (post) => axios.post("/api/posts", post);
 
+//Post Response APIs
+export const getAllResponses = (post) => axios.get("/api/responses", post);
+export const createNewResponse = () => axios.post("/api/responses");
+
 
 //import {getAPOD, getJob} from "/path to API.js"
 //getAPOD().then(data=> do something with data;)
