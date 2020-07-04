@@ -196,7 +196,9 @@ class Home extends Component {
                     </Grid>
                     <Grid item xs={6} className="asteroidTable">
                         <h2 style={{color:"white"}}>Mars weather report</h2>
-                        <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='100%' height='530px'  scrolling='no' frameborder='1'></iframe>
+                        <div>
+                            <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='100%' height='540em'  scrolling='yes' frameborder='1'></iframe>
+                        </div>
                     </Grid>
                     <Grid item xs={6} justify="flex-start" alignItems="center" align="left" className="asteroidTable">
                         <h2 style={{color:"white"}}>View properties of nearby Asteroids</h2>
