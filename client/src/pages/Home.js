@@ -167,9 +167,11 @@ class Home extends Component {
                 </Hero>
                 <Grid container direction="row" justify="center" alignItems="center">
                     <Grid item xs={6} className="about">
-                        <h2>Welcome to Space Hub!</h2>
+                        <h2>Welcome to The Space Hub!</h2>
                         <p>This application was developed for all Space Enthusiasts! Built with the passion of true space nerds, this site features several API's from NASA and SpaceX. We are pleased to provide a unique and immersive environment where users can re-ignite their love for all things outer-space!</p>
                         <ul><strong>Widgets featured on this page include...</strong>
+                        <br></br>
+                        <br></br>
                             <li>NASA's Astronomy Picture of the Day</li>
                             <li>A Mars weather report updated weekly</li>
                             <li>Asteroid tracker, lists various properties of the asteroids nearest to Earth</li>
@@ -181,23 +183,23 @@ class Home extends Component {
                     <Grid item xs={6}>
                         <Grid direction="row" justify="center" alignItems="center" className="about">
                             <h2>Meet the Developers - Links to Portfolio's included!</h2>
-                            <Grid  container itemclassName="aboutDiv" style={{ width: '100%' }}>
-                                <Grid item xs={4} className="profilePic">
+                            <Grid  container className="profilePadding" style={{ width: '100%' }}>
+                                <Grid item xs={4}>
                                     <a href="https://abazrafshan.github.io/Responsive-Portfolio/">
                                         <img className="profilePicArash" src={require("../Pics/arashprofile.jpg")}/>
-                                        <p style = {{textAlign: "center", paddingRight:"10%"}}>Arash Bazrafshan</p>
+                                        <p style = {{textAlign: "center", paddingRight:"20%"}}><strong>Arash Bazrafshan</strong></p>
                                     </a>
                                 </Grid>
                                 <Grid item xs={4}>
                                     <a href="https://github.com/mykakugaya">
                                         <img className="profilePic" src={require("../Pics/mykaprofile.jpg")}/>
-                                        <p style = {{textAlign: "center", paddingRight:"10%"}}>Myka Kugaya</p>
+                                        <p style = {{textAlign: "center", paddingRight:"10%"}}><strong>Myka Kugaya</strong></p>
                                     </a>
                                 </Grid>
                                 <Grid item xs={4}>
                                     <a href="https://github.com/sharlenemay">
                                         <img className="profilePic" src={require("../Pics/sharleneprofile.jpg")}/>
-                                        <p style = {{textAlign: "center", paddingRight:"10%"}}>Sharlene May</p>
+                                        <p style = {{textAlign: "center", paddingRight:"10%"}}><strong>Sharlene May</strong></p>
                                     </a>
                                 </Grid>
                             </Grid>
