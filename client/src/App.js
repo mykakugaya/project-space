@@ -1,11 +1,12 @@
 import React,{useState, useEffect, useContext} from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useParams } from "react-router-dom";
 import Navbar from "./components/Navbar/navbar";
 import Home from "./pages/Home";
 import Forum from "./pages/Forum";
 import MyCalendar from "./pages/Calendar";
 import Gallery from "./pages/Gallery";
 import Login from "./pages/Login";
+import PostPage from "./pages/PostPage";
 // import JobSearch from "./pages/JobSearch";
 import {getUserData, updateFavoritesData, deleteFavorite} from './utils/API'
 import "./App.css";
@@ -60,6 +61,9 @@ function App() {
           </Route>
           <Route exact path="/login">
             <Login />
+          </Route>
+          <Route exact path="/forum/:id" component={PostPage}>
+            <PostPage />
           </Route>
         </Switch>
         {/* <Footer /> */}

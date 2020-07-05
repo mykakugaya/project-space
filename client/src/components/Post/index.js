@@ -14,6 +14,7 @@ import { red } from '@material-ui/core/colors';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import DeleteIcon from '@material-ui/icons/Delete';
 import moment from "moment";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
     avatar: {
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Post(props) {
     const classes = useStyles();
+    const link = "/forum/" + props.id;
 
     return(
         <Card>
@@ -40,10 +42,12 @@ function Post(props) {
                 <Typography color="textSecondary">
                     Category: {props.category}
                 </Typography>
-                <Typography variant="h6" component="h3">
-                    {props.title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Link to={link}>
+                    <Typography variant="h6" component="h3" >
+                        {props.title}
+                    </Typography>
+                </Link>
+                <Typography variant="body1" color="textPrimary" component="p">
                     {props.body}
                 </Typography>
             </CardContent>

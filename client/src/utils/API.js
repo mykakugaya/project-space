@@ -25,7 +25,7 @@ export const createNewPost = post => axios.post("/api/posts", post);
 export const getSinglePost = id => axios.get(`api/posts/${id}`);
 
 //Post Response APIs
-export const getAllResponses = () => axios.get("/api/responses");
+export const getAllResponses = (postId) => axios.get(`/api/responses/${postId}`);
 export const createNewResponse = (response) => axios.post("/api/responses", response);
 
 //import {getAPOD, getJob} from "/path to API.js"
