@@ -32,6 +32,9 @@ module.exports = function(sequelize, DataTypes) {
                 allowNull: false
             }
         });
+        Post.hasMany(models.Response, {
+            onDelete: "cascade"
+        });
     };
     return Post;
-}
+};
