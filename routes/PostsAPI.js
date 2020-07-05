@@ -17,6 +17,14 @@ router.post("/posts", function (req, res) {
   });
 });
 
+// get single post with responses
+router.post("/posts/:id", function (req, res) {
+    db.Post.findOne({where: {id: req.post.id}, include: [db.Response]})
+    .then(function(response){
+        res.json(response)
+    });
+});
+
 // delete post
 router.delete("/post/:id", function (req, res) {
   db.Post.destroy({

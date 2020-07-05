@@ -167,7 +167,7 @@ function Forum() {
                         <MenuItem value={"Earth"}>Earth</MenuItem>
                         <MenuItem value={"Solar System"}>Solar System</MenuItem>
                         <MenuItem value={"NASA"}>NASA</MenuItem>
-                        <MenuItem value={"SpaceEx Launches"}>SpaceEx Launches</MenuItem>
+                        <MenuItem value={"SpaceX Launches"}>SpaceX Launches</MenuItem>
                       </Select>
                     </FormControl>
                     <TextField className={classes.text}

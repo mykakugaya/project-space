@@ -16,7 +16,7 @@ import { red } from '@material-ui/core/colors';
 //some card action like like/delete posts?
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { createNewReponse, getAllResponses } from "../../utils/API";
+import { createNewResponse, getAllResponses } from "../../utils/API";
 import {userContext} from "../../utils/userContext";
 import PostResponse from "../PostResponse";
 import moment from "moment";
@@ -39,15 +39,15 @@ const useStyles = makeStyles((theme) => ({
       }
 }));
 
-const {user} = useContext(userContext);
-
-
-
 function PostResponseForm(props) {
+    
+    const {user} = useContext(userContext);
     const classes = useStyles();
     const [responses, setResponses] = useState([]);
     const [newResponseBody, setnewResponseBody] = useState("");
     const [error, setError] = useState("");
+    // perhaps we need a newResponseId??
+    const [newResponseId, setNewResponseId] = useState("");
 
     const validatePost = () => {
         return newResponseBody.length > 0;
@@ -65,7 +65,7 @@ function PostResponseForm(props) {
         if(!user) {
           console.log("You must log in or create an account.")
         }
-        createNewReponse({
+        createNewResponse({
             body: newResponseBody,
             UserId: user.id,
             PostId: props.postId
@@ -103,7 +103,7 @@ function PostResponseForm(props) {
                         Category: {props.category}
                     </Typography>
                     <Typography variant="h6" component="h3">
-                        Responding to {props.title} post
+                        Responding to {props.title}'s post
                     </Typography>
                     <form>
                         <TextField className={classes.text}
