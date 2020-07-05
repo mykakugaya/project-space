@@ -25,7 +25,6 @@ import { red } from '@material-ui/core/colors';
 import { createNewPost, getAllPosts } from "../utils/API";
 import {userContext} from "../utils/userContext";
 import moment from "moment";
-import PostResponseForm from "../components/PostResponseForm";
 const currentday = moment().format("YYYY-MM-DD");
 
 const useStyles = makeStyles((theme) => ({
@@ -67,7 +66,6 @@ function Forum() {
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostBody, setnewPostBody] = useState("");
   const [newPostCategory, setnewPostCategory] = useState("");
-  const [currentForum, setCurrentForum] = useState("");
   const [error, setError] = useState("");
 
   const {user} = useContext(userContext);
@@ -205,10 +203,7 @@ function Forum() {
           {posts.map(post => {
             const date = post.createdAt.slice(0, 10) + " at " + post.createdAt.slice(11,16)
             return (
-              <>
-              <Post key={post.id} date ={date} title={post.title} category={post.category} body={post.body} author={post.User.name}/>
-              <PostResponseForm key={post.id} postId={post.id} category={post.category} title={post.title}/>
-              </>
+              <Post key={post.id} id={post.id} date ={date} title={post.title} category={post.category} body={post.body} author={post.User.name}/>
             )
           })}
         </Container>

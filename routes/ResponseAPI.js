@@ -1,8 +1,8 @@
 const router = require("express").Router()
 const db = require("../models");
 
-router.get("/responses", function(req, res) {
-    db.Response.findAll({where: {userId: req.params.id}}).then(function(result) {
+router.get("/responses/:id", function(req, res) {
+    db.Response.findAll({where: {PostId: req.params.id}}).then(function(result) {
       return res.json(result);
     })
 })
@@ -18,7 +18,7 @@ router.post("/responses", function(req, res) {
 })
 
 router.delete("/responses/:id", function(req, res) {
-    db.Image.destroy({where: {UserId: req.params.id}})
+    db.Response.destroy({where: {PostId: req.params.id}})
     .then((result) => {
         return res.json(result);
     })

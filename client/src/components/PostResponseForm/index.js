@@ -16,7 +16,7 @@ import { red } from '@material-ui/core/colors';
 //some card action like like/delete posts?
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { createNewResponse, getAllResponses } from "../../utils/API";
+import { createNewResponse, getAllResponses, getSinglePost } from "../../utils/API";
 import {userContext} from "../../utils/userContext";
 import PostResponse from "../PostResponse";
 import moment from "moment";
@@ -40,7 +40,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function PostResponseForm(props) {
-    
     const {user} = useContext(userContext);
     const classes = useStyles();
     const [responses, setResponses] = useState([]);
@@ -52,10 +51,11 @@ function PostResponseForm(props) {
     const validatePost = () => {
         return newResponseBody.length > 0;
     }
+
     useEffect(() => {
-        getAllResponses(props.postId)
+        getSinglePost(props.postId)
         .then(res => {
-        setResponses(res.data);
+        setResponses(res.data.Responses);
         })
         .catch ( err => setError(err));
     }, [responses]);
@@ -67,7 +67,6 @@ function PostResponseForm(props) {
         }
         createNewResponse({
             body: newResponseBody,
-            UserId: user.id,
             PostId: props.postId
         })
         .then (() => {
@@ -102,7 +101,7 @@ function PostResponseForm(props) {
                     <Typography color="textSecondary">
                         Category: {props.category}
                     </Typography>
-                    <Typography variant="h6" component="h3">
+                    <Typography color="textSecondary">
                         Responding to {props.title}'s post
                     </Typography>
                     <form>

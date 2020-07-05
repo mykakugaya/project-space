@@ -15,7 +15,7 @@ module.exports = function (sequelize, DataTypes) {
 
     Response.associate = function(models) {
         Response.belongsTo(models.Post, {
-            through: "postId",
+            through: "PostId",
             foreignKey: {
                 allowNull: false
             }
