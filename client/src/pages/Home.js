@@ -9,6 +9,7 @@ import SpaceXSearchResults from "../components/SpaceXSearchResults/SpaceXSearchR
 import SpaceXSearchForm from "../components/SpaceXSearchForm/SpaceXSearchForm";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 // import { withStyles } from "@material-ui/core";
 import "./Home.css"
 const currentday = moment().format("YYYY-MM-DD");
@@ -180,24 +181,31 @@ class Home extends Component {
                     </Grid>
                     <Grid item xs={6} className="about">
                     <h2>Meet the Developers - Links to Portfolio's included!</h2>
-                        <Grid item xs={4}>
-                            <a href="https://abazrafshan.github.io/Responsive-Portfolio/">
-                                <img className="profilePic" src={require("../Pics/arashprofile.jpg")} href={"https://abazrafshan.github.io/Responsive-Portfolio/"}/>
-                                <p style={{color: "white"}}>Arash Bazrafshan</p>
-                            </a>
-                            <br></br>
-                        </Grid>
-                        <Grid item xs={4}>
-                            
-                        </Grid>
-                        <Grid item xs={4}>
-                            
-                        </Grid>
+                        <div style={{ width: '100%' }}>
+                            <Box component="div" display="inline" className="aboutDiv" p={1} m={1} >
+                                    <a href="https://abazrafshan.github.io/Responsive-Portfolio/">
+                                        <img className="profilePic" src={require("../Pics/arashprofile.jpg")}/>
+                                        <p style={{color: "white"}}>Arash Bazrafshan</p>
+                                    </a>
+                            </Box>
+                            <Box component="div" display="inline" className="aboutDiv" p={1} m={1} >
+                                <a href="https://github.com/mykakugaya">
+                                    <img className="profilePic" src={require("../Pics/mykaprofile.jpg")}/>
+                                    <p style={{color: "white"}}>Myka Kugaya</p>
+                                </a>
+                            </Box>
+                            <Box component="div" display="inline" className="aboutDiv" p={1} m={1} >
+                                <a href="https://github.com/sharlenemay">
+                                    <img className="profilePic" src={require("../Pics/sharleneprofile.jpg")}/>
+                                    <p style={{color: "white"}}>Sharlene May</p>
+                                </a>
+                            </Box>
+                        </div>
                     </Grid>
                     <Grid item xs={6} className="asteroidTable">
                         <h2 style={{color:"white"}}>Mars weather report</h2>
-                        <div>
-                            <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='100%' height='540em'  scrolling='yes' frameborder='1'></iframe>
+                        <div className="iframe-container">
+                            <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='100%' height='540px'  scrolling='no' frameborder='1'></iframe>
                         </div>
                     </Grid>
                     <Grid item xs={6} justify="flex-start" alignItems="center" align="left" className="asteroidTable">
@@ -243,5 +251,5 @@ class Home extends Component {
         )
     }
 }
-//export default withStyles(classes)(Home);
+
 export default Home;

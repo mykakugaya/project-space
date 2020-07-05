@@ -41,12 +41,12 @@
     padding-left: 2%;
 }
 
-.profilePic {
-    width: 66%;
-    border-radius: 50%;
-}
+    .profilePic {
+        width: 20%;
+        border-radius: 50%;
+    }
 
-.iframe-container {
+    .iframe-container {
     overflow: hidden;
     padding-top: 2%;
     position: relative;
@@ -60,3 +60,10 @@
      top: 0;
      width: 100%;
   }
+
+  @media only screen and (max-width: 600px) {
+    .aboutdiv {
+        min-height: 1800px;
+    }
+  }
+  
