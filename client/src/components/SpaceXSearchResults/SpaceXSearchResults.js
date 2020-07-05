@@ -41,7 +41,7 @@ console.log(props)
         <TableBody>
             <StyledTableRow>
               <StyledTableCell component="th" scope="row">Mission Name and Date</StyledTableCell>
-              <StyledTableCell align="left">{props.results.mission_name} (SpaceX launch number {props.results.flight_number}) launched in {props.results.launch_year}</StyledTableCell>
+              <StyledTableCell align="left">{props.results.mission_name} (SpaceX launch number {props.results.flight_number}) was launched in {props.results.launch_year}</StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component="th" scope="row">Mission Patch</StyledTableCell>

@@ -57,72 +57,83 @@ p {
 .profilePicArash {
     width: 85%;
     border-radius: 50%;
-    /* padding-left: 2%; */
 }
 
-    .profilePic {
-        width: 80%;
-        border-radius: 50%;
-        margin-left: 5%;
-    }
-    
+.profilePic {
+    width: 80%;
+    border-radius: 50%;
+    margin-left: 5%;
+}
 
-    .iframe-container {
+.profilePadding {
+    padding-left: 4%;
+}
+    
+.iframe-container {
     overflow: hidden;
     padding-top: 2%;
     position: relative;
-  }
+}
    
-  .iframe-container iframe {
+.iframe-container iframe {
      border: 0;
      height: 100%;
      left: 0;
      position: absolute;
      top: 0;
      width: 100%;
-  }
+}
 
-  @media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) {
     .about {
-        height: 870px;
+        height: 880px;
     }
     .weatherReport, .asteroidTable {
-        height: 770px;
+        height: 780px;
     }
     .roverPhotos, .spaceXTable {
-        height: fit-content;
+        height: 900px;
     }
-  }
+}
   
-  @media only screen and (min-width: 600px) {
+@media only screen and (min-width: 600px) {
     .about {
         height: 760px;
     }
     .weatherReport, .asteroidTable {
         height: 675px;
     }
-  }
+    .roverPhotos, .spaceXTable {
+        height: 800px;
+    }
+}
 
-  @media only screen and (min-width: 768px) {
+@media only screen and (min-width: 768px) {
     .about {
         height: 550px;
     }
     .weatherReport, .asteroidTable {
         height: 600px;
     }
-  } 
+    .roverPhotos, .spaceXTable {
+        height: 760px;
+    }
+} 
   
-  @media only screen and (min-width: 992px) {
+@media only screen and (min-width: 992px) {
     .about {
         height: 500px;
     }
     .weatherReport, .asteroidTable {
         height: 450px;
     }
-  } 
+    .roverPhotos, .spaceXTable {
+        height: 730px;
+    }
+} 
 
-  @media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1200px) {
     .about {
         height: 400px;
     }
-  }
+}
