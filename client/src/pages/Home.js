@@ -178,7 +178,7 @@ class Home extends Component {
                             <li>Gallery of photos taken on Mars by NASA's Curiosity rover, updated daily </li>
                             <li>SpaceX launch data; view detailed info on each of SpaceX's rocket launches!</li>
                         </ul>
-                        <p>In addition, this site features login functionality, a forum for enthusiasts to post and respond to topics for discussion, an image gallery, a job posting section that pulls jobs from Indeed's job search API, and a calendar for tracking major space-related events!</p>
+                        <p>In addition, this site features login functionality, a forum for enthusiasts to post and respond to topics of discussion, an image gallery, a job posting section that pulls jobs from Indeed's job search API, and a calendar for tracking major space-related events!</p>
                     </Grid>
                     <Grid item xs={6}>
                         <Grid direction="row" justify="center" alignItems="center" className="about">
