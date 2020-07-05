@@ -9,6 +9,7 @@ import SpaceXSearchResults from "../components/SpaceXSearchResults/SpaceXSearchR
 import SpaceXSearchForm from "../components/SpaceXSearchForm/SpaceXSearchForm";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
 // import { withStyles } from "@material-ui/core";
 import "./Home.css"
 const currentday = moment().format("YYYY-MM-DD");
@@ -176,32 +177,40 @@ class Home extends Component {
                             <li>SpaceX launch data; view detailed info on each of SpaceX's rocket launches!</li>
                         </ul>
                         <p>In addition, this site features login functionality, a forum for enthusiasts to post and respond to topics for discussion, an image gallery, a job posting section that pulls jobs from Indeed's job search API, and a calendar for tracking major space-related events!</p>
-                   
                     </Grid>
-                    <Grid item xs={6} className="about">
-                    <h2>Meet the Developers - Links to Portfolio's included!</h2>
-                        <Grid item xs={4}>
-                            <a href="https://abazrafshan.github.io/Responsive-Portfolio/">
-                                <img className="profilePic" src={require("../Pics/arashprofile.jpg")} href={"https://abazrafshan.github.io/Responsive-Portfolio/"}/>
-                                <p style={{color: "white"}}>Arash Bazrafshan</p>
-                            </a>
-                            <br></br>
-                        </Grid>
-                        <Grid item xs={4}>
-                            
-                        </Grid>
-                        <Grid item xs={4}>
-                            
+                    <Grid item xs={6}>
+                        <Grid direction="row" justify="center" alignItems="center" className="about">
+                            <h2>Meet the Developers - Links to Portfolio's included!</h2>
+                            <Grid  container itemclassName="aboutDiv" style={{ width: '100%' }}>
+                                <Grid item xs={4} className="profilePic">
+                                    <a href="https://abazrafshan.github.io/Responsive-Portfolio/">
+                                        <img className="profilePicArash" src={require("../Pics/arashprofile.jpg")}/>
+                                        <p style = {{textAlign: "center", paddingRight:"10%"}}>Arash Bazrafshan</p>
+                                    </a>
+                                </Grid>
+                                <Grid item xs={4}>
+                                    <a href="https://github.com/mykakugaya">
+                                        <img className="profilePic" src={require("../Pics/mykaprofile.jpg")}/>
+                                        <p style = {{textAlign: "center", paddingRight:"10%"}}>Myka Kugaya</p>
+                                    </a>
+                                </Grid>
+                                <Grid item xs={4}>
+                                    <a href="https://github.com/sharlenemay">
+                                        <img className="profilePic" src={require("../Pics/sharleneprofile.jpg")}/>
+                                        <p style = {{textAlign: "center", paddingRight:"10%"}}>Sharlene May</p>
+                                    </a>
+                                </Grid>
+                            </Grid>
                         </Grid>
                     </Grid>
-                    <Grid item xs={6} className="asteroidTable">
-                        <h2 style={{color:"white"}}>Mars weather report</h2>
-                        <div>
-                            <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='100%' height='540em'  scrolling='yes' frameborder='1'></iframe>
+                    <Grid item xs={6} className="weatherReport">
+                        <h2>Mars weather report</h2>
+                        <div className="iframe-container">
+                            <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='100%' height='540px'  scrolling='no' frameborder='1'></iframe>
                         </div>
                     </Grid>
                     <Grid item xs={6} justify="flex-start" alignItems="center" align="left" className="asteroidTable">
-                        <h2 style={{color:"white"}}>View properties of nearby Asteroids</h2>
+                        <h2>View properties of nearby Asteroids</h2>
                         <AsteroidSearchForm
                             handleFormSubmit = {this.handleFormSubmit}
                             handleInputChange = {this.handleInputChange}
@@ -216,14 +225,14 @@ class Home extends Component {
                         ) : (<div></div>)}
                     </Grid>
                     <Grid item xs={5} className="roverPhotos">
-                        <h2 style={{color: "white", textAlign: "center"}}>Browse today's Mars photos captured by NASA's Curiosity rover</h2>
+                        <h2>Browse today's Mars photos captured by NASA's Curiosity rover</h2>
                         <MarsRoverImages backgroundImage={this.state.marsRoverImage} >
                             <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
                             <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
                         </MarsRoverImages>
                     </Grid>
                     <Grid item xs={7} className="spaceXTable" justify="flex-start" alignItems="center" align="left">
-                        <h2 style={{color:"white"}}>View details of past SpaceX rocket launches</h2>
+                        <h2>View details of past SpaceX rocket launches</h2>
                         <SpaceXSearchForm
                             handleFormSubmitLaunch = {this.handleFormSubmitLaunch}
                             handleInputChangeLaunch = {this.handleInputChangeLaunch}
@@ -243,5 +252,5 @@ class Home extends Component {
         )
     }
 }
-//export default withStyles(classes)(Home);
+
 export default Home;
