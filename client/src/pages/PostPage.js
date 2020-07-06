@@ -21,7 +21,6 @@ import moment from "moment";
 import Post from "../components/Post";
 import PostResponseForm from "../components/PostResponseForm";
 import { useParams, Route } from 'react-router-dom';
-import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
     avatar: {
@@ -55,7 +54,7 @@ function PostPage() {
     //     className={classes.root}
     //     >
     //     <Grid item xs={12}>
-    //       <h1 className={classes.header}>Forum Feed</h1>
+    //       <h1 className={classes.header}>Forum Post</h1>
     //     </Grid>
     //     <Container>
     //       <Paper className={classes.paper}>

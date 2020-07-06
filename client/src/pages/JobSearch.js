@@ -63,7 +63,7 @@ function JobSearch() {
     return (
       <div>
         <Paper>
-            <h1>Image/Video Gallery</h1>
+            <h1>Job Search</h1>
             <JobForm
             handleTitleChange={handleTitleChange}
             handlePostChange={handlePostChange}
