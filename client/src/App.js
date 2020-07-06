@@ -7,7 +7,7 @@ import MyCalendar from "./pages/Calendar";
 import Gallery from "./pages/Gallery";
 import Login from "./pages/Login";
 import PostPage from "./pages/PostPage";
-// import JobSearch from "./pages/JobSearch";
+import JobSearch from "./pages/JobSearch";
 import {getUserData, updateFavoritesData, deleteFavorite} from './utils/API'
 import "./App.css";
 import {userContext} from "./utils/userContext"
@@ -57,7 +57,7 @@ function App() {
             <Gallery />
           </Route>
           <Route exact path="/jobs">
-            {/* <JobSearch /> */}
+            <JobSearch />
           </Route>
           <Route exact path="/login">
             <Login />

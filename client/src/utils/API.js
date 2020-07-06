@@ -28,5 +28,7 @@ export const getSinglePost = id => axios.get(`api/posts/${id}`);
 export const getAllResponses = (postId) => axios.get(`/api/responses/${postId}`);
 export const createNewResponse = (response) => axios.post("/api/responses", response);
 
+//Job APIs
+export const getAllJobs = query => axios.get(`/api/jobs/${query}`);
 //import {getAPOD, getJob} from "/path to API.js"
 //getAPOD().then(data=> do something with data;)
