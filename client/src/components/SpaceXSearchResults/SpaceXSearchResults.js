@@ -32,6 +32,10 @@ console.log(props)
   return (
     <TableContainer component={Paper}>
       <Table  aria-label="customized table">
+        <colgroup>
+          <col style={{width:'20%'}}/>
+          <col style={{width:'80%'}}/>
+        </colgroup>
         <TableHead>
           <TableRow>
             <StyledTableCell>Launch Properties</StyledTableCell>
@@ -45,7 +49,7 @@ console.log(props)
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component="th" scope="row">Mission Patch</StyledTableCell>
-              <StyledTableCell align="left"><img style={{width: "20%"}}src={props.results.links.mission_patch_small}/></StyledTableCell>
+              <StyledTableCell align="left"><img style={{width: "15%"}}src={props.results.links.mission_patch_small}/></StyledTableCell>
             </StyledTableRow>
             <StyledTableRow>
               <StyledTableCell component="th" scope="row">Launch Details</StyledTableCell>
