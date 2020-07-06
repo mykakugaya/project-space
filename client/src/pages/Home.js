@@ -33,8 +33,6 @@ class Home extends Component {
         launchResults: []
     }
 
-    
-
     handleInputChange = event => {
         console.log(event.target)
         this.setState({ search: event.target.value})
@@ -141,22 +139,21 @@ class Home extends Component {
                     <h2>Built for the Space Enthusiast!</h2>
                 </Hero>
                 <Grid container direction="row" justify="center" alignItems="center">
-                    <Grid item xs={6} className="about">
+                    <Grid item xs={12} sm={6} md={6} lg={6} className="about">
                         <h2>Welcome to The Space Hub!</h2>
                         <p>This application was developed for all Space Enthusiasts! Built with the passion of true space nerds, this site features several API's from NASA and SpaceX. We are pleased to provide a unique and immersive environment where users can re-ignite their love for all things outer-space!</p>
                         <ul><strong>Widgets featured on this page include...</strong>
                         <br></br>
-                        <br></br>
-                            <li>NASA's Astronomy Picture of the Day</li>
-                            <li>A Mars weather report updated weekly</li>
-                            <li>Asteroid tracker, lists various properties of the asteroids nearest to Earth</li>
-                            <li>Gallery of photos taken on Mars by NASA's Curiosity rover, updated daily </li>
+                            <li>NASA's Astronomy Picture of the Day; updated daily (see hero image above)</li>
+                            <li>A Mars weather report; updated bi-weekly</li>
+                            <li>Asteroid tracker listing various properties of the asteroids nearest to Earth; updated daily</li>
+                            <li>Gallery of photos taken on Mars by NASA's Curiosity rover; updated daily </li>
                             <li>SpaceX launch data; view detailed info on each of SpaceX's rocket launches!</li>
                         </ul>
-                        <p>In addition, this site features login functionality, a forum for enthusiasts to post and respond to topics of discussion, an image gallery, a job posting section that pulls jobs from Indeed's job search API, and a calendar for tracking major space-related events!</p>
+                        <p>In addition, this site features login functionality, a forum for enthusiasts to post and respond to topics of discussion, an image gallery, and a job posting section that pulls jobs from LinkedIn's job search API, and a calendar for tracking major space-related events!</p>
                     </Grid>
-                    <Grid item xs={6}>
-                        <Grid direction="row" justify="center" alignItems="center" className="about">
+                    <Grid item xs={12} sm={6} md={6} lg={6}>
+                        <Grid direction="row" justify="center" alignItems="center" className="aboutus">
                             <h2>Meet the Developers - Links to Portfolio's included!</h2>
                             <Grid  container className="profilePadding" style={{ width: '100%' }}>
                                 <Grid item xs={4}>
@@ -180,13 +177,13 @@ class Home extends Component {
                             </Grid>
                         </Grid>
                     </Grid>
-                    <Grid item xs={6} className="weatherReport">
+                    <Grid item xs={12} sm={6} md={6} lg={6} className="weatherReport">
                         <h2>Mars weather report</h2>
                         <div className="iframe-container">
                             <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/'  scrolling='no' frameborder='1'></iframe>
                         </div>
                     </Grid>
-                    <Grid item xs={6} justify="flex-start" alignItems="center" align="left" className="asteroidTable">
+                    <Grid item xs={12} sm={6} md={6} lg={6} justify="flex-start" alignItems="center" align="left" className="asteroidTable">
                         <h2>View properties of nearby Asteroids</h2>
                         <AsteroidSearchForm
                             handleFormSubmit = {this.handleFormSubmit}
@@ -201,15 +198,15 @@ class Home extends Component {
                         />
                         ) : (<div></div>)}
                     </Grid>
-                    <Grid item xs={5} className="roverPhotos">
-                        <h2>Browse today's Mars photos captured by NASA's Curiosity rover</h2>
+                    <Grid item xs={12} sm={5} md={5} lg={5} className="roverPhotos">
+                        <h2>Browse yesterday's photos from Mars captured by NASA's Curiosity rover</h2>
                         <MarsRoverImages backgroundImage={this.state.marsRoverImage} style={{height: "100px"}} >
                             <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
                             <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
                             <p style={{height: "22.5em"}}></p>
                         </MarsRoverImages>
                     </Grid>
-                    <Grid item xs={7} className="spaceXTable" justify="flex-start" alignItems="center" align="left">
+                    <Grid item xs={12} sm={7} md={7} lg={7} className="spaceXTable" justify="flex-start" alignItems="center" align="left">
                         <h2>View details of past SpaceX rocket launches</h2>
                         <SpaceXSearchForm
                             handleFormSubmitLaunch = {this.handleFormSubmitLaunch}

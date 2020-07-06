@@ -49,7 +49,7 @@ function Post(props) {
                     {props.title}
                 </Typography>
                 <Typography color="textSecondary">
-                    ({props.responses} responses)
+                    ({props.responses ? props.responses : 0} responses)
                 </Typography>
                 <Typography variant="body1" color="textPrimary" component="p">
                     {props.body}

@@ -2,7 +2,7 @@ const router = require("express").Router()
 const db = require("../models");
 
 router.get("/responses/:id", function(req, res) {
-    db.Response.findAll({where: {PostId: req.params.id}}).then(function(result) {
+    db.Response.findAll({where: {PostId: req.params.id}}, {include: [db.Post, db.User]}).then(function(result) {
       return res.json(result);
     })
 })

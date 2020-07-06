@@ -5,7 +5,6 @@
     justify-content: center;
     border:1px solid white;
     border-radius: 16px;
-    min-height: 680px;
 }
 
 .weatherReport {
@@ -14,7 +13,6 @@
     padding-left: 2%;
     padding-right: 2%;
     border-radius: 16px;
-    min-height: 680px;
     width: auto;
 }
 
@@ -32,7 +30,6 @@
     padding-right: 2%;
     padding-top: 0;
     max-width: 50%;
-    min-height: 620px;
     border:1px solid white;
     border-radius: 16px;
     justify-content: center;
@@ -47,7 +44,7 @@ p {
     color: white;
 }
 
-.about {
+.about, .aboutus {
     color: white;
     border:1px solid white;
     border-radius: 16px;
@@ -83,30 +80,39 @@ p {
      width: 100%;
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (min-width: 320px) {
     .about {
-        height: 880px;
+        height: 750px;
     }
-    .weatherReport, .asteroidTable {
-        height: 780px;
+    .aboutus {
+        height: 300px;
     }
-    .roverPhotos, .spaceXTable {
-        height: 900px;
+    .weatherReport {
+        height: 620px;
+    }
+    .asteroidTable {
+        height: 700px;
+    }
+    .roverPhotos {
+        height: 600px;
+    }
+    .spaceXTable {
+        height: 800px;
     }
     .iframe-container iframe {
         height: 500px;
     }
 }
-  
+
 @media only screen and (min-width: 600px) {
-    .about {
-        height: 760px;
+    .about, .aboutus {
+        height: 835px;
     }
     .weatherReport, .asteroidTable {
         height: 675px;
     }
     .roverPhotos, .spaceXTable {
-        height: 800px;
+        height: 760px;
     }
     .iframe-container iframe {
         height: 500px;
@@ -115,8 +121,8 @@ p {
 }
 
 @media only screen and (min-width: 768px) {
-    .about {
-        height: 550px;
+    .about, .aboutus {
+        height: 600px;
     }
     .weatherReport, .asteroidTable {
         height: 600px;
@@ -130,11 +136,11 @@ p {
 } 
   
 @media only screen and (min-width: 992px) {
-    .about {
-        height: 500px;
+    .about, .aboutus {
+        height: 540px;
     }
     .weatherReport, .asteroidTable {
-        height: 450px;
+        height: 600px;
     }
     .roverPhotos, .spaceXTable {
         height: 730px;
@@ -145,8 +151,14 @@ p {
 } 
 
 @media only screen and (min-width: 1200px) {
-    .about {
-        height: 400px;
+    .about, .aboutus {
+        height: 490px;
+    }
+    .weatherReport, .asteroidTable {
+        height: 690px;
+    }
+    .roverPhotos, .spaceXTable {
+        height: 670px;
     }
     .iframe-container iframe {
         height: 580px;

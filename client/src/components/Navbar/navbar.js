@@ -11,12 +11,11 @@ import { getLogout } from "../../utils/API"
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    flexShrink: 3,
   },
   title: {
-    flexGrow: 1,
+    flexShrink: 3,
     float: "left",
-    marginRight: "50px",
     marginLeft: 0
   },
   appbar: {
@@ -49,10 +48,10 @@ export default function Navbar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static" className={classes.appbar}>
+      <AppBar className={classes.appbar}>
         <Toolbar className={classes.padding}>
           <Typography variant="h6" className={classes.title}>
-           Welcome, {user?.name || "Earthling"}.
+           Welcome, {user?.name || "earthling"}.
          </Typography>
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
           </IconButton> */}
@@ -63,9 +62,9 @@ export default function Navbar() {
           <Link className="navbar-brand" to="/forum">
             <Tab className={window.location.pathname === "/forum" ? classes.activeTab : classes.tabs} label="Forum"/>
           </Link>
-          <Link className="navbar-brand" to="/calendar">
+          {/* <Link className="navbar-brand" to="/calendar">
             <Tab className={window.location.pathname === "/calendar" ? classes.activeTab : classes.tabs} label="Calendar"/>
-          </Link>
+          </Link> */}
           <Link className="navbar-brand" to="/gallery">
             <Tab className={window.location.pathname === "/gallery" ? classes.activeTab : classes.tabs} label="Gallery"/>
           </Link>
