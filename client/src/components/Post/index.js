@@ -46,7 +46,10 @@ function Post(props) {
                     Category: {props.category}
                 </Typography>
                 <Typography variant="h6" component="h3" component={Link} to={link}>
-                    {props.title} ({props.responses} responses)
+                    {props.title}
+                </Typography>
+                <Typography color="textSecondary">
+                    ({props.responses} responses)
                 </Typography>
                 <Typography variant="body1" color="textPrimary" component="p">
                     {props.body}
