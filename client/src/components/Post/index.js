@@ -32,11 +32,17 @@ function Post(props) {
     return(
         <Card className={classes.card}>
             <CardHeader
+                // avatar={ user ?
+                // <Avatar aria-label="user" className={classes.avatar}>
+                //   {user.name[0]}
+                // </Avatar>
+                //   :
                 avatar={
-                <Avatar aria-label="recipe" className={classes.avatar}>
-                    {props.author[0]}
-                </Avatar>
+                    <Avatar aria-label="user" className={classes.avatar}>
+                        S
+                    </Avatar>
                 }
+                
                 title={props.author}
                 subheader={props.date}
             />
