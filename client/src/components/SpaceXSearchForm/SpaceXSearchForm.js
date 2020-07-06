@@ -1,11 +1,10 @@
 import React from "react";
-// import "./AsteroidSearchForm.css";
 
 function SpaceXSearchForm(props){
     return(
         <form className="search">
             <div className="form-group">
-                <label htmlFor="spacex" style={{color: "white"}}>Select a SpaceX Launch:</label>
+                <label htmlFor="spacex" style={{color: "white"}}>Select a SpaceX Launch </label>
                 <input
                     value={props.searchlaunch}
                     onChange={props.handleInputChangeLaunch}
