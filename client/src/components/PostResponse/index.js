@@ -37,7 +37,7 @@ function PostResponse(props) {
             />
             <Divider/>
             <CardContent>
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body1" color="textPrimary" component="p">
                     {props.body}
                 </Typography>
             </CardContent>

@@ -44,7 +44,12 @@ const useStyles = makeStyles((theme) => ({
     padding: "5px",
   },
   form: {
+<<<<<<< HEAD
     alignContent: "center",
+=======
+      alignContent: "center",
+      marginBottom: "20px"
+>>>>>>> 519e69aa33dd6b3d4d351617518d18bd77060ddd
   },
   button: {
     padding: "5px",
@@ -78,6 +83,7 @@ function Forum() {
     return newPostTitle.length > 0 && newPostBody.length > 0;
   };
 
+<<<<<<< HEAD
   const handleCreatePost = (event) => {
     event.preventDefault();
     if (!user) {
@@ -90,6 +96,23 @@ function Forum() {
       UserId: user.id,
     })
       .then(() => {
+=======
+  const handleCreatePost = event => {
+      event.preventDefault();
+      if(!user) {
+        console.log("You must log in or create an account.")
+      }
+      createNewPost( {
+          title: newPostTitle,
+          category: newPostCategory,
+          body: newPostBody,
+          UserId: user.id
+      })
+      .then ( () => {
+        setNewPostTitle("");
+        setnewPostBody("");
+        setnewPostCategory("");
+>>>>>>> 519e69aa33dd6b3d4d351617518d18bd77060ddd
         console.log("New Post Saved");
       })
       .catch((err) => setError(err));
@@ -130,7 +153,7 @@ function Forum() {
           <h1 className={classes.header}>Forum Feed</h1>
         </Grid>
         <Container>
-          <Paper className={classes.paper}>
+            <Paper>
             <Grid className={classes.form} item xs={12}>
               <Card>
                 <CardHeader

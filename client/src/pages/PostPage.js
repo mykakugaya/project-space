@@ -21,7 +21,6 @@ import moment from "moment";
 import Post from "../components/Post";
 import PostResponseForm from "../components/PostResponseForm";
 import { useParams, Route } from 'react-router-dom';
-import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
     avatar: {
