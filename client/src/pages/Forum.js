@@ -71,7 +71,7 @@ function Forum() {
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostBody, setnewPostBody] = useState("");
   const [newPostCategory, setnewPostCategory] = useState("");
-  const [filteredPosts, setFilteredPosts] = useState( "" );
+  const [filteredPosts, setFilteredPosts] = useState( [] );
   const [error, setError] = useState("");
 
   const { user } = useContext(userContext);
@@ -145,8 +145,8 @@ function Forum() {
           <h1 className={classes.header}>Forum Feed</h1>
         </Grid>
         <Grid container
-          justify="center"
-          alignItems="center"
+          justify="flex-start"
+          alignItems="flex-start"
           className={classes.root}>
             <Grid item={4}>
               <ForumSearch 

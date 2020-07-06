@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   input: {
     margin: `${theme.spacing(1)}px auto`,
@@ -42,49 +42,52 @@ export default function ForumSearch(props) {
 
   return (
     <Paper component="form" className={classes.root}>
-      <Grid container 
-        direction="row"
-        justify="center"
-        alignItems="center"
-        xs={12}>
-        <InputBase
-          className={classes.input}
-          placeholder="Search Forums"
-          inputProps={{ "aria-label": "search forums" }}
-          onChange={props.handleInputChange}
-        />
-        <IconButton
-          type="button"
-          className={classes.iconButton}
-          aria-label="search"
-          onClick={() => props.handleFormSubmit}
-        >
-          <SearchIcon />
-        </IconButton>
-      </Grid>
-      <Grid container 
-        direction="row"
-        justify="center"
-        alignItems="center"
-        xs={12}>
-        <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel id="demo-simple-select-outlined-label">
-            Category
-          </InputLabel>
-          <Select
-            labelId="demo-simple-select-outlined-label"
-            id="demo-simple-select-outlined"
-            // value={filteredPosts}
-            // onChange={(e) => setFilteredPosts(e.target.value)}
-            onChange={props.handleFilteredPosts}
-            label="Search Posts by Category"
-          >
-            <MenuItem value={"Earth"}>Earth</MenuItem>
-            <MenuItem value={"Solar System"}>Solar System</MenuItem>
-            <MenuItem value={"NASA"}>NASA</MenuItem>
-            <MenuItem value={"SpaceX Launches"}>SpaceX Launches</MenuItem>
-          </Select>
-        </FormControl>
+      <Grid container justify="flex-start" alignItems="flex-start">
+        <Grid item xs={12}>
+          <Grid container direction="row" justify="flex-start" alignItems="flex-start">
+            <Grid item xs={12}>
+              <InputBase
+                className={classes.input}
+                placeholder="Search Forums"
+                inputProps={{ "aria-label": "search forums" }}
+                onChange={props.handleInputChange}
+              />
+              <IconButton
+                type="button"
+                className={classes.iconButton}
+                aria-label="search"
+                onClick={() => props.handleFormSubmit}
+              >
+                <SearchIcon />
+              </IconButton>
+            </Grid>
+          </Grid>
+        </Grid>
+
+        <Grid item xs={12}>
+          <Grid container direction="row" justify="center" alignItems="center">
+            <Grid item xs={12}>
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel id="demo-simple-select-outlined-label">
+                  Category
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  // value={filteredPosts}
+                  // onChange={(e) => setFilteredPosts(e.target.value)}
+                  onChange={props.handleFilteredPosts}
+                  label="Search Posts by Category"
+                >
+                  <MenuItem value={"Earth"}>Earth</MenuItem>
+                  <MenuItem value={"Solar System"}>Solar System</MenuItem>
+                  <MenuItem value={"NASA"}>NASA</MenuItem>
+                  <MenuItem value={"SpaceX Launches"}>SpaceX Launches</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+          </Grid>
+        </Grid>
       </Grid>
     </Paper>
   );

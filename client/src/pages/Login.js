@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { postLogin, postSignup } from "../utils/API";
+import { postLogin, postSignup, getUsers } from "../utils/API";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: "left",
     color: theme.palette.text.secondary,
+    margin: "5%"
   },
   login: {
     "& > *": {
@@ -27,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
       width: "25ch",
     },
   },
+  p: {
+    color: "black"
+  }
 }));
 
 export default function CenteredGrid() {
@@ -37,7 +41,7 @@ export default function CenteredGrid() {
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [error, setError] = useState("");
-  const [users, setUsers] = useState("");
+  const [users, setUsers] = useState([]);
 
   const validateLogin = () => {
     return email.length > 0 && password.length > 0;
@@ -62,21 +66,37 @@ export default function CenteredGrid() {
 
   const handleCreateUser = event => {
       event.preventDefault();
-      postSignup( {
-          name: name,
-          email: newEmail,
-          password: newPassword
-      })
-      .then ( () => {
-          console.log(`New User signed up: ${name}`);
-          postLogin( {
-              email: newEmail,
-              password: newPassword
-          });
-          window.location.replace("/");
-      })
-      .catch ( err => setError(err));
+      getUsers()
+          .then(
+          response => setUsers(response.data))
+          users.map(user => {
+            if (user.email = newEmail){
+              setError("Email already in use. Please log in.")
+            }
+          })
+
+            postSignup( {
+                name: name,
+                email: newEmail,
+                password: newPassword
+            })
+
+            .then ( () => {
+                console.log(`New User signed up: ${name}`);
+                postLogin( {
+                    email: newEmail,
+                    password: newPassword
+                });
+                window.location.replace("/");
+            })
+
+            .catch ( err => console.log(err));
   };
+
+  const getAllUsers = event => {
+    event.preventDefault();
+    getUsers(allUsers => setUsers(allUsers))
+  }
 
   return (
     <div className={classes.root}>
@@ -150,6 +170,7 @@ export default function CenteredGrid() {
                   onClick={handleCreateUser}
                 >Create User
                 </Button>
+                <p className={classes.p}>{error ? error : ""}</p>
               </form>
             </Grid>
           </Grid>
