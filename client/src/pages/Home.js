@@ -7,36 +7,11 @@ import AsteroidSearchForm from "../components/AsteroidSearchForm/AsteroidSearchF
 import AsteroidSearchResults from "../components/AsteroidSearchResults/AsteroidSearchResults";
 import SpaceXSearchResults from "../components/SpaceXSearchResults/SpaceXSearchResults";
 import SpaceXSearchForm from "../components/SpaceXSearchForm/SpaceXSearchForm";
+import Footer from "../components/Footer/footer";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
-// import { withStyles } from "@material-ui/core";
 import "./Home.css"
 const currentday = moment().format("YYYY-MM-DD");
-// const classes = withStyles((theme) => ({
-//     padding: {
-//       padding: "5%"
-//     },
-//     paper: {
-//       padding: theme.spacing(2),
-//       textAlign: "left",
-//       color: theme.palette.text.secondary,
-//     },
-//     root: {
-//       backgroundColor: "#424242",
-//     },
-//     text: {
-//       width: "100ch",
-//       padding: "5px"
-//     },
-//     form: {
-//         alignContent: "center"
-//     },
-//     button: {
-//         padding: "5px"
-//     }
-//   }));
-
 
 class Home extends Component {
     state={
@@ -208,7 +183,7 @@ class Home extends Component {
                     <Grid item xs={6} className="weatherReport">
                         <h2>Mars weather report</h2>
                         <div className="iframe-container">
-                            <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' width='100%' height='540px'  scrolling='no' frameborder='1'></iframe>
+                            <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/'  scrolling='no' frameborder='1'></iframe>
                         </div>
                     </Grid>
                     <Grid item xs={6} justify="flex-start" alignItems="center" align="left" className="asteroidTable">
@@ -228,9 +203,10 @@ class Home extends Component {
                     </Grid>
                     <Grid item xs={5} className="roverPhotos">
                         <h2>Browse today's Mars photos captured by NASA's Curiosity rover</h2>
-                        <MarsRoverImages backgroundImage={this.state.marsRoverImage} >
+                        <MarsRoverImages backgroundImage={this.state.marsRoverImage} style={{height: "100px"}} >
                             <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
                             <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
+                            <p style={{height: "22.5em"}}></p>
                         </MarsRoverImages>
                     </Grid>
                     <Grid item xs={7} className="spaceXTable" justify="flex-start" alignItems="center" align="left">
@@ -250,6 +226,8 @@ class Home extends Component {
                         ) : (<div></div>)}
                     </Grid>
                 </Grid>
+                <Footer>Copyright 2020. Application powered by React. API's provided by NASA, SpaceX, and LinkedIn
+                </Footer>
             </div>
         )
     }

@@ -21,6 +21,7 @@ import { createNewResponse, getAllResponses, getSinglePost } from "../../utils/A
 import {userContext} from "../../utils/userContext";
 import PostResponse from "../PostResponse";
 import moment from "moment";
+import Avatar from '@material-ui/core/Avatar';
 
 const currentday = moment().format("YYYY-MM-DD");
 
@@ -82,11 +83,12 @@ function PostResponseForm(props) {
             <Paper>
                 <Card className={classes.card}>
                     <CardHeader
-                        avatar={
-                        <UserAvatar letter={user ? user?.name[0] : "S"}/>
-                        }
-                        title={user ? user?.name : "Please log in to respond."}
-                        subheader={props.date}
+                    avatar={user ?
+                    <UserAvatar letter={user?.name}/>
+                    : <Avatar></Avatar>
+                    }
+                    title={user ? user.name : "Please log in to respond."}
+                    subheader={props.date}
                     />
                     <Divider/>
                     <CardContent>
