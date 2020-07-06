@@ -10,7 +10,7 @@ const APODapiquery = "planetary/apod?";
 const asteroidApiQuery = "neo/rest/v1/feed?start_date=";
 const moment = require("moment")
 const currentday = moment().format("YYYY-MM-DD");
-const twoweeksago = moment().subtract(1, 'days').format("YYYY-MM-DD");
+const yesterday = moment().subtract(1, 'days').format("YYYY-MM-DD");
 
 router.get("/apod", async (req,res)=>{
    const {data} = await axios.get(baseURL + APODapiquery + apikey);
@@ -18,7 +18,7 @@ router.get("/apod", async (req,res)=>{
 })
 
 router.get("/rover", async (req,res)=>{
-    const {data} = await axios.get(baseURL + marsRoverApiQuery + twoweeksago + apikey);
+    const {data} = await axios.get(baseURL + marsRoverApiQuery + yesterday + apikey);
     res.json(data)
 });
 
