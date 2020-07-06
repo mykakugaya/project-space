@@ -77,7 +77,6 @@ p {
    
 .iframe-container iframe {
      border: 0;
-     /* height: 100%; */
      left: 0;
      position: absolute;
      top: 0;
@@ -94,6 +93,9 @@ p {
     .roverPhotos, .spaceXTable {
         height: 900px;
     }
+    .iframe-container iframe {
+        height: 500px;
+    }
 }
   
 @media only screen and (min-width: 600px) {
@@ -106,6 +108,10 @@ p {
     .roverPhotos, .spaceXTable {
         height: 800px;
     }
+    .iframe-container iframe {
+        height: 500px;
+   }
+
 }
 
 @media only screen and (min-width: 768px) {
@@ -117,6 +123,9 @@ p {
     }
     .roverPhotos, .spaceXTable {
         height: 760px;
+    }
+    .iframe-container iframe {
+        height: 500px;
     }
 } 
   
@@ -130,10 +139,16 @@ p {
     .roverPhotos, .spaceXTable {
         height: 730px;
     }
+    .iframe-container iframe {
+        height: 500px;
+    }
 } 
 
 @media only screen and (min-width: 1200px) {
     .about {
         height: 400px;
+    }
+    .iframe-container iframe {
+        height: 580px;
     }
 }

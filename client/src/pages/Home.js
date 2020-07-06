@@ -183,7 +183,7 @@ class Home extends Component {
                     <Grid item xs={6} className="weatherReport">
                         <h2>Mars weather report</h2>
                         <div className="iframe-container">
-                            <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' height='580px'  scrolling='no' frameborder='1'></iframe>
+                            <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/'  scrolling='no' frameborder='1'></iframe>
                         </div>
                     </Grid>
                     <Grid item xs={6} justify="flex-start" alignItems="center" align="left" className="asteroidTable">
