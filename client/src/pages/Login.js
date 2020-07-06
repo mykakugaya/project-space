@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { postLogin, postSignup } from "../utils/API";
+import { postLogin, postSignup, getUsers } from "../utils/API";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -20,6 +20,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: "left",
     color: theme.palette.text.secondary,
+    margin: "5%"
   },
   login: {
     "& > *": {
@@ -37,7 +38,7 @@ export default function CenteredGrid() {
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [error, setError] = useState("");
-  const [users, setUsers] = useState("");
+  const [users, setUsers] = useState([]);
 
   const validateLogin = () => {
     return email.length > 0 && password.length > 0;
@@ -77,6 +78,11 @@ export default function CenteredGrid() {
       })
       .catch ( err => setError(err));
   };
+
+  const getAllUsers = event => {
+    event.preventDefault();
+    getUsers(allUsers => setUsers(allUsers))
+  }
 
   return (
     <div className={classes.root}>
@@ -150,6 +156,11 @@ export default function CenteredGrid() {
                   onClick={handleCreateUser}
                 >Create User
                 </Button>
+                {users.map((user) => {
+                  if (user?.email == users[0]){
+                    console.log("this email is already in use")
+                  }
+                })}
               </form>
             </Grid>
           </Grid>
