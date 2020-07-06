@@ -44,7 +44,8 @@ const useStyles = makeStyles((theme) => ({
     padding: "5px"
   },
   form: {
-      alignContent: "center"
+      alignContent: "center",
+      marginBottom: "20px"
   },
   button: {
       padding: "5px"
@@ -90,6 +91,9 @@ function Forum() {
           UserId: user.id
       })
       .then ( () => {
+        setNewPostTitle("");
+        setnewPostBody("");
+        setnewPostCategory("");
         console.log("New Post Saved");
       })
       .catch ( err => setError(err));
@@ -130,7 +134,6 @@ function Forum() {
           <h1 className={classes.header}>Forum Feed</h1>
         </Grid>
         <Container>
-          <Paper className={classes.paper}>
             <Grid className={classes.form} item xs={12}>
             <Card>
                 <CardHeader
@@ -199,7 +202,6 @@ function Forum() {
                 </CardContent>
             </Card>
             </Grid>
-          </Paper>
           {posts.map(post => {
             const date = post.createdAt.slice(0, 10) + " at " + post.createdAt.slice(11,16)
             return (

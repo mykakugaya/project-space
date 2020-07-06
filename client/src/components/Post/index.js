@@ -20,6 +20,9 @@ const useStyles = makeStyles((theme) => ({
     avatar: {
       backgroundColor: red[500],
     },
+    card: {
+        marginBottom: "10px"
+    }
 }));
 
 function Post(props) {
@@ -27,7 +30,7 @@ function Post(props) {
     const link = "/forum/" + props.id;
 
     return(
-        <Card>
+        <Card className={classes.card}>
             <CardHeader
                 avatar={
                 <Avatar aria-label="recipe" className={classes.avatar}>
