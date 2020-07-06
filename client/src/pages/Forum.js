@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
       alignContent: "center",
-      marginBottom: "20px"
+      marginBottom: "15px"
   },
   button: {
     padding: "5px",
@@ -259,21 +259,22 @@ function Forum() {
         //       />
         //     );
         //   }) : 
-          posts.map((post) => {
-            const date =
-              post.createdAt.slice(0, 10) +
-              " at " +
-              post.createdAt.slice(11, 16);
-            return (
-              <Post
-                key={post.id}
-                id={post.id}
-                date={date}
-                title={post.title}
-                category={post.category}
-                body={post.body}
-                author={post.User.name}
-              />
+
+        posts.map((post) => {
+          const date =
+          post.createdAt.slice(0, 10) +
+          " at " +
+          post.createdAt.slice(11, 16);
+          return (
+            <Post
+            key={post.id}
+            id={post.id}
+            date={date}
+            title={post.title}
+            category={post.category}
+            body={post.body}
+            author={post.User.name}
+            />
             );
           })}
         </Container>
