@@ -52,7 +52,7 @@ export default function Navbar() {
       <AppBar position="static" className={classes.appbar}>
         <Toolbar className={classes.padding}>
           <Typography variant="h6" className={classes.title}>
-           Welcome, {user?.name || "Stranger"}.
+           Welcome, {user?.name || "Earthling"}.
          </Typography>
           {/* <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
           </IconButton> */}

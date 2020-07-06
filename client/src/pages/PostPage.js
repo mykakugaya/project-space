@@ -21,7 +21,6 @@ import moment from "moment";
 import Post from "../components/Post";
 import PostResponseForm from "../components/PostResponseForm";
 import { useParams, Route } from 'react-router-dom';
-import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
     avatar: {
@@ -46,30 +45,32 @@ function PostPage() {
 
     // const date = post.createdAt.slice(0, 10) + " at " + post.createdAt.slice(11,16)
 
-    // return (
-    //     <Grid
-    //     container
-    //     direction="row"
-    //     justify="center"
-    //     alignItems="center"
-    //     className={classes.root}
-    //     >
-    //     <Grid item xs={12}>
-    //       <h1 className={classes.header}>Forum Feed</h1>
-    //     </Grid>
-    //     <Container>
-    //       <Paper className={classes.paper}>
-    //         <Grid className={classes.form} item xs={12}>
-    //             <Post date={date} title={post.title} category={post.category} body={post.body} author={post.User.name}/>
-    //             <PostResponseForm key={post.id} postId={post.id} category={post.category} title={post.title}/>
-    //         </Grid>
-    //       </Paper>
-    //     </Container>
-    // </Grid>
-    // )
-    return(
-        <h1>Here</h1>
+    return (
+        <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        className={classes.root}
+        >
+        <Grid item xs={12}>
+          <h1 className={classes.header}>Forum Feed</h1>
+        </Grid>
+        <Container>
+          <Paper className={classes.paper}>
+            <Grid className={classes.form} item xs={12}>
+                <Post 
+                //  date={date} 
+                 title={post.title} category={post.category} body={post.body} author={post.User.name}/>
+                <PostResponseForm key={post.id} postId={post.id} category={post.category} title={post.title}/>
+            </Grid>
+          </Paper>
+        </Container>
+    </Grid>
     )
+    // return(
+    //     <h1>Here</h1>
+    // )
 }
 
 export default PostPage;

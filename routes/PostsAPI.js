@@ -21,7 +21,6 @@ router.post("/posts", function (req, res) {
 router.get("/posts/:id", function (req, res) {
     db.Post.findOne({where: {id: req.params.id}, include: [db.Response]})
     .then(function(response){
-      console.log(response)
         res.json(response)
     });
 });
