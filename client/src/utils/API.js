@@ -11,14 +11,17 @@ export const getRover = () => axios.get("api/nasa/rover");
 export const getSpaceXLaunch = () => axios.get("api/nasa/spacex");
 
 // User APIs
-export const postLogin = user => axios.post("api/login", user);
-export const getUsers = () => axios.get("api/users");
-export const postSignup = user => axios.post("api/signup", user);
-export const getLogout = () => axios.get("api/logout")
-export const getUserData = () => axios.get("api/user_data");
-export const getFavoritesData = user => axios.get("api/images", user);
-export const updateFavoritesData = data => axios.post("api/images", data);
-export const deleteFavorite = data => axios.delete("api/images", data)
+export const postLogin = user => axios.post("/api/login", user);
+export const getUsers = () => axios.get("/api/users");
+export const postSignup = user => axios.post("/api/signup", user);
+export const getLogout = () => axios.get("/api/logout")
+export const getUserData = () => axios.get("/api/user_data");
+
+//Image APIs
+export const getFavoritesData = user => axios.get("/api/images", user);
+export const updateFavoritesData = data => axios.post("/api/images", data);
+export const deleteFavorite = data => axios.delete(`/api/images/${data.UserId}/${data.nasa_id}`);
+
 // Posts APIs
 export const getAllPosts = () => axios.get("/api/posts");
 export const createNewPost = post => axios.post("/api/posts", post);
