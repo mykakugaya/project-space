@@ -144,7 +144,6 @@ class Home extends Component {
                         <p>This application was developed for all Space Enthusiasts! Built with the passion of true space nerds, this site features several API's from NASA and SpaceX. We are pleased to provide a unique and immersive environment where users can re-ignite their love for all things outer-space!</p>
                         <ul><strong>Widgets featured on this page include...</strong>
                         <br></br>
-                        <br></br>
                             <li>NASA's Astronomy Picture of the Day; updated daily (see hero image above)</li>
                             <li>A Mars weather report; updated bi-weekly</li>
                             <li>Asteroid tracker listing various properties of the asteroids nearest to Earth; updated daily</li>

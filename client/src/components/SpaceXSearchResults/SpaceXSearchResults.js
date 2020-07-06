@@ -32,53 +32,6 @@ const StyledTableRow = withStyles((theme) => ({
   },
 }))(TableRow);
 
-// export default function SpaceXSearchResults(props) {
-// console.log(props)
-//   return (
-//     <TableContainer component={Paper}>
-//       <Table  aria-label="customized table">
-//         <colgroup>
-//           <col style={{width:'20%'}}/>
-//           <col style={{width:'80%'}}/>
-//         </colgroup>
-//         <TableHead>
-//           <TableRow>
-//             <StyledTableCell>Launch Properties</StyledTableCell>
-//             <StyledTableCell align="left">Results</StyledTableCell>
-//           </TableRow>
-//         </TableHead>
-//         <TableBody>
-//             <StyledTableRow>
-//               <StyledTableCell component="th" scope="row">Mission Name and Date</StyledTableCell>
-//               <StyledTableCell align="left">{props.results.mission_name} (SpaceX launch number {props.results.flight_number}) was launched in {props.results.launch_year}</StyledTableCell>
-//             </StyledTableRow>
-//             <StyledTableRow>
-//               <StyledTableCell component="th" scope="row">Mission Patch</StyledTableCell>
-//               <StyledTableCell align="left"><img style={{width: "15%"}}src={props.results.links.mission_patch_small}/></StyledTableCell>
-//             </StyledTableRow>
-//             <StyledTableRow>
-//               <StyledTableCell component="th" scope="row">Launch Details</StyledTableCell>
-//               <StyledTableCell align="left">{props.results.details}</StyledTableCell>
-//             </StyledTableRow>
-//             <StyledTableRow>
-//               <StyledTableCell component="th" scope="row">Mission Success?</StyledTableCell>
-//               <StyledTableCell align="left">{props.results.launch_success.toString().toUpperCase()}</StyledTableCell>
-//             </StyledTableRow>
-//             <StyledTableRow>
-//               <StyledTableCell component="th" scope="row">Rocket Name</StyledTableCell>
-//               <StyledTableCell align="left">{props.results.rocket.rocket_name}</StyledTableCell>
-//             </StyledTableRow>
-//             <StyledTableRow>
-//               <StyledTableCell component="th" scope="row">Launch Site</StyledTableCell>
-//               <StyledTableCell align="left">{props.results.launch_site.site_name_long}</StyledTableCell>
-//             </StyledTableRow>
-//         </TableBody>
-//       </Table>
-//     </TableContainer>
-//   );
-// }
-
-
 export default function SpaceXSearchResults(props) {
   console.log(props);
   const [open, setOpen] = React.useState(false);
@@ -106,7 +59,7 @@ export default function SpaceXSearchResults(props) {
               </StyledTableRow>
               <StyledTableRow>
               <StyledTableCell>
-                <IconButton style={{fontFamily: "Roboto"}}aria-label="expand row" size="small" onClick={() => setOpen(!open)}>Launch details
+                <IconButton style={{fontFamily: "Roboto", fontSize: "14px", color: "black"}}aria-label="expand row" onClick={() => setOpen(!open)}>Launch details
                   {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
                 </IconButton>
               </StyledTableCell>
