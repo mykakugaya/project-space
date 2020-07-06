@@ -77,10 +77,6 @@ function PostResponseForm(props) {
 
     return(
         <Container>
-            {responses.map(response => {
-                const date = response.createdAt.slice(0, 10) + " at " + response.createdAt.slice(11,16)
-                return <PostResponse key={response.id} date ={date} body={response.body} author={response.User.name}/>
-            })}
             <Card>
                 <CardHeader
                     // avatar={ user ?
@@ -147,6 +143,10 @@ function PostResponseForm(props) {
                     </IconButton>
                 </CardActions> */}
             </Card>
+            {responses.map(response => {
+                const date = response.createdAt.slice(0, 10) + " at " + response.createdAt.slice(11,16)
+                return <PostResponse key={response.id} date ={date} body={response.body} author={response.User.name}/>
+            })}
         </Container>
     )
 }
