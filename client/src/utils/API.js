@@ -22,7 +22,7 @@ export const deleteFavorite = data => axios.delete("api/images", data)
 // Posts APIs
 export const getAllPosts = () => axios.get("/api/posts");
 export const createNewPost = post => axios.post("/api/posts", post);
-export const getSinglePost = id => axios.get(`api/posts/${id}`);
+export const getSinglePost = id => axios.get(`/api/posts/${id}`);
 
 //Post Response APIs
 export const getAllResponses = (postId) => axios.get(`/api/responses/${postId}`);
