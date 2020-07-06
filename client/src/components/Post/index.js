@@ -5,7 +5,6 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -15,6 +14,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import DeleteIcon from '@material-ui/icons/Delete';
 import moment from "moment";
 import { Link } from "react-router-dom";
+import UserAvatar from "../UserAvatar";
 
 const useStyles = makeStyles((theme) => ({
     avatar: {
@@ -32,17 +32,9 @@ function Post(props) {
     return(
         <Card className={classes.card}>
             <CardHeader
-                // avatar={ user ?
-                // <Avatar aria-label="user" className={classes.avatar}>
-                //   {user.name[0]}
-                // </Avatar>
-                //   :
                 avatar={
-                    <Avatar aria-label="user" className={classes.avatar}>
-                        S
-                    </Avatar>
+                    <UserAvatar letter={props.author ? props.author[0] : "A"}/>
                 }
-                
                 title={props.author}
                 subheader={props.date}
             />
