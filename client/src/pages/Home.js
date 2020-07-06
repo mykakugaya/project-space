@@ -183,7 +183,7 @@ class Home extends Component {
                     <Grid item xs={6} className="weatherReport">
                         <h2>Mars weather report</h2>
                         <div className="iframe-container">
-                            <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' height='540px'  scrolling='no' frameborder='1'></iframe>
+                            <iframe src='https://mars.nasa.gov/layout/embed/image/insightweather/' height='580px'  scrolling='no' frameborder='1'></iframe>
                         </div>
                     </Grid>
                     <Grid item xs={6} justify="flex-start" alignItems="center" align="left" className="asteroidTable">
@@ -203,9 +203,10 @@ class Home extends Component {
                     </Grid>
                     <Grid item xs={5} className="roverPhotos">
                         <h2>Browse today's Mars photos captured by NASA's Curiosity rover</h2>
-                        <MarsRoverImages backgroundImage={this.state.marsRoverImage} >
+                        <MarsRoverImages backgroundImage={this.state.marsRoverImage} style={{height: "100px"}} >
                             <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
                             <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
+                            <p style={{height: "22.5em"}}></p>
                         </MarsRoverImages>
                     </Grid>
                     <Grid item xs={7} className="spaceXTable" justify="flex-start" alignItems="center" align="left">
