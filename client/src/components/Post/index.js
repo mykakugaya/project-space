@@ -35,7 +35,7 @@ function Post(props) {
             <CardHeader
                 avatar={props.author ?
                 <UserAvatar letter={props.author}/>
-                : <Avatar></Avatar>
+                : <UserAvatar/>
                 }
                 title={props.author}
                 subheader={props.date}
