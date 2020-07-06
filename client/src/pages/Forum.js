@@ -25,6 +25,7 @@ import { red } from "@material-ui/core/colors";
 import { createNewPost, getAllPosts } from "../utils/API";
 import { userContext } from "../utils/userContext";
 import moment from "moment";
+import Avatar from '@material-ui/core/Avatar';
 const currentday = moment().format("YYYY-MM-DD");
 
 const useStyles = makeStyles((theme) => ({
@@ -104,6 +105,7 @@ function Forum() {
     getAllPosts()
       .then((res) => {
         setPosts(res.data);
+        console.log(user)
       })
       .catch((err) => setError(err));
   };
@@ -152,9 +154,10 @@ function Forum() {
               <Paper className={classes.paper}>
                 <Card>
                   <CardHeader
-                     avatar={
-                    <UserAvatar letter={user ? user?.name[0] : "S"}/>
-                  }
+                    avatar={user ?
+                      <UserAvatar letter={user?.name}/>
+                      : <Avatar></Avatar>
+                    }
                     title={user ? user.name : "Please log in to post."}
                     subheader={currentday}
                   />
@@ -256,6 +259,7 @@ function Forum() {
             category={post.category}
             body={post.body}
             author={post.User.name}
+            responses={post.Responses.length}
             />
             );
           })}

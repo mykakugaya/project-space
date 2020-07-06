@@ -15,11 +15,12 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import moment from "moment";
 import { Link } from "react-router-dom";
 import UserAvatar from "../UserAvatar";
+import Avatar from '@material-ui/core/Avatar';
 
 const useStyles = makeStyles((theme) => ({
-    avatar: {
-      backgroundColor: red[500],
-    },
+    // avatar: {
+    //   backgroundColor: red[500],
+    // },
     card: {
         marginBottom: "10px"
     }
@@ -32,8 +33,9 @@ function Post(props) {
     return(
         <Card className={classes.card}>
             <CardHeader
-                avatar={
-                    <UserAvatar letter={props.author ? props.author[0] : "A"}/>
+                avatar={props.author ?
+                <UserAvatar letter={props.author}/>
+                : <Avatar></Avatar>
                 }
                 title={props.author}
                 subheader={props.date}
@@ -44,7 +46,7 @@ function Post(props) {
                     Category: {props.category}
                 </Typography>
                 <Typography variant="h6" component="h3" component={Link} to={link}>
-                    {props.title}
+                    {props.title} ({props.responses} responses)
                 </Typography>
                 <Typography variant="body1" color="textPrimary" component="p">
                     {props.body}
