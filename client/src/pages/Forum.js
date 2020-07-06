@@ -142,8 +142,8 @@ function Forum() {
           <h1 className={classes.header}>Forum Feed</h1>
         </Grid>
         <Grid container
-          justify="center"
-          alignItems="center"
+          justify="flex-start"
+          alignItems="flex-start"
           className={classes.root}>
             <Grid item={4}>
               <ForumSearch 
@@ -223,10 +223,10 @@ function Forum() {
                   </CardContent>
                 </Card>
             </Paper>
-          {
+          {/* {
           filteredPosts ? 
             posts.filter(post => {
-              post.category = filteredPosts;
+              post.category == filteredPosts;
               const date =
                 post.createdAt.slice(0, 10) +
                 " at " +
@@ -261,7 +261,7 @@ function Forum() {
             responses={post.Responses.length}
             />
             );
-          })}
+          })} */}
         </Grid>
       </Grid>
     </Grid>

@@ -28,6 +28,9 @@ const useStyles = makeStyles((theme) => ({
       width: "25ch",
     },
   },
+  p: {
+    color: "black"
+  }
 }));
 
 export default function CenteredGrid() {
@@ -63,20 +66,31 @@ export default function CenteredGrid() {
 
   const handleCreateUser = event => {
       event.preventDefault();
-      postSignup( {
-          name: name,
-          email: newEmail,
-          password: newPassword
-      })
-      .then ( () => {
-          console.log(`New User signed up: ${name}`);
-          postLogin( {
-              email: newEmail,
-              password: newPassword
-          });
-          window.location.replace("/");
-      })
-      .catch ( err => setError(err));
+      getUsers()
+          .then(
+          response => setUsers(response.data))
+          users.map(user => {
+            if (user.email = newEmail){
+              setError("Email already in use. Please log in.")
+            }
+          })
+
+            postSignup( {
+                name: name,
+                email: newEmail,
+                password: newPassword
+            })
+
+            .then ( () => {
+                console.log(`New User signed up: ${name}`);
+                postLogin( {
+                    email: newEmail,
+                    password: newPassword
+                });
+                window.location.replace("/");
+            })
+
+            .catch ( err => console.log(err));
   };
 
   const getAllUsers = event => {
@@ -156,11 +170,7 @@ export default function CenteredGrid() {
                   onClick={handleCreateUser}
                 >Create User
                 </Button>
-                {users.map((user) => {
-                  if (user?.email == users[0]){
-                    console.log("this email is already in use")
-                  }
-                })}
+                <p className={classes.p}>{error ? error : ""}</p>
               </form>
             </Grid>
           </Grid>
