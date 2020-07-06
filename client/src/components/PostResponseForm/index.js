@@ -85,7 +85,7 @@ function PostResponseForm(props) {
                     <CardHeader
                     avatar={user ?
                     <UserAvatar letter={user?.name}/>
-                    : <Avatar></Avatar>
+                    : <UserAvatar/>
                     }
                     title={user ? user.name : "Please log in to respond."}
                     subheader={props.date}

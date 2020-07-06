@@ -29,8 +29,8 @@ function PostResponse(props) {
         <Card>
             <CardHeader
                 avatar={props.author ?
-                <UserAvatar letter={props.author}/>
-                : <Avatar></Avatar>
+                    <UserAvatar letter={props.author}/>
+                    : <UserAvatar/>
                 }
                 title={props.author}
                 subheader={props.date}

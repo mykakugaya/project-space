@@ -105,7 +105,6 @@ function Forum() {
     getAllPosts()
       .then((res) => {
         setPosts(res.data);
-        console.log(user)
       })
       .catch((err) => setError(err));
   };
@@ -156,7 +155,7 @@ function Forum() {
                   <CardHeader
                     avatar={user ?
                       <UserAvatar letter={user?.name}/>
-                      : <Avatar></Avatar>
+                      : <UserAvatar/>
                     }
                     title={user ? user.name : "Please log in to post."}
                     subheader={currentday}
