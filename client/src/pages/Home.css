@@ -104,30 +104,6 @@ p {
     }
 }
 
-/* @media only screen and (max-width: 600px) {
-    .about {
-        height: 600px;
-    }
-    .aboutus {
-        height: 300px;
-    }
-    .weatherReport {
-        height: 620px;
-    }
-    .asteroidTable {
-        height: 600px;
-    }
-    .roverPhotos {
-        height: 600px;
-    }
-    .spaceXTable {
-        height: 800px;
-    }
-    .iframe-container iframe {
-        height: 500px;
-    }
-}
-   */
 @media only screen and (min-width: 600px) {
     .about, .aboutus {
         height: 835px;

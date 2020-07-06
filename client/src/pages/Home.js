@@ -33,8 +33,6 @@ class Home extends Component {
         launchResults: []
     }
 
-    
-
     handleInputChange = event => {
         console.log(event.target)
         this.setState({ search: event.target.value})
