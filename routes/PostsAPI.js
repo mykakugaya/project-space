@@ -4,7 +4,7 @@ const db = require("../models");
 // get all posts
 router.get("/posts", function (req, res) {
   db.Post.findAll({
-    include: [db.User],
+    include: [db.Response, db.User]
   }).then(function (getPostsResult) {
     res.json(getPostsResult);
   });
@@ -19,7 +19,7 @@ router.post("/posts", function (req, res) {
 
 // get single post with responses
 router.get("/posts/:id", function (req, res) {
-    db.Post.findOne({where: {id: req.params.id}, include: [db.Response]})
+    db.Post.findOne({where: {id: req.params.id}, include: [db.Response, db.User]})
     .then(function(response){
         res.json(response)
     });

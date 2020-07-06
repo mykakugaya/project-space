@@ -1,12 +1,13 @@
 import React, {useState, useEffect, useContext} from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Container from "@material-ui/core/Container";
+import Paper from "@material-ui/core/Paper";
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
+import UserAvatar from "../UserAvatar";
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -34,8 +35,11 @@ const useStyles = makeStyles((theme) => ({
       button: {
           padding: "5px"
       },
-      avatar: {
-        backgroundColor: red[500],
+    //   avatar: {
+    //     backgroundColor: red[500],
+    //   },
+      card: {
+          marginBottom: "10px"
       }
 }));
 
@@ -45,8 +49,6 @@ function PostResponseForm(props) {
     const [responses, setResponses] = useState([]);
     const [newResponseBody, setnewResponseBody] = useState("");
     const [error, setError] = useState("");
-    // perhaps we need a newResponseId??
-    const [newResponseId, setNewResponseId] = useState("");
 
     const validatePost = () => {
         return newResponseBody.length > 0;
@@ -77,76 +79,71 @@ function PostResponseForm(props) {
 
     return(
         <Container>
-            <Card>
-                <CardHeader
-                    // avatar={ user ?
-                    // <Avatar aria-label="user" className={classes.avatar}>
-                    //   {user.name[0]}
-                    // </Avatar>
-                    //   :
-                    avatar={
-                        <Avatar aria-label="user" className={classes.avatar}>
-                            S
-                        </Avatar>
-                    }
-                    title={user ? user.name : "Please log in to post."}
-                    subheader={currentday}
-                />
-                <Divider/>
-                <CardContent>
-                    <Typography color="textSecondary">
-                        Category: {props.category}
-                    </Typography>
-                    <Typography color="textSecondary">
-                        Responding to {props.title}'s post
-                    </Typography>
-                    <form>
-                        <TextField className={classes.text}
-                            id="outlined-multiline-static"
-                            label="Response Content"
-                            multiline
-                            rows={5}
-                            variant="outlined"
-                            value={newResponseBody}
-                            onChange={e => setnewResponseBody(e.target.value)}
-                        />
-                        <br />
-                        <Button className={classes.button}
-                            variant="contained" 
-                            color="primary" 
-                            disableElevation disabled={!validatePost()}
-                            onClick={handleCreateResponse}
-                        >Post
-                        </Button>
-                    </form>
-                </CardContent>
-                {/* <CardActions disableSpacing>
-                    <IconButton
-                    className={clsx(classes.expand, {
-                        [classes.expandOpen]: expanded,
-                    })}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
-                    aria-label="show more"
-                    >
-                        <FavoriteIcon />
-                    </IconButton>
-                    <IconButton
-                    className={clsx(classes.expand, {
-                        [classes.expandOpen]: expanded,
-                    })}
-                    onClick={handleExpandClick}
-                    aria-expanded={expanded}
-                    aria-label="show more"
-                    >
-                        <DeleteIcon />
-                    </IconButton>
-                </CardActions> */}
-            </Card>
-            {responses.map(response => {
-                const date = response.createdAt.slice(0, 10) + " at " + response.createdAt.slice(11,16)
-                return <PostResponse key={response.id} date ={date} body={response.body} author={response.User.name}/>
-            })}
+            <Paper>
+                <Card className={classes.card}>
+                    <CardHeader
+                        avatar={
+                        <UserAvatar letter={user ? user?.name[0] : "S"}/>
+                        }
+                        title={user ? user?.name : "Please log in to respond."}
+                        subheader={props.date}
+                    />
+                    <Divider/>
+                    <CardContent>
+                        <Typography color="textSecondary">
+                            Category: {props.category}
+                        </Typography>
+                        <Typography color="textSecondary">
+                            Responding to "{props.title}"
+                        </Typography>
+                        <form>
+                            <TextField className={classes.text}
+                                id="outlined-multiline-static"
+                                label="Response Here"
+                                multiline
+                                rows={5}
+                                variant="outlined"
+                                value={newResponseBody}
+                                onChange={e => setnewResponseBody(e.target.value)}
+                            />
+                            <br />
+                            <Button className={classes.button}
+                                variant="contained" 
+                                color="primary" 
+                                disableElevation disabled={!validatePost()}
+                                onClick={handleCreateResponse}
+                            >Post
+                            </Button>
+                        </form>
+                    </CardContent>
+                    {/* <CardActions disableSpacing>
+                        <IconButton
+                        className={clsx(classes.expand, {
+                            [classes.expandOpen]: expanded,
+                        })}
+                        onClick={handleExpandClick}
+                        aria-expanded={expanded}
+                        aria-label="show more"
+                        >
+                            <FavoriteIcon />
+                        </IconButton>
+                        <IconButton
+                        className={clsx(classes.expand, {
+                            [classes.expandOpen]: expanded,
+                        })}
+                        onClick={handleExpandClick}
+                        aria-expanded={expanded}
+                        aria-label="show more"
+                        >
+                            <DeleteIcon />
+                        </IconButton>
+                    </CardActions> */}
+                </Card>
+                {responses.map(response => {
+                    const date = response.createdAt.slice(0, 10) + " at " + response.createdAt.slice(11,16)
+                    return <PostResponse key={response.id} date ={date} body={response.body} author={response.User?.name}/>
+                })}
+            </Paper>
         </Container>
     )
 }

@@ -23,14 +23,15 @@ import PostResponseForm from "../components/PostResponseForm";
 import { useParams, Route } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
-    avatar: {
-      backgroundColor: red[500],
-    },
+    // avatar: {
+    //   backgroundColor: red[500],
+    // },
 }));
 
 function PostPage() {
     const classes = useStyles();
     const [post, setPost] = useState({});
+    const [date, setDate] = useState("");
     const [error, setError] = useState("");
     const params = useParams();
 
@@ -38,14 +39,14 @@ function PostPage() {
         getSinglePost(params.id)
         .then(res => {
             setPost(res.data);
-            console.log(post);
+            setDate(post.createdAt.slice(0, 10) + " at " + post.createdAt.slice(11,16));
         })
         .catch ( err => setError(err));
     }, [post]);
 
-    // const date = post.createdAt.slice(0, 10) + " at " + post.createdAt.slice(11,16)
 
     return (
+        <div>
         <Grid
         container
         direction="row"
@@ -53,20 +54,25 @@ function PostPage() {
         alignItems="center"
         className={classes.root}
         >
-        <Grid item xs={12}>
-          <h1 className={classes.header}>Forum Feed</h1>
-        </Grid>
-        <Container>
-          <Paper className={classes.paper}>
-            <Grid className={classes.form} item xs={12}>
-                <Post 
-                //  date={date} 
-                 title={post.title} category={post.category} body={post.body} author={post.User.name}/>
-                <PostResponseForm key={post.id} postId={post.id} category={post.category} title={post.title}/>
+            <Grid item xs={12}>
+            <h1 className={classes.header}>Forum Post</h1>
             </Grid>
-          </Paper>
-        </Container>
-    </Grid>
+            <Container>
+                <Grid className={classes.form} item xs={12}>
+                    {post ?
+                    <>
+                        <Post 
+                        date={date} 
+                        title={post.title} category={post.category} body={post.body} author={post?.User?.name}/>
+                        <PostResponseForm key={post.id} postId={post.id} category={post.category} title={post.title}/>
+                    </>
+                    :
+                    <h3>Post cannot be found.</h3>
+                    }
+                </Grid>
+            </Container>
+        </Grid>
+        </div>
     )
     // return(
     //     <h1>Here</h1>

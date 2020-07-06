@@ -12,7 +12,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
+import UserAvatar from "../components/UserAvatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
@@ -45,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
       alignContent: "center",
-      marginBottom: "20px"
+      marginBottom: "15px"
   },
   button: {
     padding: "5px",
@@ -152,11 +152,9 @@ function Forum() {
               <Paper className={classes.paper}>
                 <Card>
                   <CardHeader
-                    avatar={
-                      <Avatar aria-label="user" className={classes.avatar}>
-                        S
-                      </Avatar>
-                    }
+                     avatar={
+                    <UserAvatar letter={user ? user?.name[0] : "S"}/>
+                  }
                     title={user ? user.name : "Please log in to post."}
                     subheader={currentday}
                   />
@@ -243,21 +241,22 @@ function Forum() {
         //       />
         //     );
         //   }) : 
-          posts.map((post) => {
-            const date =
-              post.createdAt.slice(0, 10) +
-              " at " +
-              post.createdAt.slice(11, 16);
-            return (
-              <Post
-                key={post.id}
-                id={post.id}
-                date={date}
-                title={post.title}
-                category={post.category}
-                body={post.body}
-                author={post.User.name}
-              />
+
+        posts.map((post) => {
+          const date =
+          post.createdAt.slice(0, 10) +
+          " at " +
+          post.createdAt.slice(11, 16);
+          return (
+            <Post
+            key={post.id}
+            id={post.id}
+            date={date}
+            title={post.title}
+            category={post.category}
+            body={post.body}
+            author={post.User.name}
+            />
             );
           })}
         </Grid>
