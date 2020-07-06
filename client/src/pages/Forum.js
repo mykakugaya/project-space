@@ -217,18 +217,28 @@ function Forum() {
               </Card>
             </Grid>
           </Paper>
-          <Select
-            labelId="demo-simple-select-outlined-label"
-            id="demo-simple-select-outlined"
-            value={filteredPosts}
-            onChange={(e) => setFilteredPosts(e.target.value)}
-            label="Search Posts by Category"
-          >
-            <MenuItem value={"Earth"}>Earth</MenuItem>
-            <MenuItem value={"Solar System"}>Solar System</MenuItem>
-            <MenuItem value={"NASA"}>NASA</MenuItem>
-            <MenuItem value={"SpaceX Launches"}>SpaceX Launches</MenuItem>
-          </Select>
+          <form>
+            <FormControl
+              variant="outlined"
+              className={classes.formControl}
+            >
+              <InputLabel id="demo-simple-select-outlined-label">
+                Category
+              </InputLabel>
+              <Select
+                labelId="demo-simple-select-outlined-label"
+                id="demo-simple-select-outlined"
+                value={filteredPosts}
+                onChange={(e) => setFilteredPosts(e.target.value)}
+                label="Search Posts by Category"
+              >
+                <MenuItem value={"Earth"}>Earth</MenuItem>
+                <MenuItem value={"Solar System"}>Solar System</MenuItem>
+                <MenuItem value={"NASA"}>NASA</MenuItem>
+                <MenuItem value={"SpaceX Launches"}>SpaceX Launches</MenuItem>
+              </Select>
+            </FormControl>
+          </form>
           {
         //   filteredPosts ? 
         //     posts.filter(post => {
