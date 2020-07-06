@@ -45,11 +45,9 @@ function Post(props) {
                 <Typography color="textSecondary">
                     Category: {props.category}
                 </Typography>
-                <Link to={link}>
-                    <Typography variant="h6" component="h3" >
-                        {props.title}
-                    </Typography>
-                </Link>
+                <Typography variant="h6" component="h3" component={Link} to={link}>
+                    {props.title}
+                </Typography>
                 <Typography variant="body1" color="textPrimary" component="p">
                     {props.body}
                 </Typography>
