@@ -68,7 +68,7 @@ function Forum() {
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostBody, setnewPostBody] = useState("");
   const [newPostCategory, setnewPostCategory] = useState("");
-  const [filteredPosts, setFilteredPosts] = useState( "" );
+  const [filteredPosts, setFilteredPosts] = useState( [] );
   const [error, setError] = useState("");
 
   const { user } = useContext(userContext);
@@ -224,25 +224,25 @@ function Forum() {
                 </Card>
             </Paper>
           {
-        //   filteredPosts ? 
-        //     posts.filter(post => {
-        //       post.category == filteredPosts;
-        //       const date =
-        //         post.createdAt.slice(0, 10) +
-        //         " at " +
-        //         post.createdAt.slice(11, 16);
-        //     return (
-        //       <Post
-        //         key={post.id}
-        //         id={post.id}
-        //         date={date}
-        //         title={post.title}
-        //         category={post.category}
-        //         body={post.body}
-        //         author={post.User.name}
-        //       />
-        //     );
-        //   }) : 
+          filteredPosts ? 
+            posts.filter(post => {
+              post.category = filteredPosts;
+              const date =
+                post.createdAt.slice(0, 10) +
+                " at " +
+                post.createdAt.slice(11, 16);
+            return (
+              <Post
+                key={post.id}
+                id={post.id}
+                date={date}
+                title={post.title}
+                category={post.category}
+                body={post.body}
+                author={post.User.name}
+              />
+            );
+          }) : 
 
         posts.map((post) => {
           const date =
