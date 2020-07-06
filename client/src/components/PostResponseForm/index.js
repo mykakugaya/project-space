@@ -7,7 +7,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
+import UserAvatar from "../UserAvatar";
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -35,9 +35,9 @@ const useStyles = makeStyles((theme) => ({
       button: {
           padding: "5px"
       },
-      avatar: {
-        backgroundColor: red[500],
-      },
+    //   avatar: {
+    //     backgroundColor: red[500],
+    //   },
       card: {
           marginBottom: "10px"
       }
@@ -49,8 +49,6 @@ function PostResponseForm(props) {
     const [responses, setResponses] = useState([]);
     const [newResponseBody, setnewResponseBody] = useState("");
     const [error, setError] = useState("");
-    // perhaps we need a newResponseId??
-    const [newResponseId, setNewResponseId] = useState("");
 
     const validatePost = () => {
         return newResponseBody.length > 0;
@@ -84,18 +82,11 @@ function PostResponseForm(props) {
             <Paper>
                 <Card className={classes.card}>
                     <CardHeader
-                        // avatar={ user ?
-                        // <Avatar aria-label="user" className={classes.avatar}>
-                        //   {user.name[0]}
-                        // </Avatar>
-                        //   :
                         avatar={
-                            <Avatar aria-label="user" className={classes.avatar}>
-                                S
-                            </Avatar>
+                        <UserAvatar letter={user ? user?.name[0] : "S"}/>
                         }
-                        title={user ? user.name : "Please log in to post."}
-                        subheader={currentday}
+                        title={user ? user?.name : "Please log in to respond."}
+                        subheader={props.date}
                     />
                     <Divider/>
                     <CardContent>

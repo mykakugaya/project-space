@@ -12,7 +12,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
-import Avatar from "@material-ui/core/Avatar";
+import UserAvatar from "../components/UserAvatar";
 import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
@@ -139,15 +139,8 @@ function Forum() {
             <Grid className={classes.form} item xs={12}>
               <Card>
                 <CardHeader
-                  // avatar={ user ?
-                  // <Avatar aria-label="user" className={classes.avatar}>
-                  //   {user.name[0]}
-                  // </Avatar>
-                  //   :
                   avatar={
-                    <Avatar aria-label="user" className={classes.avatar}>
-                      S
-                    </Avatar>
+                    <UserAvatar letter={user ? user?.name[0] : "S"}/>
                   }
                   title={user ? user.name : "Please log in to post."}
                   subheader={currentday}
