@@ -53,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 120,
+    backgroundColor: "white"
   },
   avatar: {
     backgroundColor: red[500],
@@ -217,14 +218,10 @@ function Forum() {
               </Card>
             </Grid>
           </Paper>
-          <form>
             <FormControl
               variant="outlined"
               className={classes.formControl}
             >
-              <InputLabel id="demo-simple-select-outlined-label">
-                Category
-              </InputLabel>
               <Select
                 labelId="demo-simple-select-outlined-label"
                 id="demo-simple-select-outlined"
@@ -238,7 +235,6 @@ function Forum() {
                 <MenuItem value={"SpaceX Launches"}>SpaceX Launches</MenuItem>
               </Select>
             </FormControl>
-          </form>
           {
         //   filteredPosts ? 
         //     posts.filter(post => {
