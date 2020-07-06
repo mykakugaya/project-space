@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import Post from "../components/Post";
-import ForumSearch from "../components/ForumSearch";
+import ForumSearch from "../components/ForumSearch/forumSearch";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
@@ -118,6 +118,12 @@ function Forum() {
     event.preventDefault();
   };
 
+  const handleFilteredPosts = (event) => {
+    event.preventDefault();
+    setFilteredPosts(event.target.value);
+    console.log(filteredPosts);
+  }
+
   const handleTabChange = (value) => {
     // setCurrentTab(value);
   };
@@ -131,110 +137,92 @@ function Forum() {
         alignItems="center"
         className={classes.root}
       >
-        <Grid item xs={12}>
+        <Grid constainer xs={12}>
           <h1 className={classes.header}>Forum Feed</h1>
         </Grid>
-        <Container>
-            <Paper>
-            <Grid className={classes.form} item xs={12}>
-              <Card>
-                <CardHeader
-                  // avatar={ user ?
-                  // <Avatar aria-label="user" className={classes.avatar}>
-                  //   {user.name[0]}
-                  // </Avatar>
-                  //   :
-                  avatar={
-                    <Avatar aria-label="user" className={classes.avatar}>
-                      S
-                    </Avatar>
-                  }
-                  title={user ? user.name : "Please log in to post."}
-                  subheader={currentday}
-                />
-                <Divider />
-                <CardContent>
-                  <Typography variant="h6" component="h3">
-                    New Post
-                  </Typography>
-                  <form>
-                    <FormControl
-                      variant="outlined"
-                      className={classes.formControl}
-                    >
-                      <InputLabel id="demo-simple-select-outlined-label">
-                        Category
-                      </InputLabel>
-                      <Select
-                        labelId="demo-simple-select-outlined-label"
-                        id="demo-simple-select-outlined"
-                        value={newPostCategory}
-                        onChange={(e) => setnewPostCategory(e.target.value)}
-                        label="Category"
-                      >
-                        <MenuItem value={"Earth"}>Earth</MenuItem>
-                        <MenuItem value={"Solar System"}>
-                          Solar System</MenuItem>
-                        <MenuItem value={"NASA"}>NASA</MenuItem>
-                        <MenuItem value={"SpaceX Launches"}>
-                          SpaceX Launches
-                        </MenuItem>
-                      </Select>
-                    </FormControl>
-                    <TextField
-                      className={classes.text}
-                      id="outlined-multiline-static"
-                      label="Title"
-                      multiline
-                      rows={1}
-                      variant="outlined"
-                      value={newPostTitle}
-                      onChange={(e) => setNewPostTitle(e.target.value)}
-                    />
-                    <br />
-                    <TextField
-                      className={classes.text}
-                      id="outlined-multiline-static"
-                      label="Post Content"
-                      multiline
-                      rows={5}
-                      variant="outlined"
-                      value={newPostBody}
-                      onChange={(e) => setnewPostBody(e.target.value)}
-                    />
-                    <br />
-                    <Button
-                      className={classes.button}
-                      variant="contained"
-                      color="primary"
-                      disableElevation
-                      disabled={!validatePost()}
-                      onClick={handleCreatePost}
-                    >
-                      Post
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
+        <Grid container
+          justify="center"
+          alignItems="center"
+          className={classes.root}>
+            <Grid item={4}>
+              <ForumSearch 
+                handleFilteredPosts={handleFilteredPosts}/>
             </Grid>
-          </Paper>
-            <FormControl
-              variant="outlined"
-              className={classes.formControl}
-            >
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                value={filteredPosts}
-                onChange={(e) => setFilteredPosts(e.target.value)}
-                label="Search Posts by Category"
-              >
-                <MenuItem value={"Earth"}>Earth</MenuItem>
-                <MenuItem value={"Solar System"}>Solar System</MenuItem>
-                <MenuItem value={"NASA"}>NASA</MenuItem>
-                <MenuItem value={"SpaceX Launches"}>SpaceX Launches</MenuItem>
-              </Select>
-            </FormControl>
+            <Grid className={classes.form} item={8}>
+              <Paper className={classes.paper}>
+                <Card>
+                  <CardHeader
+                    avatar={
+                      <Avatar aria-label="user" className={classes.avatar}>
+                        S
+                      </Avatar>
+                    }
+                    title={user ? user.name : "Please log in to post."}
+                    subheader={currentday}
+                  />
+                  <Divider />
+                  <CardContent>
+                    <Typography variant="h6" component="h3">
+                      New Post
+                    </Typography>
+                      <FormControl
+                        variant="outlined"
+                        className={classes.formControl}
+                      >
+                        <InputLabel id="demo-simple-select-outlined-label">
+                          Category
+                        </InputLabel>
+                        <Select
+                          labelId="demo-simple-select-outlined-label"
+                          id="demo-simple-select-outlined"
+                          value={newPostCategory}
+                          onChange={(e) => setnewPostCategory(e.target.value)}
+                          label="Category"
+                        >
+                          <MenuItem value={"Earth"}>Earth</MenuItem>
+                          <MenuItem value={"Solar System"}>
+                            Solar System</MenuItem>
+                          <MenuItem value={"NASA"}>NASA</MenuItem>
+                          <MenuItem value={"SpaceX Launches"}>
+                            SpaceX Launches
+                          </MenuItem>
+                        </Select>
+                      <TextField
+                        className={classes.text}
+                        id="outlined-multiline-static"
+                        label="Title"
+                        multiline
+                        rows={1}
+                        variant="outlined"
+                        value={newPostTitle}
+                        onChange={(e) => setNewPostTitle(e.target.value)}
+                      />
+                      <br />
+                      <TextField
+                        className={classes.text}
+                        id="outlined-multiline-static"
+                        label="Post Content"
+                        multiline
+                        rows={5}
+                        variant="outlined"
+                        value={newPostBody}
+                        onChange={(e) => setnewPostBody(e.target.value)}
+                      />
+                      <br />
+                      <Button
+                        className={classes.button}
+                        variant="contained"
+                        color="primary"
+                        disableElevation
+                        disabled={!validatePost()}
+                        onClick={handleCreatePost}
+                      >
+                        Post
+                      </Button>
+                    </FormControl>
+                  </CardContent>
+                </Card>
+            </Paper>
           {
         //   filteredPosts ? 
         //     posts.filter(post => {
@@ -272,9 +260,10 @@ function Forum() {
               />
             );
           })}
-        </Container>
+        </Grid>
       </Grid>
-    </div>
+    </Grid>
+  </div>
   );
 }
 
