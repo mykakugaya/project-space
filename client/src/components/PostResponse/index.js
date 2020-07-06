@@ -5,7 +5,7 @@ import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
 import Collapse from '@material-ui/core/Collapse';
-import Avatar from '@material-ui/core/Avatar';
+import UserAvatar from "../UserAvatar";
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
@@ -16,9 +16,9 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import moment from "moment";
 
 const useStyles = makeStyles((theme) => ({
-    avatar: {
-      backgroundColor: red[500],
-    },
+    // avatar: {
+    //   backgroundColor: red[500],
+    // },
 }));
 
 function PostResponse(props) {
@@ -28,9 +28,7 @@ function PostResponse(props) {
         <Card>
             <CardHeader
                 avatar={
-                <Avatar aria-label="recipe" className={classes.avatar}>
-                    {props.author[0]}
-                </Avatar>
+                <UserAvatar letter={props.author ? props.author[0] : "S"}/>
                 }
                 title={props.author}
                 subheader={props.date}

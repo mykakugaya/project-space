@@ -92,6 +92,7 @@ function JobSearch() {
         distance ? newQuery += distquery : newQuery=newQuery;
 
         searchJobs(newQuery);
+        console.log(newQuery)
     }
   
     return (
@@ -126,7 +127,7 @@ function JobSearch() {
                             return <JobResult key={job.id} title={job.position.title} company={job.company.name} location={job.postion.location.name}/>
                         })}
                     </List>
-                    : <h3>No results found.</h3>}
+                    : <h3 className={classes.text}>No results found.</h3>}
                 </Paper>
             </Grid>
         </Grid>
