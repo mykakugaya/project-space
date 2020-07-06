@@ -39,6 +39,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
     textAlign: "left",
     color: theme.palette.text.secondary,
+    marginBottom: "10px"
   },
   text: {
     width: "100ch",
@@ -46,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
       alignContent: "center",
-      marginBottom: "15px"
   },
   button: {
     padding: "5px",
@@ -59,6 +59,9 @@ const useStyles = makeStyles((theme) => ({
   avatar: {
     backgroundColor: red[500],
   },
+  h1: {
+    color: "white"
+  }
 }));
 
 function Forum() {
@@ -104,7 +107,7 @@ function Forum() {
   const getPosts = () => {
     getAllPosts()
       .then((res) => {
-        setPosts(res.data);
+        setPosts(res.data.reverse());
       })
       .catch((err) => setError(err));
   };
@@ -223,6 +226,7 @@ function Forum() {
                   </CardContent>
                 </Card>
             </Paper>
+            <h1 className={classes.h1}>Recent Posts:</h1>
           {
         //   filteredPosts ? 
         //     posts.filter(post => {

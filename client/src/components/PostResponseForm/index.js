@@ -41,6 +41,9 @@ const useStyles = makeStyles((theme) => ({
     //   },
       card: {
           marginBottom: "10px"
+      },
+      h1: {
+        color: "white"
       }
 }));
 
@@ -48,6 +51,7 @@ function PostResponseForm(props) {
     const {user} = useContext(userContext);
     const classes = useStyles();
     const [responses, setResponses] = useState([]);
+    const [post, setPost] = useState({});
     const [newResponseBody, setnewResponseBody] = useState("");
     const [error, setError] = useState("");
 
@@ -58,7 +62,8 @@ function PostResponseForm(props) {
     useEffect(() => {
         getSinglePost(props.postId)
         .then(res => {
-        setResponses(res.data.Responses);
+        setPost(res.data)
+        setResponses(res.data.Responses.reverse());
         })
         .catch ( err => setError(err));
     }, [responses]);
@@ -70,7 +75,8 @@ function PostResponseForm(props) {
         }
         createNewResponse({
             body: newResponseBody,
-            PostId: props.postId
+            PostId: props.postId,
+            UserId: user.id
         })
         .then (() => {
           console.log("New Response Saved");
@@ -80,7 +86,8 @@ function PostResponseForm(props) {
 
     return(
         <Container>
-            <Paper>
+                <h1 className={classes.h1}>Responses:</h1>
+
                 <Card className={classes.card}>
                     <CardHeader
                     avatar={user ?
@@ -143,9 +150,8 @@ function PostResponseForm(props) {
                 </Card>
                 {responses.map(response => {
                     const date = response.createdAt.slice(0, 10) + " at " + response.createdAt.slice(11,16)
-                    return <PostResponse key={response.id} date ={date} body={response.body} author={response.User?.name}/>
+                    return <PostResponse key={response.id} date ={date} body={response.body} author={post.User?.name}/>
                 })}
-            </Paper>
         </Container>
     )
 }
