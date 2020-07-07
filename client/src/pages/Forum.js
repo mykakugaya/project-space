@@ -91,7 +91,7 @@ function Forum() {
         setFilteredPosts(response.data.reverse());
       })
     }
-  }, [posts]);
+  }, []);
 
   const validatePost = () => {
     return newPostTitle.length > 0 && newPostBody.length > 0;
@@ -122,6 +122,7 @@ function Forum() {
     getAllPosts()
       .then((res) => {
         setPosts(res.data.reverse());
+        setFilteredPosts(res.data);
       })
       .catch((err) => console.log(err));
   };
@@ -260,6 +261,7 @@ function Forum() {
                 key={post.id}
                 id={post.id}
                 date={date}
+                uid={post.User.id}
                 title={post.title}
                 category={post.category}
                 body={post.body}
@@ -283,6 +285,7 @@ function Forum() {
               category={post.category}
               body={post.body}
               author={post.User.name}
+              uid={post.User.id}
               responses={post.Responses.length}
               />
               );

@@ -26,7 +26,8 @@ export const deleteFavorite = data => axios.delete(`/api/image/${data.UserId}/${
 export const getAllPosts = () => axios.get("/api/posts");
 export const createNewPost = post => axios.post("/api/posts", post);
 export const getSinglePost = id => axios.get(`/api/post/${id}`);
-export const getPostbyCategory = category => axios.get(`api/posts/${category}`)
+export const getPostbyCategory = category => axios.get(`api/posts/${category}`);
+export const deletePost = data => axios.delete(`/api/post/${data}/`);
 
 //Post Response APIs
 export const getAllResponses = (postId) => axios.get(`/api/responses/${postId}`);
