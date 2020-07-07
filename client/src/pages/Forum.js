@@ -28,12 +28,15 @@ import { purple } from '@material-ui/core/colors';
 const currentday = moment().format("YYYY-MM-DD");
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    marginBottom: "30px"
+  },
   header: {
     textAlign: "center",
     fontFamily: "Playfair Display SC",
-    fontSize: "5rem",
+    fontSize: "4rem",
     color: "white",
-    marginTop: "100px"
+    marginTop: "100px"  
   },
   paper: {
     padding: theme.spacing(3),
@@ -47,7 +50,7 @@ const useStyles = makeStyles((theme) => ({
   },
   form: {
       alignContent: "center",
-      paddingRight: "20px"
+      padding: "10px"
   },
   button: {
     padding: "5px",
@@ -56,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 50,
     backgroundColor: "white",
-    width: "100%"
+    width: "100%",
   },
   h3: {
     color: "white",
@@ -162,7 +165,7 @@ function Forum() {
   }
 
   return (
-    <div>
+    <div className={classes.container}>
       <Grid container justify="center" className={classes.root}
         alignItems="center" xs={12}>
           <h1 className={classes.header}>Forum Feed</h1>
@@ -171,6 +174,7 @@ function Forum() {
         <Grid container
           justify="flex-start"
           alignItems="flex-start"
+          className={classes.center}
           >
             <Grid item xs={12} sm={4} className={classes.search}>
               <ForumSearch 
