@@ -1,7 +1,7 @@
 ![NPM License](https://img.shields.io/static/v1?label=license&message=mit&color=brightgreen)
 
 # The Space Hub
-https://infinite-everglades-11519.herokuapp.com/
+https://the-space-hub.herokuapp.com/
 
 ## Table of Contents
 * [Description](#description)
