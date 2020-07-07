@@ -37,6 +37,7 @@ function Gallery() {
         const favs = user?.Images?.map(a=> a.nasa_id);
         searchImage(search)
         .then(res => {
+          console.log(res.data)
           const results = res.data.collection.items.map(a=>{
             if(favs?.includes(a.data[0].nasa_id)){
               return {nasa_id: a.data[0].nasa_id, title: a.data[0].title, src: a.links[0].href, isFav: true}
