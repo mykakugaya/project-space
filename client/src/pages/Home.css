@@ -35,6 +35,11 @@
     justify-content: center;
 }
 
+h1 {
+    font-family: 'Playfair Display SC';
+    font-size: 5rem
+}
+
 h2 {
     text-align: center;
     color: white;
