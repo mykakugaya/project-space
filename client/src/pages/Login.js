@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { postLogin, postSignup, getUsers } from "../utils/API";
 import Paper from "@material-ui/core/Paper";
@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
+import { userContext } from "../utils/userContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +35,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function CenteredGrid() {
+
+  const {user} = useContext(userContext);
+  
   const classes = useStyles();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -41,6 +45,7 @@ export default function CenteredGrid() {
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [error, setError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
   const [users, setUsers] = useState([]);
 
   const validateLogin = () => {
@@ -61,7 +66,7 @@ export default function CenteredGrid() {
           console.log("Logged in!");
           window.location.replace("/");
       })
-      .catch ( err => console.log(err));
+      .catch ( () => setPasswordError("Incorrect email or password. Please try again."));
   };
 
   const handleCreateUser = event => {
@@ -92,11 +97,6 @@ export default function CenteredGrid() {
 
             .catch ( err => console.log(err));
   };
-
-  const getAllUsers = event => {
-    event.preventDefault();
-    getUsers(allUsers => setUsers(allUsers))
-  }
 
   return (
     <div className={classes.root}>
@@ -132,6 +132,7 @@ export default function CenteredGrid() {
                 >Log In
                 </Button>
               </form>
+              <p className={classes.p}>{passwordError ? passwordError : ""}</p>
             </Grid>
             <Grid item xs={6}>
               or Create an Account:
