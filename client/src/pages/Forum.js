@@ -13,15 +13,12 @@ import CardContent from "@material-ui/core/CardContent";
 import CardActions from "@material-ui/core/CardActions";
 import Collapse from "@material-ui/core/Collapse";
 import UserAvatar from "../components/UserAvatar";
-import IconButton from "@material-ui/core/IconButton";
 import Typography from "@material-ui/core/Typography";
 import Divider from "@material-ui/core/Divider";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
-import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { red } from "@material-ui/core/colors";
 import { createNewPost, getAllPosts, getPostbyCategory } from "../utils/API";
 import { userContext } from "../utils/userContext";
 import moment from "moment";
@@ -35,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
     fontFamily: "Playfair Display SC",
     fontSize: "70px",
     color: "white",
+    marginTop: "100px"
   },
   paper: {
     padding: theme.spacing(3),
@@ -56,9 +54,6 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 120,
     backgroundColor: "white"
-  },
-  avatar: {
-    backgroundColor: red[500],
   },
   h1: {
     color: "white"
@@ -127,7 +122,6 @@ function Forum() {
     getAllPosts()
       .then((res) => {
         setPosts(res.data.reverse());
-        // setFilteredPosts(res.data.reverse());
       })
       .catch((err) => console.log(err));
   };
@@ -270,6 +264,7 @@ function Forum() {
                 category={post.category}
                 body={post.body}
                 author={post.User.name}
+                responses={post.Responses.length}
               />
             );
           })

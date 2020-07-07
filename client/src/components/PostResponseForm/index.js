@@ -63,7 +63,9 @@ function PostResponseForm(props) {
         getSinglePost(props.postId)
         .then(res => {
         setPost(res.data)
-        setResponses(res.data.Responses.reverse());
+        if (res.data?.Responses) {
+            setResponses(res.data.Responses?.reverse());
+        }
         })
         .catch ( err => setError(err));
     }, [responses]);
@@ -79,6 +81,7 @@ function PostResponseForm(props) {
             UserId: user.id
         })
         .then (() => {
+            setnewResponseBody("");
           console.log("New Response Saved");
         })
         .catch ( err => setError(err));
@@ -149,10 +152,13 @@ function PostResponseForm(props) {
                         </IconButton>
                     </CardActions> */}
                 </Card>
-                {responses.map(response => {
+                {responses ?
+                responses.map(response => {
                     const date = response.createdAt.slice(0, 10) + " at " + response.createdAt.slice(11,16)
                     return <PostResponse key={response.id} date ={date} body={response.body} author={post.User?.name}/>
-                })}
+                })
+                : <div></div>
+                }
         </Container>
     )
 }
