@@ -46,6 +46,13 @@ const useStyles = makeStyles((theme) => ({
       error: {
         color: "gray"
       },
+      h3: {
+        color: "white",
+        fontSize: "2rem"
+      },
+      container: {
+          marginBottom: "50px"
+      }
     //   avatar: {
     //     backgroundColor: purple[500],
     //   }
@@ -92,8 +99,8 @@ function PostResponseForm(props) {
     }
 
     return(
-        <Container>
-                <h1 className={classes.h1}>Responses:</h1>
+        <Container className={classes.container}>
+                <h3 className={classes.h3}>Responses:</h3>
 
                 <Card className={classes.card}>
                     <CardHeader
