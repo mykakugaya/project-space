@@ -108,7 +108,7 @@ function PostResponseForm(props) {
                     <UserAvatar className={classes.avatar} letter={user?.name}/>
                     : <UserAvatar/>
                     }
-                    title={user ? user.name : "Please log in to respond."}
+                    title={user ? user?.name : "Please log in to respond."}
                     subheader={props.date}
                     />
                     <Divider/>

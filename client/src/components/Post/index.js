@@ -45,13 +45,13 @@ function Post(props) {
                 <Typography color="textSecondary">
                     Category: {props.category}
                 </Typography>
-                <Typography variant="h6" component="h3" component={Link} to={link}>
+                <Typography variant="h6" component="h3" component={Link} to={link}  style={{fontSize: "1.5rem"}}>
                     {props.title}
                 </Typography>
-                <Typography color="textSecondary">
+                <Typography color="textSecondary" style={{marginBottom: "10px"}}>
                     ({props.responses ? props.responses : 0} responses)
                 </Typography>
-                <Typography variant="body1" color="textPrimary" component="p">
+                <Typography variant="body1" color="textPrimary" component="p" style={{fontSize: "1.1rem"}}>
                     {props.body}
                 </Typography>
             </CardContent>

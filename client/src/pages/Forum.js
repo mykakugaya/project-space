@@ -69,7 +69,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "10px"
   },
   error: {
-    color: "gray"
+    color: "black"
   },
   root: {
     width: "100vw"
