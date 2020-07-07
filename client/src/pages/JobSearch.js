@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
     header: {
       textAlign: "center",
       fontFamily: "Playfair Display SC",
-      fontSize: "70px",
+      fontSize: "5rem",
       color: "white",
       marginTop: "100px"
     },

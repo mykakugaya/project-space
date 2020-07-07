@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   header: {
     textAlign: 'center',
     fontFamily: 'Playfair Display SC',
-    fontSize: '70px',
+    fontSize: "5rem",
     color: 'white',
     marginTop: "100px"
   },
@@ -86,13 +86,13 @@ function Gallery() {
             handleFormSubmit={handleFormSubmit}
             results={search}
             />
-            <h3 className={classes.error}>{error ? error : ""}</h3>
+            {/* <h3 className={classes.error}>{error ? error : ""}</h3> */}
           </Grid>
           <Grid item xs={12}>
             <ImageGrid images={images}/>
           </Grid>
           </>
-          : <ImageGrid images={user.Images} userFav={true}/>}
+          : <ImageGrid className={classes.root} images={user?.Images} userFav={true}/>}
         </Grid>
       </div>
     );

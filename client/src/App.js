@@ -10,7 +10,8 @@ import PostPage from "./pages/PostPage";
 import JobSearch from "./pages/JobSearch";
 import {getUserData, updateFavoritesData, deleteFavorite} from './utils/API'
 import "./App.css";
-import {userContext} from "./utils/userContext"
+import {userContext} from "./utils/userContext";
+import Footer from "./components/Footer/footer";
 
 function App() {
   const [user, setUser] = useState(null);
@@ -27,13 +28,13 @@ function App() {
         updateFavoritesData({...val, UserId:user.id});
         console.log(user.Images);
       }
-      updateFavoritesData({...val, UserId:user.id});
-  
   };
 
   const removeFav = val => {
+    console.log('removing fav!')
     const match = user?.Images.filter(image => image.nasa_id===val.nasa_id);
     if (match.length>0) {
+      console.log(val)
       deleteFavorite({...val, UserId:user.id});
       console.log(user.Images);
     } 
@@ -69,7 +70,8 @@ function App() {
             <PostPage />
           </Route>
         </Switch>
-        {/* <Footer /> */}
+        <Footer>Copyright 2020. Application powered by React. API's provided by NASA, SpaceX, and LinkedIn
+        </Footer>
 
       </userContext.Provider>
 

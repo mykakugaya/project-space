@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   header: {
     textAlign: "center",
     fontFamily: "Playfair Display SC",
-    fontSize: "70px",
+    fontSize: "5rem",
     color: "white",
     marginTop: "100px"
   },
@@ -42,26 +42,28 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "10px"
   },
   text: {
-    width: "100ch",
+    width: "90%",
     padding: "5px",
+    margin: "auto"
   },
   form: {
       alignContent: "center",
+      padding: "3%"
   },
   button: {
     padding: "5px",
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    minWidth: 50,
     backgroundColor: "white"
   },
   h1: {
     color: "white"
   },
   search: {
-    marginRight: "10px",
-    marginLeft: "10px"
+    paddingRight: "10px",
+    paddingLeft: "10px"
   },
   error: {
     color: "gray"
@@ -158,25 +160,20 @@ function Forum() {
 
   return (
     <div>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        className={classes.root}
-      >
-        <Grid constainer xs={12}>
+      <Grid container justify="center"
+        alignItems="center" xs={12}>
           <h1 className={classes.header}>Forum Feed</h1>
         </Grid>
+        
         <Grid container
           justify="flex-start"
           alignItems="flex-start"
           className={classes.root}>
-            <Grid item={4} className={classes.search}>
+            <Grid item xs={12} sm={4} className={classes.search}>
               <ForumSearch 
                 handleFilteredPosts={handleFilteredPosts}/>
             </Grid>
-            <Grid className={classes.form} item={8}>
+            <Grid className={classes.form} item xs={12} sm={8}>
               <Paper className={classes.paper}>
                 <Card>
                   <CardHeader
@@ -293,7 +290,6 @@ function Forum() {
             })}
         </Grid>
       </Grid>
-    </Grid>
   </div>
   );
 }

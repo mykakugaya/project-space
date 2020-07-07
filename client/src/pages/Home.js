@@ -223,8 +223,6 @@ class Home extends Component {
                         ) : (<div></div>)}
                     </Grid>
                 </Grid>
-                <Footer>Copyright 2020. Application powered by React. API's provided by NASA, SpaceX, and LinkedIn
-                </Footer>
             </div>
         )
     }
