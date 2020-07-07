@@ -154,7 +154,7 @@ class Home extends Component {
                     </Grid>
                     <Grid item xs={12} sm={6} md={6} lg={6}>
                         <Grid direction="row" justify="center" alignItems="center" className="aboutus">
-                            <h2>Meet the Developers - Links to Portfolio's included!</h2>
+                            <h2>Meet the Developers - Links to Portfolios included!</h2>
                             <Grid  container className="profilePadding" style={{ width: '100%' }}>
                                 <Grid item xs={4}>
                                     <a href="https://abazrafshan.github.io/Responsive-Portfolio/">
