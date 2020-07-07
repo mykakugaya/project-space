@@ -36,14 +36,14 @@ const useStyles = makeStyles((theme) => ({
       button: {
           padding: "5px"
       },
-    //   avatar: {
-    //     backgroundColor: red[500],
-    //   },
       card: {
           marginBottom: "10px"
       },
       h1: {
         color: "white"
+      },
+      error: {
+        color: "gray"
       }
 }));
 
@@ -71,7 +71,7 @@ function PostResponseForm(props) {
     const handleCreateResponse = event => {
         event.preventDefault();
         if(!user) {
-          console.log("You must log in or create an account.")
+          setError("You must log in or create an account.")
         }
         createNewResponse({
             body: newResponseBody,
@@ -123,6 +123,7 @@ function PostResponseForm(props) {
                                 onClick={handleCreateResponse}
                             >Post
                             </Button>
+                            <p className={classes.error}>{error ? error : ""}</p>
                         </form>
                     </CardContent>
                     {/* <CardActions disableSpacing>

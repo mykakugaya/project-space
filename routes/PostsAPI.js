@@ -10,6 +10,15 @@ router.get("/posts", function (req, res) {
   });
 });
 
+//get all posts in a specific category
+router.get("/posts/:category", function(req, res) {
+  console.log(req.params.category)
+  db.Post.findAll({where: {category: req.params.category}, include: [db.Response, db.User]})
+  .then(function(categoryResults) {
+    res.json(categoryResults)
+  })
+})
+
 // create new post
 router.post("/posts", function (req, res) {
   db.Post.create(req.body).then(function (dbPost) {
