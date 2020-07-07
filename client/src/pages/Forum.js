@@ -22,10 +22,11 @@ import FormHelperText from "@material-ui/core/FormHelperText";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import { red } from "@material-ui/core/colors";
-import { createNewPost, getAllPosts } from "../utils/API";
+import { createNewPost, getAllPosts, getPostbyCategory } from "../utils/API";
 import { userContext } from "../utils/userContext";
 import moment from "moment";
 import Avatar from '@material-ui/core/Avatar';
+import { filter } from "compression";
 const currentday = moment().format("YYYY-MM-DD");
 
 const useStyles = makeStyles((theme) => ({
@@ -61,6 +62,13 @@ const useStyles = makeStyles((theme) => ({
   },
   h1: {
     color: "white"
+  },
+  search: {
+    marginRight: "10px",
+    marginLeft: "10px"
+  },
+  error: {
+    color: "gray"
   }
 }));
 
@@ -71,13 +79,23 @@ function Forum() {
   const [newPostTitle, setNewPostTitle] = useState("");
   const [newPostBody, setnewPostBody] = useState("");
   const [newPostCategory, setnewPostCategory] = useState("");
-  const [filteredPosts, setFilteredPosts] = useState( [] );
+
+  const [filterCategory, setfilterCategory] = useState("All");
+  const [filteredPosts, setFilteredPosts] = useState([]);
   const [error, setError] = useState("");
 
   const { user } = useContext(userContext);
 
   useEffect(() => {
-    getPosts(posts);
+    getPosts();
+    if(filterCategory==="All") {
+      setFilteredPosts(posts);
+    } else {
+      getPostbyCategory(filterCategory)
+      .then(response => {
+        setFilteredPosts(response.data.reverse());
+      })
+    }
   }, [posts]);
 
   const validatePost = () => {
@@ -87,7 +105,8 @@ function Forum() {
   const handleCreatePost = event => {
       event.preventDefault();
       if(!user) {
-        console.log("You must log in or create an account.")
+        setError("You must log in or create an account.")
+        return;
       }
       createNewPost( {
           title: newPostTitle,
@@ -101,15 +120,16 @@ function Forum() {
         setnewPostCategory("");
         console.log("New Post Saved");
       })
-      .catch((err) => setError(err));
+      .catch((err) => console.log(err));
   };
 
   const getPosts = () => {
     getAllPosts()
       .then((res) => {
         setPosts(res.data.reverse());
+        // setFilteredPosts(res.data.reverse());
       })
-      .catch((err) => setError(err));
+      .catch((err) => console.log(err));
   };
 
   const handleInputChange = (event) => {
@@ -124,13 +144,19 @@ function Forum() {
 
   const handleFilteredPosts = (event) => {
     event.preventDefault();
-    setFilteredPosts(event.target.value);
-    console.log(filteredPosts);
+    const category = event.target.value
+    if (category==="All" || null) {
+      setfilterCategory(category);
+      getAllPosts()
+      .then(res => setFilteredPosts(res.data.reverse()))
+    } else {
+      setfilterCategory(category);
+      getPostbyCategory(category)
+      .then(response => {
+        setFilteredPosts(response.data.reverse());
+      })
+    }
   }
-
-  const handleTabChange = (value) => {
-    // setCurrentTab(value);
-  };
 
   return (
     <div>
@@ -148,7 +174,7 @@ function Forum() {
           justify="flex-start"
           alignItems="flex-start"
           className={classes.root}>
-            <Grid item={4}>
+            <Grid item={4} className={classes.search}>
               <ForumSearch 
                 handleFilteredPosts={handleFilteredPosts}/>
             </Grid>
@@ -222,50 +248,50 @@ function Forum() {
                       >
                         Post
                       </Button>
+                      <p className={classes.error}>{error ? error : ""}</p>
                     </FormControl>
                   </CardContent>
                 </Card>
             </Paper>
             <h1 className={classes.h1}>Recent Posts:</h1>
           {
-        //   filteredPosts ? 
-        //     posts.filter(post => {
-        //       post.category == filteredPosts;
-        //       const date =
-        //         post.createdAt.slice(0, 10) +
-        //         " at " +
-        //         post.createdAt.slice(11, 16);
-        //     return (
-        //       <Post
-        //         key={post.id}
-        //         id={post.id}
-        //         date={date}
-        //         title={post.title}
-        //         category={post.category}
-        //         body={post.body}
-        //         author={post.User.name}
-        //       />
-        //     );
-        //   }) : 
-
-        posts.map((post) => {
-          const date =
-          post.createdAt.slice(0, 10) +
-          " at " +
-          post.createdAt.slice(11, 16);
-          return (
-            <Post
-            key={post.id}
-            id={post.id}
-            date={date}
-            title={post.title}
-            category={post.category}
-            body={post.body}
-            author={post.User.name}
-            responses={post.Responses.length}
-            />
+          filteredPosts ? 
+            filteredPosts.map(post => {
+            const date =
+              post.createdAt.slice(0, 10) +
+              " at " +
+              post.createdAt.slice(11, 16);
+            return (
+              <Post
+                key={post.id}
+                id={post.id}
+                date={date}
+                title={post.title}
+                category={post.category}
+                body={post.body}
+                author={post.User.name}
+              />
             );
-          })}
+          })
+          :
+          posts.map((post) => {
+            const date =
+            post.createdAt.slice(0, 10) +
+            " at " +
+            post.createdAt.slice(11, 16);
+            return (
+              <Post
+              key={post.id}
+              id={post.id}
+              date={date}
+              title={post.title}
+              category={post.category}
+              body={post.body}
+              author={post.User.name}
+              responses={post.Responses.length}
+              />
+              );
+            })}
         </Grid>
       </Grid>
     </Grid>
