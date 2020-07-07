@@ -22,6 +22,7 @@ export const getFavoritesData = user => axios.get("/api/images", user);
 export const updateFavoritesData = data => axios.post("/api/images", data);
 export const deleteFavorite = data => axios.delete(`/api/image/${data.UserId}/${data.nasa_id}`);
 
+
 // Posts APIs
 export const getAllPosts = () => axios.get("/api/posts");
 export const createNewPost = post => axios.post("/api/posts", post);

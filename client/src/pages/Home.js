@@ -136,7 +136,7 @@ class Home extends Component {
             <div>
                 <Hero backgroundImage={this.state.heroImage}>
                     <h1>The Space Hub</h1>
-                    <h2>Built for the Space Enthusiast!</h2>
+                    <h2 className="caption">Built for the Space Enthusiast!</h2>
                 </Hero>
                 <Grid container direction="row" justify="center" alignItems="center">
                     <Grid item xs={12} sm={6} md={6} lg={6} className="about">
@@ -223,8 +223,6 @@ class Home extends Component {
                         ) : (<div></div>)}
                     </Grid>
                 </Grid>
-                <Footer>Copyright 2020. Application powered by React. API's provided by NASA, SpaceX, and LinkedIn
-                </Footer>
             </div>
         )
     }

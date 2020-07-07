@@ -3,7 +3,7 @@ const NASARoutes = require("./NasaAPI");
 const AuthRoutes = require("./UserAPI");
 const imageRoutes = require("./ImageAPI");
 const postRoutes = require("./PostsAPI");
-const responseRoutes = require("./responseAPI");
+const responseRoutes = require("./ResponseAPI");
 const jobRoutes = require("./JobsAPI");
 
 router.use("/nasa", NASARoutes);
