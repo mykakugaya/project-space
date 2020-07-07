@@ -80,6 +80,7 @@ p {
 .iframe-container {
     padding-top: 2%;
     position: relative;
+    padding-bottom: 2%;
 }
    
 .iframe-container iframe {
@@ -95,22 +96,19 @@ p {
         height: 750px;
     }
     .aboutus {
-        height: 300px;
+        height: 380px;
     }
     .weatherReport {
-        height: 620px;
+        height: 550px;
     }
     .asteroidTable {
-        height: 700px;
+        height: 670px;
     }
     .roverPhotos {
-        height: 600px;
+        height: 700px;
     }
     .spaceXTable {
-        height: 800px;
-    }
-    .iframe-container iframe {
-        height: 500px;
+        height: 900px;
     }
 }
 
@@ -118,30 +116,17 @@ p {
     .about, .aboutus {
         height: 835px;
     }
-    .weatherReport, .asteroidTable {
-        height: 675px;
-    }
     .roverPhotos, .spaceXTable {
         height: 760px;
     }
-    .iframe-container iframe {
-        height: 500px;
-   }
-
 }
 
 @media only screen and (min-width: 768px) {
     .about, .aboutus {
         height: 600px;
     }
-    .weatherReport, .asteroidTable {
-        height: 600px;
-    }
     .roverPhotos, .spaceXTable {
         height: 760px;
-    }
-    .iframe-container iframe {
-        height: 500px;
     }
 } 
   
@@ -149,14 +134,8 @@ p {
     .about, .aboutus {
         height: 540px;
     }
-    .weatherReport, .asteroidTable {
-        height: 600px;
-    }
     .roverPhotos, .spaceXTable {
         height: 730px;
-    }
-    .iframe-container iframe {
-        height: 500px;
     }
 } 
 
@@ -164,13 +143,98 @@ p {
     .about, .aboutus {
         height: 490px;
     }
-    .weatherReport, .asteroidTable {
-        height: 690px;
-    }
     .roverPhotos, .spaceXTable {
         height: 670px;
     }
+}
+
+
+@media only screen and (min-width: 1850px)  {
     .iframe-container iframe {
         height: 580px;
+    }
+    .weatherReport, .asteroidTable {
+        height: 690px;
+    }
+}
+
+@media only screen and (min-width: 1800px) and (max-width: 1849px) {
+    .iframe-container iframe {
+        height: 560px;
+    }
+    .weatherReport, .asteroidTable {
+        height: 690px;
+    }
+}
+
+@media only screen and (min-width: 1750px) and (max-width: 1799px) {
+    .iframe-container iframe {
+        height: 510px;
+    }
+    .weatherReport, .asteroidTable {
+        height: 670px;
+    }
+}
+
+@media only screen and (min-width: 1700px) and (max-width: 1749px) {
+    .iframe-container iframe {
+        height: 500px;
+    }
+    .weatherReport, .asteroidTable {
+        height: 650px;
+    }
+}
+
+@media only screen and (min-width: 1690px) and (max-width: 1700px) {
+    .iframe-container iframe {
+        height: 520px;
+    }
+    .weatherReport, .asteroidTable {
+        height: 640px;
+    }
+}
+
+@media only screen and (min-width: 1590px) and (max-width: 1689px) {
+    .iframe-container iframe {
+        height: 410px;
+    }
+    .weatherReport, .asteroidTable {
+        height: 600px;
+    }
+}
+
+@media only screen and  (min-width: 1000px) and (max-width: 1589px) {
+    .iframe-container iframe {
+        height: 380px;
+    }
+    .weatherReport, .asteroidTable {
+        height: 610px;
+    }
+}
+
+@media only screen and  (min-width: 750px) and (max-width: 999px) {
+    .iframe-container iframe {
+        height: 380px;
+    }
+    .weatherReport, .asteroidTable {
+        height: 670px;
+    }
+}
+
+@media only screen and  (min-width: 600px) and (max-width: 749px) {
+    .iframe-container iframe {
+        height: 380px;
+    }
+    .weatherReport, .asteroidTable {
+        height: 750px;
+    }
+}
+
+@media only screen and  (max-width: 600px) {
+    .iframe-container iframe {
+        height: 380px;
+    }
+    h1 {
+        font-size: 5rem !important
     }
 }
