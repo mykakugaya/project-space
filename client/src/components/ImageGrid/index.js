@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import FavIcon from "../FavIcon";
+import ImageInfoIcon from "../ImageInfoIcon";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,6 +43,7 @@ export default function ImageGridList(props) {
                   backgroundImage: `url(${tile.src})`
                 }}/>
                 <FavIcon image={props.userFav? {...tile,isFav:true} : {...tile, isFav:false}}/>
+                <ImageInfoIcon link={tile.src}/>
               </GridListTile>
         )}) : <h2 className={classes.message}>No favorited images yet.</h2>}
       </GridList>

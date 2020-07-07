@@ -24,15 +24,19 @@ import { userContext } from "../utils/userContext";
 import moment from "moment";
 import Avatar from '@material-ui/core/Avatar';
 import { filter } from "compression";
+import { purple } from '@material-ui/core/colors';
 const currentday = moment().format("YYYY-MM-DD");
 
 const useStyles = makeStyles((theme) => ({
+  container: {
+    marginBottom: "30px"
+  },
   header: {
     textAlign: "center",
     fontFamily: "Playfair Display SC",
-    fontSize: "70px",
+    fontSize: "4rem",
     color: "white",
-    marginTop: "100px"
+    marginTop: "100px"  
   },
   paper: {
     padding: theme.spacing(3),
@@ -41,30 +45,38 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "10px"
   },
   text: {
-    width: "100ch",
-    padding: "5px",
+    width: "100%",
+    margin: "auto"
   },
   form: {
       alignContent: "center",
+      padding: "10px"
   },
   button: {
     padding: "5px",
   },
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
-    backgroundColor: "white"
+    minWidth: 50,
+    backgroundColor: "white",
+    width: "100%",
   },
-  h1: {
-    color: "white"
+  h3: {
+    color: "white",
+    fontSize: "2rem"
   },
   search: {
-    marginRight: "10px",
-    marginLeft: "10px"
+    padding: "10px"
   },
   error: {
-    color: "gray"
+    color: "black"
+  },
+  root: {
+    width: "100vw"
   }
+   //   avatar: {
+    //     backgroundColor: purple[500],
+    //   }
 }));
 
 function Forum() {
@@ -154,34 +166,30 @@ function Forum() {
   }
 
   return (
-    <div>
-      <Grid
-        container
-        direction="row"
-        justify="center"
-        alignItems="center"
-        className={classes.root}
-      >
-        <Grid constainer xs={12}>
+    <div className={classes.container}>
+      <Grid container justify="center" className={classes.root}
+        alignItems="center" xs={12}>
           <h1 className={classes.header}>Forum Feed</h1>
         </Grid>
+        
         <Grid container
           justify="flex-start"
           alignItems="flex-start"
-          className={classes.root}>
-            <Grid item={4} className={classes.search}>
+          className={classes.center}
+          >
+            <Grid item xs={12} sm={4} className={classes.search}>
               <ForumSearch 
                 handleFilteredPosts={handleFilteredPosts}/>
             </Grid>
-            <Grid className={classes.form} item={8}>
+            <Grid className={classes.form} item xs={12} sm={8}>
               <Paper className={classes.paper}>
                 <Card>
                   <CardHeader
                     avatar={user ?
-                      <UserAvatar letter={user?.name}/>
+                      <UserAvatar className={classes.avatar} letter={user?.name}/>
                       : <UserAvatar/>
                     }
-                    title={user ? user.name : "Please log in to post."}
+                    title={user ? user?.name : "Please log in to post."}
                     subheader={currentday}
                   />
                   <Divider />
@@ -202,6 +210,7 @@ function Forum() {
                           value={newPostCategory}
                           onChange={(e) => setnewPostCategory(e.target.value)}
                           label="Category"
+                          style={{marginBottom: "10px"}}
                         >
                           <MenuItem value={"Earth"}>Earth</MenuItem>
                           <MenuItem value={"Solar System"}>
@@ -248,7 +257,7 @@ function Forum() {
                   </CardContent>
                 </Card>
             </Paper>
-            <h1 className={classes.h1}>Recent Posts:</h1>
+            <h3 className={classes.h3}>Recent Posts:</h3>
           {
           filteredPosts ? 
             filteredPosts.map(post => {
@@ -292,7 +301,6 @@ function Forum() {
             })}
         </Grid>
       </Grid>
-    </Grid>
   </div>
   );
 }

@@ -43,7 +43,7 @@ function Post(props) {
     return;
   };
 
-console.log(user?.id, props)
+// console.log(user?.id, props)
   return (
     <Card className={classes.card}>
       <CardHeader

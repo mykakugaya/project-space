@@ -22,6 +22,7 @@ import {userContext} from "../../utils/userContext";
 import PostResponse from "../PostResponse";
 import moment from "moment";
 import Avatar from '@material-ui/core/Avatar';
+import { purple } from '@material-ui/core/colors';
 
 const currentday = moment().format("YYYY-MM-DD");
 
@@ -44,7 +45,17 @@ const useStyles = makeStyles((theme) => ({
       },
       error: {
         color: "gray"
+      },
+      h3: {
+        color: "white",
+        fontSize: "2rem"
+      },
+      container: {
+          marginBottom: "50px"
       }
+    //   avatar: {
+    //     backgroundColor: purple[500],
+    //   }
 }));
 
 function PostResponseForm(props) {
@@ -88,16 +99,16 @@ function PostResponseForm(props) {
     }
 
     return(
-        <Container>
-                <h1 className={classes.h1}>Responses:</h1>
+        <Container className={classes.container}>
+                <h3 className={classes.h3}>Responses:</h3>
 
                 <Card className={classes.card}>
                     <CardHeader
                     avatar={user ?
-                    <UserAvatar letter={user?.name}/>
+                    <UserAvatar className={classes.avatar} letter={user?.name}/>
                     : <UserAvatar/>
                     }
-                    title={user ? user.name : "Please log in to respond."}
+                    title={user ? user?.name : "Please log in to respond."}
                     subheader={props.date}
                     />
                     <Divider/>

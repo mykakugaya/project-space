@@ -9,6 +9,7 @@ import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import Grid from "@material-ui/core/Grid";
 import InputLabel from "@material-ui/core/InputLabel";
+import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     margin: theme.spacing(1),
     minWidth: 120,
     backgroundColor: "white",
+    width: "90%"
   },
   input: {
     margin: `${theme.spacing(1)}px auto`,
@@ -44,8 +46,11 @@ export default function ForumSearch(props) {
     <Paper component="form" className={classes.root}>
       <Grid container justify="flex-start" alignItems="flex-start">
         <Grid item xs={12}>
-          <Grid container direction="row" justify="center" alignItems="center">
+          <Grid container direction="row" justify="center" alignItems="center" style={{padding: "10px"}}>
             <Grid item xs={12}>
+            <Typography variant="h6" component="h3">
+                  Filter Posts
+              </Typography>
               <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel id="demo-simple-select-outlined-label">
                   Category
@@ -67,7 +72,7 @@ export default function ForumSearch(props) {
           </Grid>
         </Grid>
 
-        <Grid item xs={12}>
+        {/* <Grid item xs={12}>
           <Grid container direction="row" justify="flex-start" alignItems="flex-start">
             <Grid item xs={12}>
               <InputBase
@@ -86,7 +91,7 @@ export default function ForumSearch(props) {
               </IconButton>
             </Grid>
           </Grid>
-        </Grid>
+        </Grid> */}
       </Grid>
     </Paper>
   );

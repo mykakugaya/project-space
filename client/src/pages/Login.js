@@ -16,7 +16,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
     textAlign: "left",
     color: theme.palette.text.secondary,
-    margin: "10%"
+  },
+  container: {
+    paddingTop: "20vh",
+    height: "100vh"
   },
   login: {
     "& > *": {
@@ -101,7 +104,7 @@ export default function CenteredGrid() {
 
   return (
     <div className={classes.root}>
-      <Container>
+      <Container className={classes.container}>
         <Paper className={classes.paper}>
           <Grid container spacing={3}>
             <Grid item xs={12} sm={12} md={6} lg={6}>

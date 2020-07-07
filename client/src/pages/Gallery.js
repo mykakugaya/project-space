@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   header: {
     textAlign: 'center',
     fontFamily: 'Playfair Display SC',
-    fontSize: '70px',
+    fontSize: "4rem",
     color: 'white',
     marginTop: "100px"
   },
@@ -37,6 +37,7 @@ function Gallery() {
         const favs = user?.Images?.map(a=> a.nasa_id);
         searchImage(search)
         .then(res => {
+          console.log(res.data)
           const results = res.data.collection.items.map(a=>{
             if(favs?.includes(a.data[0].nasa_id)){
               return {nasa_id: a.data[0].nasa_id, title: a.data[0].title, src: a.links[0].href, isFav: true}
@@ -86,13 +87,13 @@ function Gallery() {
             handleFormSubmit={handleFormSubmit}
             results={search}
             />
-            <h3 className={classes.error}>{error ? error : ""}</h3>
+            {/* <h3 className={classes.error}>{error ? error : ""}</h3> */}
           </Grid>
           <Grid item xs={12}>
             <ImageGrid images={images}/>
           </Grid>
           </>
-          : <ImageGrid images={user.Images} userFav={true}/>}
+          : <ImageGrid className={classes.root} images={user?.Images} userFav={true}/>}
         </Grid>
       </div>
     );
