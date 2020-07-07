@@ -199,7 +199,7 @@ class Home extends Component {
                         ) : (<div></div>)}
                     </Grid>
                     <Grid item xs={12} sm={5} md={5} lg={5} className="roverPhotos">
-                        <h2>Browse yesterday's photos from Mars captured by NASA's Curiosity rover</h2>
+                        <h2>Browse last week's photos from Mars captured by NASA's Curiosity rover</h2>
                         <MarsRoverImages backgroundImage={this.state.marsRoverImage} style={{height: "100px"}} >
                             <Button onClick={this.handleNext} variant="contained" color="primary">Next</Button>
                             <Button onClick={this.handlePrev} variant="contained" color="secondary">Previous</Button>
