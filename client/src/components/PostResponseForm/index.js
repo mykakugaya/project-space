@@ -22,6 +22,7 @@ import {userContext} from "../../utils/userContext";
 import PostResponse from "../PostResponse";
 import moment from "moment";
 import Avatar from '@material-ui/core/Avatar';
+import { purple } from '@material-ui/core/colors';
 
 const currentday = moment().format("YYYY-MM-DD");
 
@@ -44,7 +45,10 @@ const useStyles = makeStyles((theme) => ({
       },
       error: {
         color: "gray"
-      }
+      },
+    //   avatar: {
+    //     backgroundColor: purple[500],
+    //   }
 }));
 
 function PostResponseForm(props) {
@@ -94,7 +98,7 @@ function PostResponseForm(props) {
                 <Card className={classes.card}>
                     <CardHeader
                     avatar={user ?
-                    <UserAvatar letter={user?.name}/>
+                    <UserAvatar className={classes.avatar} letter={user?.name}/>
                     : <UserAvatar/>
                     }
                     title={user ? user.name : "Please log in to respond."}

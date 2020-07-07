@@ -24,6 +24,7 @@ import { userContext } from "../utils/userContext";
 import moment from "moment";
 import Avatar from '@material-ui/core/Avatar';
 import { filter } from "compression";
+import { purple } from '@material-ui/core/colors';
 const currentday = moment().format("YYYY-MM-DD");
 
 const useStyles = makeStyles((theme) => ({
@@ -64,7 +65,10 @@ const useStyles = makeStyles((theme) => ({
   },
   error: {
     color: "gray"
-  }
+  },
+   //   avatar: {
+    //     backgroundColor: purple[500],
+    //   }
 }));
 
 function Forum() {
@@ -177,7 +181,7 @@ function Forum() {
                 <Card>
                   <CardHeader
                     avatar={user ?
-                      <UserAvatar letter={user?.name}/>
+                      <UserAvatar className={classes.avatar} letter={user?.name}/>
                       : <UserAvatar/>
                     }
                     title={user ? user.name : "Please log in to post."}
