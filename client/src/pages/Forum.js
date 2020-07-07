@@ -42,13 +42,12 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: "10px"
   },
   text: {
-    width: "90%",
-    padding: "5px",
+    width: "100%",
     margin: "auto"
   },
   form: {
       alignContent: "center",
-      padding: "3%"
+      paddingRight: "20px"
   },
   button: {
     padding: "5px",
@@ -56,18 +55,22 @@ const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
     minWidth: 50,
-    backgroundColor: "white"
+    backgroundColor: "white",
+    width: "100%"
   },
-  h1: {
-    color: "white"
+  h3: {
+    color: "white",
+    fontSize: "2rem"
   },
   search: {
-    paddingRight: "10px",
-    paddingLeft: "10px"
+    padding: "10px"
   },
   error: {
     color: "gray"
   },
+  root: {
+    width: "100vw"
+  }
    //   avatar: {
     //     backgroundColor: purple[500],
     //   }
@@ -160,7 +163,7 @@ function Forum() {
 
   return (
     <div>
-      <Grid container justify="center"
+      <Grid container justify="center" className={classes.root}
         alignItems="center" xs={12}>
           <h1 className={classes.header}>Forum Feed</h1>
         </Grid>
@@ -168,7 +171,7 @@ function Forum() {
         <Grid container
           justify="flex-start"
           alignItems="flex-start"
-          className={classes.root}>
+          >
             <Grid item xs={12} sm={4} className={classes.search}>
               <ForumSearch 
                 handleFilteredPosts={handleFilteredPosts}/>
@@ -181,7 +184,7 @@ function Forum() {
                       <UserAvatar className={classes.avatar} letter={user?.name}/>
                       : <UserAvatar/>
                     }
-                    title={user ? user.name : "Please log in to post."}
+                    title={user ? user?.name : "Please log in to post."}
                     subheader={currentday}
                   />
                   <Divider />
@@ -202,6 +205,7 @@ function Forum() {
                           value={newPostCategory}
                           onChange={(e) => setnewPostCategory(e.target.value)}
                           label="Category"
+                          style={{marginBottom: "10px"}}
                         >
                           <MenuItem value={"Earth"}>Earth</MenuItem>
                           <MenuItem value={"Solar System"}>
@@ -248,7 +252,7 @@ function Forum() {
                   </CardContent>
                 </Card>
             </Paper>
-            <h1 className={classes.h1}>Recent Posts:</h1>
+            <h3 className={classes.h3}>Recent Posts:</h3>
           {
           filteredPosts ? 
             filteredPosts.map(post => {
