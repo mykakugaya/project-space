@@ -22,11 +22,13 @@ function App() {
   },[])
 
   const setFav = val => {
-    const match = user?.Images.filter(image => image.nasa_id==val.nasa_id);
-    if (match.length===0) {
+      const match = user?.Images?.filter(image => image.nasa_id==val.nasa_id);
+      if (!match || match.length===0) {
+        updateFavoritesData({...val, UserId:user.id});
+        console.log(user.Images);
+      }
       updateFavoritesData({...val, UserId:user.id});
-      console.log(user.Images);
-    }
+  
   };
 
   const removeFav = val => {

@@ -20,12 +20,12 @@ export const getUserData = () => axios.get("/api/user_data");
 //Image APIs
 export const getFavoritesData = user => axios.get("/api/images", user);
 export const updateFavoritesData = data => axios.post("/api/images", data);
-export const deleteFavorite = data => axios.delete(`/api/images/${data.UserId}/${data.nasa_id}`);
+export const deleteFavorite = data => axios.delete(`/api/image/${data.UserId}/${data.nasa_id}`);
 
 // Posts APIs
 export const getAllPosts = () => axios.get("/api/posts");
 export const createNewPost = post => axios.post("/api/posts", post);
-export const getSinglePost = id => axios.get(`/api/posts/${id}`);
+export const getSinglePost = id => axios.get(`/api/post/${id}`);
 export const getPostbyCategory = category => axios.get(`api/posts/${category}`)
 
 //Post Response APIs
