@@ -23,7 +23,7 @@ Home Page
 * Weather report from Mars displaying weather conditions during a 7 day period, information gathered by NASA's Mars lander InSight
 * Table of asteroid properties for the asteroids nearest to Earth, includes information such as orbiting body, asteroid size dimensions, and how many miles the asteroid is projected to miss earth by. Data pulled from NASA's Asteroid NeoWs API
 * Photos from Mars captured by NASA's Curiosity rover, cache of photos pulled from NASA's Mars Rover Photos API and updated daily
-* Table of information on all Space X rocket launches that includes information such as outcome of launch, rocket name, launch site, mission patch, as well as a quick summary of the launch details. Data pulled from the SpaceX API
+* Table of information on all SpaceX rocket launches that includes information such as outcome of launch, rocket name, launch site, mission patch, as well as a quick summary of the launch details. Data pulled from the SpaceX API
 
 Image gallery of outer space photos gathered by NASA
 * Users are able to designate favorite images and save them to their account for later viewing
