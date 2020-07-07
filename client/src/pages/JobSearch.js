@@ -16,6 +16,7 @@ const useStyles = makeStyles((theme) => ({
       fontFamily: "Playfair Display SC",
       fontSize: "70px",
       color: "white",
+      marginTop: "100px"
     },
     paper: {
       padding: theme.spacing(3),
@@ -52,13 +53,16 @@ function JobSearch() {
     const searchJobs = query => {
         getAllJobs(query)
         .then(res => {
+          if(!res.data) {
+            setError("No results found")
+          }
             console.log(res);
             if (res.data.length === 0) {
                 throw new Error("No job results found.");
             }
             setJobs(res.data);
         })
-        .catch(err => setError(err));
+        .catch(err => console.log(err));
     }
   
     const handleTitleChange = event => {
@@ -121,13 +125,12 @@ function JobSearch() {
             </Grid>
             <Grid item xs={8}>
                 <Paper className={classes.paper}>
-                    {jobs ?
-                    <List>
-                        {jobs.map(job => {
-                            return <JobResult key={job.id} title={job.position.title} company={job.company.name} location={job.postion.location.name}/>
-                        })}
-                    </List>
-                    : <h3 className={classes.text}>No results found.</h3>}
+                  <h3>{error ? error : ""}</h3>
+                  <List>
+                      {jobs?.map(job => {
+                          return <JobResult key={job.id} title={job.position.title} company={job.company.name} location={job.postion.location.name}/>
+                      })}
+                  </List>
                 </Paper>
             </Grid>
         </Grid>

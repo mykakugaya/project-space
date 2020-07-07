@@ -12,7 +12,12 @@ const useStyles = makeStyles({
     textAlign: 'center',
     fontFamily: 'Playfair Display SC',
     fontSize: '70px',
-    color: 'white'
+    color: 'white',
+    marginTop: "100px"
+  },
+  error: {
+    textAlign: "center",
+    color: "white"
   }
 });
 
@@ -33,19 +38,19 @@ function Gallery() {
         searchImage(search)
         .then(res => {
           const results = res.data.collection.items.map(a=>{
-            if(favs.includes(a.data[0].nasa_id)){
+            if(favs?.includes(a.data[0].nasa_id)){
               return {nasa_id: a.data[0].nasa_id, title: a.data[0].title, src: a.links[0].href, isFav: true}
             }else{
               return {nasa_id: a.data[0].nasa_id, title: a.data[0].title, src: a.links[0].href, isFav: false}
             }
           })
           if (results.length === 0) {
-              throw new Error("No results found.");
+              setError("No results found.");
           }
           
           setImages(results);
         })
-        .catch(err => setError(err));
+        .catch(err => console.log(err));
     }
   
     const handleInputChange = event => {
@@ -74,12 +79,14 @@ function Gallery() {
           </Grid>
           {currentTab === 0 ? 
           <>
+          <p className={classes.error}>{!user ? "Log in to favorite images!" : ""}</p>
           <Grid item xs={12}>
             <ImageSearch
             handleInputChange={handleInputChange}
             handleFormSubmit={handleFormSubmit}
             results={search}
             />
+            <h3 className={classes.error}>{error ? error : ""}</h3>
           </Grid>
           <Grid item xs={12}>
             <ImageGrid images={images}/>
