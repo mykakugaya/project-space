@@ -8,6 +8,7 @@ const session = require("express-session");
 // set up ports and requiring models for syncing
 const PORT = process.env.PORT || 3001;
 const db = require("./models");
+const path = require('path')
 
 //im a placeholder
 // Define middleware here
@@ -35,6 +36,10 @@ function shouldCompress (req, res) {
 }
 // Add routes, both API and view
 app.use("/api", routes);
+
+app.get("*", (req,res)=>{
+  res.sendFile(path.join(__dirname, "../client/build/index.html"))
+})
 
 db.sequelize.sync({force:false}).then(() => { 
   app.listen(PORT, () => {
