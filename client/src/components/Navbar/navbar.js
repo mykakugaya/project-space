@@ -10,7 +10,10 @@ import Icon from "@material-ui/core/Icon";
 import { Link } from "react-router-dom";
 import { userContext } from "../../utils/userContext";
 import { getLogout } from "../../utils/API";
+import Menu from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 import "./nav.css"
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexShrink: 3,
@@ -42,29 +45,59 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     color: "white",
     display: "none"
+  },
+  menuItem: {
+    color: "black"
   }
 }));
 
 export default function Navbar() {
   const classes = useStyles();
   const {user} = useContext(userContext);
-  const [menuHeight, setMenuHeight] = useState("10vh");
-  const [expand, setExpand] = useState(0)
-  const handleLogout = () =>{
+  const [anchorEl, setAnchorEl] = useState(null);
+  // const [menuHeight, setMenuHeight] = useState("8vh");
+  // const [expand, setExpand] = useState(0);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(!anchorEl);
+  };
+
+  const handleLogout = () => {
     console.log("logging out");
     getLogout();
     window.location.reload();
   }
 
-  const expandMenu = () =>{
-    setMenuHeight(`${10+10*expand}vh`)
-    setExpand(!expand)
+  const handleRedirectHome = () => {
+    window.location.pathname = "";
   }
+
+  const handleRedirectForum = () => {
+    window.location.pathname = "/forum";
+  }
+
+  const handleRedirectGallery = () => {
+    window.location.pathname = "/gallery";
+  }
+
+  const handleRedirectJobs = () => {
+    window.location.pathname = "/jobs";
+  }
+  
+  // const expandMenu = () =>{
+  //   setMenuHeight(`${10+10*expand}vh`)
+  //   setExpand(!expand)
+  // }
 
   return (
     <div className={classes.root}>
-      <AppBar className={classes.appbar} style={{height: menuHeight}}>
-       
+      <AppBar className={classes.appbar} 
+      // style={{height: menuHeight}}
+      >
         <Toolbar className={classes.padding}>
           <Typography variant="h6" className={classes.title}>
            Welcome, {user?.name || "earthling"}.
@@ -74,11 +107,24 @@ export default function Navbar() {
             {/* <MenuIcon classes={{root:{backgroundColor:"white"}}}/> */}
           {/* </IconButton> */}
           <Tabs className={classes.appbar}>
-              <IconButton onClick={expandMenu}>
+              <IconButton aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
                 <Icon className={classes.menuButton} id="hamburger">
                   menu
                 </Icon>
               </IconButton>
+              <Menu
+                  id="simple-menu"
+                  anchorEl={anchorEl}
+                  keepMounted
+                  open={Boolean(anchorEl)}
+                  onClose={handleClose}
+                >
+                  <MenuItem className={classes.menuItem} onClick={handleRedirectHome}>HOME</MenuItem>
+                  <MenuItem className={classes.menuItem} onClick={handleRedirectForum}>FORUM</MenuItem>
+                  <MenuItem className={classes.menuItem} onClick={handleRedirectGallery}>GALLERY</MenuItem>
+                  <MenuItem className={classes.menuItem} onClick={handleRedirectJobs}>JOBS</MenuItem>
+                </Menu>
+
           <Link className={classes.link, "navtab"} to="/">
             <Tab className={window.location.pathname === "/" ? classes.activeTab : classes.tabs} label="Home"/>
           </Link>
