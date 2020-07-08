@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Navbar() {
   const classes = useStyles();
   const {user} = useContext(userContext);
-  const [anchorEl, setAnchorEl] = useState(null);
+  const [anchorEl, setAnchorEl] = useState(0);
   // const [menuHeight, setMenuHeight] = useState("8vh");
   // const [expand, setExpand] = useState(0);
 
