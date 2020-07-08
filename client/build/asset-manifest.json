@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/static/css/main.6a0b55da.chunk.css",
+    "main.js": "/static/js/main.b10dcba8.chunk.js",
+    "main.js.map": "/static/js/main.b10dcba8.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5e300c95.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5e300c95.js.map",
+    "static/js/2.47995c34.chunk.js": "/static/js/2.47995c34.chunk.js",
+    "static/js/2.47995c34.chunk.js.map": "/static/js/2.47995c34.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.b028c24a9442169052f81579e623ee0a.js": "/precache-manifest.b028c24a9442169052f81579e623ee0a.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.6a0b55da.chunk.css.map": "/static/css/main.6a0b55da.chunk.css.map",
+    "static/js/2.47995c34.chunk.js.LICENSE.txt": "/static/js/2.47995c34.chunk.js.LICENSE.txt",
+    "static/media/arashprofile.jpg": "/static/media/arashprofile.94037008.jpg",
+    "static/media/mykaprofile.jpg": "/static/media/mykaprofile.3ce6713d.jpg",
+    "static/media/sharleneprofile.jpg": "/static/media/sharleneprofile.136218f3.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5e300c95.js",
+    "static/js/2.47995c34.chunk.js",
+    "static/css/main.6a0b55da.chunk.css",
+    "static/js/main.b10dcba8.chunk.js"
+  ]
+}
