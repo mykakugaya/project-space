@@ -61,11 +61,11 @@ export default function ForumSearch(props) {
                   onChange={props.handleFilteredPosts}
                   label="Search Posts by Category"
                 >
-                  <MenuItem value={"All"}>All</MenuItem>
-                  <MenuItem value={"Earth"}>Earth</MenuItem>
-                  <MenuItem value={"Solar System"}>Solar System</MenuItem>
-                  <MenuItem value={"NASA"}>NASA</MenuItem>
-                  <MenuItem value={"SpaceX Launches"}>SpaceX Launches</MenuItem>
+                  <MenuItem style={{color: "black"}} value={"All"}>All</MenuItem>
+                  <MenuItem style={{color: "black"}} value={"Earth"}>Earth</MenuItem>
+                  <MenuItem style={{color: "black"}} value={"Solar System"}>Solar System</MenuItem>
+                  <MenuItem style={{color: "black"}} value={"NASA"}>NASA</MenuItem>
+                  <MenuItem style={{color: "black"}} value={"SpaceX Launches"}>SpaceX Launches</MenuItem>
                 </Select>
               </FormControl>
             </Grid>

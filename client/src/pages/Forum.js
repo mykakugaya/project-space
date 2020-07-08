@@ -212,11 +212,11 @@ function Forum() {
                           label="Category"
                           style={{marginBottom: "10px"}}
                         >
-                          <MenuItem value={"Earth"}>Earth</MenuItem>
-                          <MenuItem value={"Solar System"}>
+                          <MenuItem style={{color: "black"}} value={"Earth"}>Earth</MenuItem>
+                          <MenuItem style={{color: "black"}} value={"Solar System"}>
                             Solar System</MenuItem>
-                          <MenuItem value={"NASA"}>NASA</MenuItem>
-                          <MenuItem value={"SpaceX Launches"}>
+                          <MenuItem style={{color: "black"}} value={"NASA"}>NASA</MenuItem>
+                          <MenuItem style={{color: "black"}} value={"SpaceX Launches"}>
                             SpaceX Launches
                           </MenuItem>
                         </Select>
