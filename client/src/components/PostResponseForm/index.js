@@ -95,7 +95,7 @@ function PostResponseForm(props) {
             setnewResponseBody("");
           console.log("New Response Saved");
         })
-        .catch ( err => setError(err));
+        .catch ( err => console.log(err));
     }
 
     return(
@@ -144,7 +144,7 @@ function PostResponseForm(props) {
                 {responses ?
                 responses.map(response => {
                     const date = response.createdAt.slice(0, 10) + " at " + response.createdAt.slice(11,16)
-                    return <PostResponse key={response.id} id={response.id} date ={date} body={response.body} author={response.User?.name}/>
+                    return <PostResponse key={response.id} id={response.id} uid={response.UserId} date ={date} body={response.body} author={response.User?.name}/>
                 })
                 : <div></div>
                 }

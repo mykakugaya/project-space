@@ -270,7 +270,7 @@ function Forum() {
                 key={post.id}
                 id={post.id}
                 date={date}
-                uid={post.User.id}
+                uid={post.UserId}
                 title={post.title}
                 category={post.category}
                 body={post.body}
@@ -294,7 +294,7 @@ function Forum() {
               category={post.category}
               body={post.body}
               author={post.User.name}
-              uid={post.User.id}
+              uid={post.UserId}
               responses={post.Responses.length}
               />
               );
