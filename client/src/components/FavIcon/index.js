@@ -26,6 +26,9 @@ function FavIcon(props) {
 
   return (
     <IconButton color="primary" aria-label="favorite" onClick={() => {
+      if (!user) {
+        window.alert("You must log in to favorite images")
+      }
       if (favorite===false) {
         fav({
           nasa_id: props.image.nasa_id,
