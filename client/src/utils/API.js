@@ -33,6 +33,7 @@ export const deletePost = data => axios.delete(`/api/post/${data}/`);
 //Post Response APIs
 export const getAllResponses = (postId) => axios.get(`/api/responses/${postId}`);
 export const createNewResponse = (response) => axios.post("/api/responses", response);
+export const deleteResponse = id => axios.delete(`/api/response/${id}/`);
 
 //Job APIs
 export const getAllJobs = query => axios.get(`/api/jobs/${query}`);

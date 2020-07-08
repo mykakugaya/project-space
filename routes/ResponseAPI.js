@@ -17,8 +17,8 @@ router.post("/responses", function(req, res) {
     });
 })
 
-router.delete("/responses/:id", function(req, res) {
-    db.Response.destroy({where: {PostId: req.params.id}})
+router.delete("/response/:id", function(req, res) {
+    db.Response.destroy({where: {id: req.params.id}})
     .then((result) => {
         return res.json(result);
     })

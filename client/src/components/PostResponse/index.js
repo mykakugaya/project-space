@@ -1,29 +1,27 @@
-import React, {useState, useEffect} from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import React, {useContext} from "react";
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import Collapse from '@material-ui/core/Collapse';
 import UserAvatar from "../UserAvatar";
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
-import Avatar from '@material-ui/core/Avatar';
-import { red } from '@material-ui/core/colors';
-//some card action like like/delete posts?
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import DeleteIcon from '@material-ui/icons/Delete';
-import moment from "moment";
-
-const useStyles = makeStyles((theme) => ({
-    // avatar: {
-    //   backgroundColor: red[500],
-    // },
-}));
+import {deleteResponse} from "../../utils/API";
+import {userContext} from "../../utils/userContext";
 
 function PostResponse(props) {
-    const classes = useStyles();
+    const {user} = useContext(userContext);
+    const postId = props.id;
+  
+    const deleteUserResponse = () => {
+      if (window.confirm("Delete response post?")) {
+        deleteResponse(postId);
+        window.location.reload();
+      }
+      return;
+    };
 
     return(
         <Card>
@@ -41,28 +39,13 @@ function PostResponse(props) {
                     {props.body}
                 </Typography>
             </CardContent>
-            {/* <CardActions disableSpacing>
-                <IconButton
-                className={clsx(classes.expand, {
-                    [classes.expandOpen]: expanded,
-                })}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
-                >
-                    <FavoriteIcon />
+            { props.uid === user?.id ? 
+            <CardActions disableSpacing>
+                <IconButton onClick={deleteUserResponse} aria-label="">
+                <DeleteIcon />
                 </IconButton>
-                <IconButton
-                className={clsx(classes.expand, {
-                    [classes.expandOpen]: expanded,
-                })}
-                onClick={handleExpandClick}
-                aria-expanded={expanded}
-                aria-label="show more"
-                >
-                    <DeleteIcon />
-                </IconButton>
-            </CardActions> */}
+            </CardActions> : <div></div>
+            }
         </Card>
     )
 }

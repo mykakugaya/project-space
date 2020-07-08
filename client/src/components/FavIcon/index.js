@@ -14,6 +14,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function FavIcon(props) {
+  const {user} = useContext(userContext);
   const classes = useStyles();
 
   const [favorite, setFavorite] = useState(props.image.isFav);
