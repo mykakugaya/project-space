@@ -20,6 +20,12 @@ module.exports = function (sequelize, DataTypes) {
                 allowNull: false
             }
         });
+        Response.belongsTo(models.User, {
+            through: "UserId",
+            foreignKey: {
+                allowNull: false
+            }
+        });
     };
     return Response
 };
