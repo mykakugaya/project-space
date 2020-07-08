@@ -126,6 +126,7 @@ function Forum() {
         setnewPostBody("");
         setnewPostCategory("");
         console.log("New Post Saved");
+        window.location.reload();
       })
       .catch((err) => console.log(err));
   };
