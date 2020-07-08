@@ -18,6 +18,7 @@ import UserAvatar from "../UserAvatar";
 import Avatar from "@material-ui/core/Avatar";
 import { userContext } from "../../utils/userContext";
 import { deletePost } from "../../utils/API";
+import {Redirect} from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   // avatar: {
