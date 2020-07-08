@@ -65,8 +65,8 @@ function PostPage() {
                 <Grid className={classes.form} item xs={12}>
                     <>
                         <Post 
-                        date={date} 
-                        title={post.title} category={post.category} body={post.body} author={post?.User?.name}/>
+                        date={date} uid={post.UserId} id={post.id}
+                        title={post.title} category={post.category} body={post.body} author={post?.User?.name} responses={post.Responses?.length}/>
                         <PostResponseForm key={post.id} postId={post.id} category={post.category} title={post.title}/>
                     </>
                 </Grid>
@@ -74,9 +74,6 @@ function PostPage() {
         </Grid>
         </div>
     )
-    // return(
-    //     <h1>Here</h1>
-    // )
 }
 
 export default PostPage;
