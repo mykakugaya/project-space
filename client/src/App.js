@@ -60,9 +60,9 @@ function App() {
           <Route exact path="/gallery">
             <Gallery />
           </Route>
-          <Route exact path="/jobs">
+          {/* <Route exact path="/jobs">
             <JobSearch />
-          </Route>
+          </Route> */}
           <Route exact path="/login">
             <Login />
           </Route>

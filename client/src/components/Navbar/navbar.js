@@ -137,9 +137,9 @@ export default function Navbar() {
           <Link className={classes.link, "navtab"} to="/gallery">
             <Tab className={window.location.pathname === "/gallery" ? classes.activeTab : classes.tabs} label="Gallery"/>
           </Link>
-          <Link className={classes.link, "navtab"} to="/jobs">
+          {/* <Link className={classes.link, "navtab"} to="/jobs">
             <Tab className={window.location.pathname === "/jobs" ? classes.activeTab : classes.tabs} label="Jobs"/>
-          </Link>
+          </Link> */}
           {user?.name ? 
           <Tab onClick={handleLogout} className={window.location.pathname === "/logout" ? classes.activeTab : classes.tabs} label="Logout"/>
           :<Link className={classes.link} to="/login"><Tab className={window.location.pathname === "/login" ? classes.activeTab : classes.tabs} label="Login"/>
