@@ -112,8 +112,7 @@ class Home extends Component {
        getAPOD()
         .then(res =>
             {
-                console.log(res)
-                if(res.data.media_type === "video"){
+                if(res.data.media_type != "image"){
                     this.setState({heroImage: "https://miro.medium.com/max/1400/1*9IIoxOcIbhMFFKMCI2ncuQ.jpeg"})
                 } else {
                 this.setState({heroImage: (res.data.hdurl || res.data.url)})}
